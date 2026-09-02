@@ -613,18 +613,18 @@ export const sponsorTiers = [
 export const sightseeing = [
   { place: "Taj Mahal", city: "Agra" },
   { place: "Fatehpur Sikri", city: "Agra" },
-  { place: "Bankey Bihari Temple", city: "Vrindavan" },
+  { place: "Bankey Bihari", city: "Vrindavan" },
   { place: "Shri Krishna Janmabhoomi", city: "Mathura" },
   { place: "Prem Mandir", city: "Vrindavan" },
-  { place: "Radha Rani Temple", city: "Barsana" },
-  { place: "Danghati Temple", city: "Goverdhan" },
+  { place: "Radha Rani", city: "Barsana" },
+  { place: "Dhanghati", city: "Goverdhan" },
   { place: "Nand Mahal", city: "Gokul" },
   { place: "Nandgaun Temple", city: "Nandgaun" },
 ];
 
 export const contacts: Person[] = [
   { name: "Prof. (Dr.) Kamal Shah", role: "Organizing Secretary", phone: "+91 9756866042" },
-  { name: "Prof. (Dr.) Prabhat Upadhyay", role: "Co-Organizing Secretary", phone: "+91 9690088979" },
+  { name: "Prof. (Dr.) Prabhat K. Upadhyay", role: "Co-Organizing Secretary", phone: "+91 9690088979" },
   { name: "Dr. Yogesh Murti", role: "Co-Organizing Secretary", phone: "+91 8006240340" },
   { name: "Dr. Jitendra Gupta", role: "Co-Organizing Secretary", phone: "+91 8979136611" },
   { name: "Dr. Ahsas Goyal", role: "Joint Secretary", phone: "+91 9012204640" },

@@ -20,7 +20,7 @@ function Contact() {
     <PageLayout
       eyebrow="Contact"
       title="Get in touch"
-      intro="For queries regarding registration, accommodation, or the scientific programme, please reach out to the organizing committee."
+      intro="For enquiries regarding registration, abstract submission, accommodation, or the scientific programme, please contact the organizing committee."
     >
       <div className="max-w-4xl">
         <SectionHeading index="01" title="General Enquiries" />
@@ -31,8 +31,15 @@ function Contact() {
               {conference.email}
             </a>
           </p>
-          <p>
-            <strong className="text-foreground">Phone:</strong> {conference.phone}
+          <p className="mt-2">
+            <strong className="text-foreground">Primary contact:</strong>{" "}
+            <a href={`tel:${conference.phone.replace(/ /g, "")}`} className="text-primary hover:underline">
+              {conference.phone}
+            </a>
+            <span className="block mt-1">
+              Prof. (Dr.) Kamal Shah<br />
+              Organizing Secretary
+            </span>
           </p>
         </div>
 

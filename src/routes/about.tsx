@@ -33,20 +33,22 @@ function About() {
         <div className="md:col-span-7">
           <SectionHeading index="01" title="Conference overview" />
           <p className="mt-6 leading-relaxed text-muted-foreground">
-            Over three days the conference assembles cardiologists, pharmacologists,
-            pharmaceutical scientists, clinicians and research scholars around a shared question:
-            how the tools of modern science and technology can be translated into better
-            cardiovascular outcomes. Sessions include orations, plenary lectures, scientific
-            symposia, oral presentations and poster sessions, alongside young investigator awards.
+            The {conference.name} of the {conference.society} will bring together eminent scientists, cardiologists, clinicians, academicians, researchers, healthcare professionals, technologists and industry leaders from across the globe.
+          </p>
+          <p className="mt-5 leading-relaxed text-muted-foreground">
+            The conference will focus on pioneering research, emerging technologies and innovative strategies for the prevention, diagnosis, treatment and management of cardiovascular diseases.
+          </p>
+          <p className="mt-5 leading-relaxed text-muted-foreground">
+            The programme will include keynote lectures, invited lectures, plenary sessions, panel discussions, scientific symposia, and oral and poster presentations.
           </p>
 
           <SectionHeading index="02" title="Objectives" />
           <ol className="mt-6 divide-y divide-rule border-y border-rule">
             {[
-              "Advance translational research linking pharmaceutical science and clinical cardiology.",
-              "Create a forum for international and national exchange between academia, clinics and industry.",
-              "Provide a platform for young investigators to present original work.",
-              "Highlight innovation in diagnostics, therapeutics and digital cardiovascular health.",
+              "Bring together leading scientists, clinicians, academicians, researchers, healthcare professionals and industry experts in cardiovascular sciences.",
+              "Provide a platform for exchanging knowledge, presenting innovative research and discussing recent developments in cardiovascular sciences and related areas.",
+              "Encourage scientific interaction, interdisciplinary collaboration and academic networking.",
+              "Explore emerging technologies and innovative approaches that can contribute to improved cardiovascular research and healthcare.",
             ].map((o, i) => (
               <li key={o} className="flex gap-6 py-5">
                 <span className="eyebrow shrink-0 text-primary">
@@ -56,7 +58,6 @@ function About() {
               </li>
             ))}
           </ol>
-          <PlaceholderNote what="The verbatim objectives statement" />
 
           <SectionHeading index="03" title="Theme" />
           <p className="mt-6 font-[family-name:var(--font-display)] text-2xl leading-snug tracking-tight">
@@ -75,16 +76,21 @@ function About() {
           />
           <h2 className="display-md mt-10">Institute of Pharmaceutical Research</h2>
           <p className="mt-5 leading-relaxed text-muted-foreground">
-            The Institute is GLA University&apos;s centre for pharmaceutical education and
-            research, with programmes across pharmaceutics, pharmacology, pharmaceutical chemistry
-            and pharmacy practice, and laboratories supporting drug discovery and preclinical
-            evaluation.
+            The Institute of Pharmaceutical Research was established in 2006 and became an integral part of GLA University in 2010. It offers D.Pharm., B.Pharm., M.Pharm. and Ph.D. programmes and is committed to preparing skilled, ethical and industry-ready pharmacy professionals.
           </p>
+          <p className="mt-5 leading-relaxed text-muted-foreground">
+            The Institute is supported by qualified faculty, modern classrooms, well-equipped laboratories and advanced research facilities, with a focus on quality education, interdisciplinary research, scientific innovation and industry collaboration.
+          </p>
+
           <h3 className="mt-10 font-[family-name:var(--font-display)] text-xl">GLA University</h3>
           <p className="mt-4 leading-relaxed text-muted-foreground">
-            Founded in Mathura, Uttar Pradesh, GLA University is a multidisciplinary institution
-            with a residential campus, conference auditoria and research facilities that host the
-            conference.
+            Established in 1998 by Shri Narayan Das Agrawal, GLA University, Mathura is a leading institution of higher education in Northern India.
+          </p>
+          <p className="mt-4 leading-relaxed text-muted-foreground">
+            It was granted university status under UP Act No. 21 of 2010, recognized under Section 12(B) of the UGC Act in 2019 and accredited with an A+ Grade by NAAC in 2023.
+          </p>
+          <p className="mt-4 leading-relaxed text-muted-foreground">
+            The University is spread across 110 acres and serves more than 12,000 students through undergraduate, postgraduate, diploma, doctoral and professional programmes.
           </p>
         </aside>
       </div>

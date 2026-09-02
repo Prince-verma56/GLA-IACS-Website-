@@ -29,7 +29,7 @@ function Registration() {
     <PageLayout
       eyebrow="Registration"
       title="Register for IACS 2027"
-      intro="Registration opens 25 August 2026 and closes 20 January 2027. Early bird rates apply until 31 December 2026."
+      intro="Registration opens 25 August 2026 and closes 20 January 2027. The abstract submission deadline is 25 December 2026. Early bird registration rates apply until 31 December 2026."
     >
       <div className="grid gap-16 md:grid-cols-12">
         <div className="md:col-span-8">
@@ -68,8 +68,8 @@ function Registration() {
               </table>
             </div>
             <p className="rule-top mt-8 pt-5 text-sm leading-relaxed text-muted-foreground">
-              The registration fee is non-refundable and non-transferable. Only registered delegates
-              will be allowed to attend the conference.
+              Registration fee is non-refundable and nontransferable. Only registered delegates
+              will be allowed to attend the Conference.
             </p>
           </div>
 
@@ -86,15 +86,10 @@ function Registration() {
           <div id="form">
             <SectionHeading index="03" title="Online registration form" />
             <p className="mt-6 leading-relaxed text-muted-foreground">
-              Complete the official registration form below. After payment, enter the amount paid
-              and the transaction ID in the form. For any difficulty, write to{" "}
-              <a
-                href={`mailto:${conference.email}`}
-                className="underline underline-offset-4 hover:text-primary"
-              >
-                {conference.email}
-              </a>
-              .
+              Complete the official registration form below. Enter your participant details, registration category, mode of participation and payment information as required.
+            </p>
+            <p className="mt-4 leading-relaxed text-muted-foreground">
+              For abstract submission, follow the official abstract guidelines and submit before 25 December 2026.
             </p>
             <div className="mt-8 border border-rule">
               <iframe
@@ -132,7 +127,7 @@ function Registration() {
             ))}
           </ul>
           <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
-            Early bird rates close 31 December 2026.
+            Early bird rates close: 31 December 2026
           </p>
           <Link to="/abstracts" className="link-arrow mt-8">
             Abstract guidelines <span aria-hidden>→</span>

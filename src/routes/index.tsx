@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
-import { conference, keyDates, PLACEHOLDER } from "@/lib/conference";
+import { conference, keyDates, internationalSpeakers, PLACEHOLDER } from "@/lib/conference";
 import campus from "@/assets/campus-hero.jpg";
 import auditorium from "@/assets/auditorium.jpg";
 import lab from "@/assets/lab.jpg";
@@ -49,60 +49,63 @@ function Home() {
 
 function Hero() {
   return (
-    <section className="relative flex min-h-[92svh] items-end overflow-hidden">
+    <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-32 pb-20 lg:pt-36 lg:pb-24">
       <img
-        src={campus}
-        alt="GLA University campus, Mathura, at golden hour"
+        src="/GLA Drone Shot.png"
+        alt="GLA University campus, Mathura, drone shot"
         width={1920}
         height={1200}
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,32,22,0.55)_0%,rgba(12,32,22,0.12)_38%,rgba(9,26,18,0.82)_100%)]" />
+      {/* Subtle directional gradient for readability while preserving the building */}
+      <div className="absolute inset-0 bg-[linear-gradient(100deg,rgba(9,26,18,0.92)_0%,rgba(9,26,18,0.6)_35%,rgba(9,26,18,0)_65%)] max-md:bg-[linear-gradient(110deg,rgba(9,26,18,0.95)_0%,rgba(9,26,18,0.85)_50%,rgba(9,26,18,0.4)_100%)] pointer-events-none" />
+      {/* Navbar protection gradient */}
+      <div className="absolute top-0 inset-x-0 h-32 bg-[linear-gradient(180deg,rgba(9,26,18,0.7)_0%,rgba(9,26,18,0)_100%)] pointer-events-none" />
 
-      <div className="shell relative w-full pb-20 pt-40 md:pb-28">
-        <div className="grid gap-10 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-9">
-            <p className="eyebrow text-white/75">{conference.name}</p>
-            <h1 className="display-xl mt-6 text-white">
+      <div className="shell relative w-full flex flex-col justify-center">
+        <div className="w-full max-w-[640px] md:pr-10 lg:pr-0">
+          <p className="text-[0.7rem] font-bold tracking-[0.15em] text-white/75 uppercase leading-relaxed">
+            IACS 2027 · India Section
+            <br />
+            International Conference
+          </p>
+          
+          <h1 className="mt-5 flex flex-col gap-2 md:gap-3">
+            <span className="font-[family-name:var(--font-display)] text-[2.5rem] leading-[1.1] tracking-tight text-white sm:text-[3rem] lg:text-[3.5rem]">
               {conference.theme.line1}
-              <span className="mt-2 block font-normal text-white/80">
-                {conference.theme.line2}
-              </span>
-            </h1>
+            </span>
+            <span className="font-[family-name:var(--font-display)] text-[1.5rem] leading-[1.25] tracking-tight text-white/85 sm:text-[1.75rem] lg:text-[2.125rem]">
+              {conference.theme.line2}
+            </span>
+          </h1>
 
-            <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-3 border-t border-white/25 pt-6 text-white/85">
-              <span className="font-[family-name:var(--font-display)] text-lg">
-                {conference.dates}
-              </span>
-              <span className="text-sm">{conference.venue}</span>
-            </div>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/registration" className="btn-solid">
-                Register Now
-              </Link>
-              <Link
-                to="/abstracts"
-                className="inline-flex items-center justify-center border border-white/60 px-7 py-[0.9rem] text-[0.9375rem] font-medium text-white transition-colors hover:bg-white hover:text-primary-deep"
-              >
-                Submit Abstract
-              </Link>
-            </div>
+          <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-1.5 text-[0.9375rem] text-white/90 lg:text-[1rem]">
+            <span className="font-medium tracking-wide whitespace-nowrap">{conference.dates}</span>
+            <span className="hidden sm:block text-white/40">•</span>
+            <span>GLA University, Mathura, Uttar Pradesh, India</span>
           </div>
 
-          <div className="hidden md:col-span-3 md:block">
-            <div className="ml-auto w-fit border-l border-white/30 pl-5 text-right">
-              <p className="eyebrow text-white/60">Hosted by</p>
-              <p className="mt-3 text-sm leading-relaxed text-white/85">
-                Institute of Pharmaceutical
-                <br />
-                Research, GLA University
-                <br />
-                Mathura, Uttar Pradesh
-              </p>
-            </div>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link to="/registration" className="btn-solid flex items-center justify-center h-[50px] px-8 text-[0.9375rem]">
+              Register Now
+            </Link>
+            <Link
+              to="/programme"
+              className="inline-flex items-center justify-center h-[50px] border border-white/60 px-8 text-[0.9375rem] font-medium text-white transition-colors hover:bg-white hover:text-primary-deep"
+            >
+              Explore Programme
+            </Link>
           </div>
         </div>
+      </div>
+
+      <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 z-10 hidden text-right lg:block">
+        <p className="text-[0.6rem] font-bold tracking-[0.2em] text-white/50 uppercase">Hosted by</p>
+        <p className="mt-1 text-[0.8125rem] leading-snug text-white/80">
+          Institute of Pharmaceutical Research
+          <br />
+          GLA University, Mathura
+        </p>
       </div>
     </section>
   );
@@ -117,16 +120,13 @@ function Introduction() {
         </Reveal>
         <Reveal className="md:col-span-8" delay={80}>
           <p className="text-[1.375rem] leading-[1.55] tracking-[-0.01em] md:text-[1.625rem]">
-            The International Academy of Cardiovascular Sciences – India Section, together with
-            the Institute of Pharmaceutical Research at GLA University, Mathura, convenes an
-            international gathering of clinicians, pharmaceutical scientists and researchers from
-            11–13 February 2027.
+            The {conference.name} of the {conference.society}, centered on the theme "{conference.theme.line1} {conference.theme.line2}", will be held from {conference.dates} at {conference.venue}.
           </p>
           <p className="mt-7 max-w-2xl leading-relaxed text-muted-foreground">
-            Three days of orations, scientific symposia, oral and poster presentations examine how
-            science, technology and innovation are reshaping the prevention, diagnosis and
-            treatment of cardiovascular disease. The full conference narrative, objectives and
-            programme detail will be reproduced from the official brochure.
+            The conference brings together eminent scientists, cardiologists, clinicians, academicians, researchers, healthcare professionals, technologists and industry leaders from across the globe.
+          </p>
+          <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">
+            It will provide a platform for exchanging pioneering ideas, showcasing cutting-edge research, exploring emerging technologies and discussing innovative strategies for the prevention, diagnosis, treatment and management of cardiovascular diseases.
           </p>
           <Link to="/about" className="link-arrow mt-9">
             Explore the Conference <span aria-hidden>→</span>
@@ -212,27 +212,31 @@ function FeaturedSpeakers() {
             className="aspect-[4/3] w-full object-cover"
           />
           <p className="mt-5 font-[family-name:var(--font-display)] text-2xl">
-            Keynote Speaker — to be announced
+            {internationalSpeakers[0].name}
           </p>
           <p className="mt-1 text-sm text-muted-foreground">
-            Institution and country per the official brochure
+            {internationalSpeakers[0].role && <span className="block">{internationalSpeakers[0].role}</span>}
+            {internationalSpeakers[0].org}
           </p>
         </Reveal>
 
         <div className="grid gap-10 md:col-span-5">
-          {["International Speaker — to be announced", "National Speaker — to be announced"].map(
-            (n, i) => (
-              <Reveal key={n} delay={i * 90}>
+          {internationalSpeakers.slice(1, 3).map(
+            (speaker, i) => (
+              <Reveal key={speaker.name} delay={i * 90}>
                 <img
                   src={lab}
-                  alt="Researchers at work in the pharmaceutical research laboratory"
+                  alt={`${speaker.name}`}
                   width={1408}
                   height={1008}
                   loading="lazy"
                   className="aspect-[4/3] w-full object-cover"
                 />
-                <p className="mt-4 font-[family-name:var(--font-display)] text-lg">{n}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{PLACEHOLDER}</p>
+                <p className="mt-4 font-[family-name:var(--font-display)] text-lg">{speaker.name}</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {speaker.role && <span className="block">{speaker.role}</span>}
+                  {speaker.org}
+                </p>
               </Reveal>
             ),
           )}
@@ -277,9 +281,7 @@ function RegistrationCall() {
         </Reveal>
         <Reveal className="md:col-span-5" delay={80}>
           <p className="leading-relaxed text-muted-foreground">
-            Registration opens 25 August 2026 for delegates, faculty, students, industry
-            participants and online attendees. Category-wise fees, early bird rates and payment
-            details are published on the registration page.
+            Join scientists, clinicians, researchers, academicians, healthcare professionals, technologists and industry experts at IACS 2027 in Mathura.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-8">
             <Link to="/registration" className="btn-solid">

@@ -6,7 +6,7 @@ export function SiteFooter() {
     <footer className="bg-primary-deep text-white/80">
       <div className="shell grid gap-12 py-20 md:grid-cols-12">
         <div className="md:col-span-5">
-          <p className="font-[family-name:var(--font-display)] text-xl font-semibold text-white">
+          <p className="font-display text-xl font-semibold text-white">
             GLA University, Mathura
           </p>
           <p className="mt-3 max-w-sm text-sm leading-relaxed">
@@ -45,7 +45,7 @@ export function SiteFooter() {
             </a>
           </p>
           <p className="mt-4 text-sm leading-relaxed text-white/60">
-            Telephone contacts — {PLACEHOLDER}.
+            {conference.phone}
           </p>
         </div>
       </div>

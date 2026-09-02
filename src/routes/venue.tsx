@@ -29,15 +29,20 @@ function Venue() {
         <div className="md:col-span-7">
           <SectionHeading index="01" title="Conference Venue" />
           <p className="mt-6 leading-relaxed text-muted-foreground font-medium">
-            {conference.address}
+            Institute of Pharmaceutical Research<br />
+            GLA University, Mathura - 281406<br />
+            Uttar Pradesh, India
           </p>
           <p className="mt-4 leading-relaxed text-muted-foreground">
-            Mathura is a well-connected city in Uttar Pradesh, located just an hour from Agra and in close proximity to Delhi. The venue provides a serene yet accessible environment for our attendees.
+            The conference is organized by the Institute of Pharmaceutical Research, GLA University, Mathura.
           </p>
 
           <SectionHeading index="02" title="Sightseeing around Mathura" />
+          <p className="mt-6 leading-relaxed text-muted-foreground">
+            Mathura is a holy city situated on the banks of the Yamuna River, with many places of historic and religious importance in Mathura and its neighboring towns.
+          </p>
           <p className="mt-4 leading-relaxed text-muted-foreground mb-4">
-            While attending the conference, delegates may wish to explore the rich cultural and historical sites in and around Mathura and Agra.
+            Vrindavan, the twin city of Mathura, is closely associated with Lord Krishna and is known for its many temples and rich cultural heritage.
           </p>
           <ul className="divide-y divide-rule border-y border-rule">
             {sightseeing.map((item, i) => (
