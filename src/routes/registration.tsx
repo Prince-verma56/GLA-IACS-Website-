@@ -68,8 +68,8 @@ function Registration() {
               </table>
             </div>
             <p className="rule-top mt-8 pt-5 text-sm leading-relaxed text-muted-foreground">
-              Registration fee is non-refundable and nontransferable. Only registered delegates
-              will be allowed to attend the Conference.
+              Registration fee is non-refundable and nontransferable. Only registered delegates will
+              be allowed to attend the Conference.
             </p>
           </div>
 
@@ -86,17 +86,19 @@ function Registration() {
           <div id="form">
             <SectionHeading index="03" title="Online registration form" />
             <p className="mt-6 leading-relaxed text-muted-foreground">
-              Complete the official registration form below. Enter your participant details, registration category, mode of participation and payment information as required.
+              Complete the official registration form below. Enter your participant details,
+              registration category, mode of participation and payment information as required.
             </p>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              For abstract submission, follow the official abstract guidelines and submit before 25 December 2026.
+              For abstract submission, follow the official abstract guidelines and submit before 25
+              December 2026.
             </p>
             <div className="mt-8 border border-rule">
               <iframe
                 src={`${conference.registrationFormUrl}?embedded=true`}
                 title="IACS 2027 registration form"
                 width="100%"
-                height="1100"
+                height="650"
                 loading="lazy"
                 className="block w-full"
               >

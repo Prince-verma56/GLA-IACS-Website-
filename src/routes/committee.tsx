@@ -62,8 +62,8 @@ function Committee() {
               {isOpen && (
                 <div className="pb-8">
                   <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                    Members of the {c.toLowerCase()} will be listed here from the official
-                    brochure, with designation and department.
+                    Members of the {c.toLowerCase()} will be listed here from the official brochure,
+                    with designation and department.
                   </p>
                 </div>
               )}

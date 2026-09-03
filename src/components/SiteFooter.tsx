@@ -4,11 +4,9 @@ import { conference, navigation, secondaryLinks, PLACEHOLDER } from "@/lib/confe
 export function SiteFooter() {
   return (
     <footer className="bg-primary-deep text-white/80">
-      <div className="shell grid gap-12 py-20 md:grid-cols-12">
-        <div className="md:col-span-5">
-          <p className="font-display text-xl font-semibold text-white">
-            GLA University, Mathura
-          </p>
+      <div className="shell grid gap-12 py-20 md:grid-cols-12 lg:gap-8">
+        <div className="md:col-span-12 lg:col-span-4">
+          <p className="font-display text-xl font-semibold text-white">GLA University, Mathura</p>
           <p className="mt-3 max-w-sm text-sm leading-relaxed">
             Institute of Pharmaceutical Research
             <br />
@@ -21,9 +19,9 @@ export function SiteFooter() {
           </p>
         </div>
 
-        <div className="md:col-span-3">
+        <div className="md:col-span-7 lg:col-span-5">
           <p className="eyebrow text-white/50">Quick links</p>
-          <ul className="mt-5 space-y-2.5 text-sm">
+          <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
             {[...navigation.slice(1), ...secondaryLinks].map((l) => (
               <li key={l.to}>
                 <Link to={l.to} className="transition-colors hover:text-white">
@@ -34,7 +32,7 @@ export function SiteFooter() {
           </ul>
         </div>
 
-        <div className="md:col-span-4">
+        <div className="md:col-span-5 lg:col-span-3">
           <p className="eyebrow text-white/50">Conference secretariat</p>
           <p className="mt-5 text-sm">
             <a
@@ -44,9 +42,7 @@ export function SiteFooter() {
               {conference.email}
             </a>
           </p>
-          <p className="mt-4 text-sm leading-relaxed text-white/60">
-            {conference.phone}
-          </p>
+          <p className="mt-4 text-sm leading-relaxed text-white/60">{conference.phone}</p>
         </div>
       </div>
 

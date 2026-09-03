@@ -11,7 +11,10 @@ export const Route = createFileRoute("/research-areas")({
           "Scientific subject areas invited for presentation at the IACS India Section International Conference 2027, GLA University, Mathura.",
       },
       { property: "og:title", content: "Research Areas — IACS 2027" },
-      { property: "og:description", content: "Conference research subjects and scientific tracks." },
+      {
+        property: "og:description",
+        content: "Conference research subjects and scientific tracks.",
+      },
     ],
   }),
   component: ResearchAreas,

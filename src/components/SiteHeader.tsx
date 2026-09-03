@@ -27,7 +27,7 @@ export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
       }`}
     >
       <div className="shell flex h-[74px] items-center justify-between gap-8">
-        <Link to="/" className="flex items-baseline gap-3">
+        <Link to="/" className="gsap-nav-logo flex items-baseline gap-3">
           <span
             className={`font-[family-name:var(--font-display)] text-[1.0625rem] font-semibold tracking-tight ${
               solid ? "text-primary-deep" : "text-white"
@@ -51,7 +51,7 @@ export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
               <Link
                 key={item.to}
                 to={item.to}
-                className={`text-[0.8125rem] tracking-wide transition-colors ${
+                className={`gsap-nav-link text-[0.8125rem] tracking-wide transition-colors ${
                   solid
                     ? active
                       ? "text-primary"
@@ -65,7 +65,7 @@ export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
           })}
           <Link
             to="/registration"
-            className={`px-5 py-2 text-[0.8125rem] font-medium transition-colors ${
+            className={`gsap-nav-btn px-5 py-2 text-[0.8125rem] font-medium transition-colors ${
               solid
                 ? "bg-primary text-primary-foreground hover:bg-primary-deep"
                 : "border border-white/70 text-white hover:bg-white hover:text-primary-deep"

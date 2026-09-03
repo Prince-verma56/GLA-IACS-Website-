@@ -48,20 +48,35 @@ export const secondaryLinks = [
 
 /* ---------------------------------------------------------------- people */
 
-export type Person = { name: string; role?: string; org?: string; phone?: string };
+export type Person = { name: string; role?: string; org?: string; phone?: string; image?: string };
 
 export const leadership: { group: string; people: Person[] }[] = [
   {
     group: "Chief Patron",
     people: [
-      { name: "Shri Narayan Das Agrawal", role: "Chancellor", org: "GLA University, Mathura" },
+      {
+        name: "Shri Narayan Das Agrawal",
+        role: "Chancellor",
+        org: "GLA University, Mathura",
+        image: "/People Images/Narayan-Das-Agrawal.jpg",
+      },
     ],
   },
   {
     group: "Co-Chief Patrons",
     people: [
-      { name: "Shri Neeraj Agrawal", role: "CEO", org: "GLA University, Mathura" },
-      { name: "Dr. Vivek Agrawal", role: "CFO", org: "GLA University, Mathura" },
+      {
+        name: "Shri Neeraj Agrawal",
+        role: "CEO",
+        org: "GLA University, Mathura",
+        image: "/People Images/Neeraj Aggrawal.jpg",
+      },
+      {
+        name: "Dr. Vivek Agrawal",
+        role: "CFO",
+        org: "GLA University, Mathura",
+        image: "/People Images/Vivek-Aggrawal.png",
+      },
     ],
   },
   {
@@ -199,12 +214,19 @@ export const internationalSpeakers: Person[] = [
     name: "Prof. Naranjan S. Dhalla",
     role: "Distinguished Professor, Max Rady College of Medicine",
     org: "University of Manitoba, Canada",
+    image: "/People Images/Prof. Naranjan S. Dhalla.png",
   },
-  { name: "Dr. Suresh Tyagi", role: "School of Medicine", org: "University of Louisville, USA" },
+  {
+    name: "Dr. Suresh Tyagi",
+    role: "School of Medicine",
+    org: "University of Louisville, USA",
+    image: "/People Images/Dr Suresh Tyagi.png",
+  },
   {
     name: "Prof. Devendra K. Agrawal",
     role: "Professor and Director",
     org: "Western University of Health Sciences, Pomona, USA",
+    image: "/People Images/Devendra K. Agrawal.png",
   },
   {
     name: "Dr. Andras Varro",
@@ -494,10 +516,34 @@ export const organizingCommittees: { title: string; members: string[] }[] = [
 /* ----------------------------------------------------------- registration */
 
 export const registrationFees = [
-  { category: "Students (UG / PG / Ph.D.)", inEarly: "₹3,000", inLate: "₹3,500", fgEarly: "US $50", fgLate: "US $75" },
-  { category: "Faculty Members", inEarly: "₹3,500", inLate: "₹4,000", fgEarly: "US $100", fgLate: "US $150" },
-  { category: "Industry Persons", inEarly: "₹4,000", inLate: "₹4,500", fgEarly: "US $125", fgLate: "US $175" },
-  { category: "Online Participants", inEarly: "₹1,500", inLate: "₹2,000", fgEarly: "US $25", fgLate: "US $50" },
+  {
+    category: "Students (UG / PG / Ph.D.)",
+    inEarly: "₹3,000",
+    inLate: "₹3,500",
+    fgEarly: "US $50",
+    fgLate: "US $75",
+  },
+  {
+    category: "Faculty Members",
+    inEarly: "₹3,500",
+    inLate: "₹4,000",
+    fgEarly: "US $100",
+    fgLate: "US $150",
+  },
+  {
+    category: "Industry Persons",
+    inEarly: "₹4,000",
+    inLate: "₹4,500",
+    fgEarly: "US $125",
+    fgLate: "US $175",
+  },
+  {
+    category: "Online Participants",
+    inEarly: "₹1,500",
+    inLate: "₹2,000",
+    fgEarly: "US $25",
+    fgLate: "US $50",
+  },
 ];
 
 export const bankDetails = [
@@ -624,7 +670,11 @@ export const sightseeing = [
 
 export const contacts: Person[] = [
   { name: "Prof. (Dr.) Kamal Shah", role: "Organizing Secretary", phone: "+91 9756866042" },
-  { name: "Prof. (Dr.) Prabhat K. Upadhyay", role: "Co-Organizing Secretary", phone: "+91 9690088979" },
+  {
+    name: "Prof. (Dr.) Prabhat K. Upadhyay",
+    role: "Co-Organizing Secretary",
+    phone: "+91 9690088979",
+  },
   { name: "Dr. Yogesh Murti", role: "Co-Organizing Secretary", phone: "+91 8006240340" },
   { name: "Dr. Jitendra Gupta", role: "Co-Organizing Secretary", phone: "+91 8979136611" },
   { name: "Dr. Ahsas Goyal", role: "Joint Secretary", phone: "+91 9012204640" },

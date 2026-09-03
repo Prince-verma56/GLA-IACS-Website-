@@ -11,7 +11,10 @@ export const Route = createFileRoute("/awards")({
           "Orations, scientific symposia and young investigator awards at the IACS India Section International Conference 2027, GLA University, Mathura.",
       },
       { property: "og:title", content: "Awards & Orations — IACS 2027" },
-      { property: "og:description", content: "Named orations, symposia and young investigator awards." },
+      {
+        property: "og:description",
+        content: "Named orations, symposia and young investigator awards.",
+      },
     ],
   }),
   component: Awards,

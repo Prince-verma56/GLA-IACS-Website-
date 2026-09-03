@@ -33,11 +33,15 @@ function Contact() {
           </p>
           <p className="mt-2">
             <strong className="text-foreground">Primary contact:</strong>{" "}
-            <a href={`tel:${conference.phone.replace(/ /g, "")}`} className="text-primary hover:underline">
+            <a
+              href={`tel:${conference.phone.replace(/ /g, "")}`}
+              className="text-primary hover:underline"
+            >
               {conference.phone}
             </a>
             <span className="block mt-1">
-              Prof. (Dr.) Kamal Shah<br />
+              Prof. (Dr.) Kamal Shah
+              <br />
               Organizing Secretary
             </span>
           </p>
@@ -56,7 +60,10 @@ function Contact() {
               </div>
               <div className="md:text-right">
                 {contact.phone && (
-                  <a href={`tel:${contact.phone.replace(/ /g, "")}`} className="text-primary hover:underline">
+                  <a
+                    href={`tel:${contact.phone.replace(/ /g, "")}`}
+                    className="text-primary hover:underline"
+                  >
                     {contact.phone}
                   </a>
                 )}

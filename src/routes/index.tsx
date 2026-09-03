@@ -3,9 +3,13 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
 import { conference, keyDates, internationalSpeakers, PLACEHOLDER } from "@/lib/conference";
-import campus from "@/assets/campus-hero.jpg";
 import auditorium from "@/assets/auditorium.jpg";
 import lab from "@/assets/lab.jpg";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,8 +32,182 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const tl = gsap.timeline();
+
+        // 0.00: Background image begins settling
+        tl.from(
+          ".gsap-hero-bg",
+          {
+            scale: 1.04,
+            duration: 1.2,
+            ease: "power2.out",
+          },
+          0,
+        );
+
+        // 0.15: Navbar begins appearing
+        tl.from(
+          ".gsap-nav-logo",
+          {
+            y: 8,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power3.out",
+          },
+          0.15,
+        );
+
+        tl.from(
+          ".gsap-nav-link",
+          {
+            opacity: 0,
+            x: 5,
+            duration: 0.5,
+            stagger: 0.05,
+            ease: "power3.out",
+          },
+          0.2,
+        );
+
+        tl.from(
+          ".gsap-nav-btn",
+          {
+            opacity: 0,
+            scale: 0.95,
+            duration: 0.5,
+            ease: "power3.out",
+          },
+          0.35,
+        );
+
+        // 0.45: Eyebrow mask reveal
+        tl.from(
+          ".gsap-eyebrow",
+          {
+            yPercent: 100,
+            opacity: 0.1,
+            duration: 0.65,
+            ease: "power3.out",
+          },
+          0.45,
+        );
+
+        // 0.65: Main title line 1 begins (staggered)
+        tl.from(
+          ".gsap-title-1",
+          {
+            yPercent: 110,
+            opacity: 0,
+            duration: 0.9,
+            stagger: 0.12,
+            ease: "power4.out",
+          },
+          0.65,
+        );
+
+        // 1.00: Theme continuation begins (using slightly different motion)
+        tl.from(
+          ".gsap-theme",
+          {
+            y: 25,
+            x: 8,
+            opacity: 0,
+            duration: 0.9,
+            ease: "power3.out",
+          },
+          1.0,
+        );
+
+        // 1.20: Date/location reveal
+        tl.from(
+          ".gsap-meta-wrapper",
+          {
+            clipPath: "inset(0 100% 0 0)",
+            duration: 0.8,
+            ease: "power3.out",
+          },
+          1.2,
+        );
+
+        tl.from(
+          ".gsap-meta-text",
+          {
+            x: -15,
+            opacity: 0,
+            duration: 0.7,
+            stagger: 0.1,
+            ease: "power3.out",
+          },
+          1.3,
+        );
+
+        tl.from(
+          ".gsap-meta-dot",
+          {
+            opacity: 0,
+            duration: 0.5,
+          },
+          1.5,
+        );
+
+        // 1.60: CTA buttons begin
+        tl.from(
+          ".gsap-btn",
+          {
+            y: 20,
+            opacity: 0,
+            scale: 0.98,
+            duration: 0.6,
+            stagger: 0.08,
+            ease: "power3.out",
+          },
+          1.6,
+        );
+
+        // 1.70: Hosted-by block begins
+        tl.from(
+          ".gsap-hosted",
+          {
+            opacity: 0,
+            x: 15,
+            duration: 0.8,
+            ease: "power3.out",
+          },
+          1.7,
+        );
+      });
+
+      mm.add("(prefers-reduced-motion: reduce)", () => {
+        const tl = gsap.timeline();
+        tl.from(".gsap-nav-logo, .gsap-nav-link, .gsap-nav-btn", {
+          opacity: 0,
+          duration: 0.5,
+          stagger: 0.1,
+        });
+        tl.from(
+          ".gsap-eyebrow, .gsap-title-1",
+          { opacity: 0, duration: 0.5, stagger: 0.1 },
+          "-=0.2",
+        );
+        tl.from(
+          ".gsap-theme, .gsap-meta-wrapper, .gsap-meta-text, .gsap-btn, .gsap-hosted",
+          { opacity: 0, duration: 0.5, stagger: 0.1 },
+          "-=0.2",
+        );
+      });
+    },
+    { scope: containerRef },
+  );
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" ref={containerRef}>
       <SiteHeader overHero />
       <main>
         <Hero />
@@ -48,6 +226,10 @@ function Home() {
 }
 
 function Hero() {
+  const words = conference.theme.line1.split(" ");
+  const firstWord = words[0];
+  const restWords = words.slice(1).join(" ");
+
   return (
     <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-32 pb-20 lg:pt-36 lg:pb-24">
       <img
@@ -55,7 +237,7 @@ function Hero() {
         alt="GLA University campus, Mathura, drone shot"
         width={1920}
         height={1200}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="gsap-hero-bg absolute inset-0 h-full w-full object-cover"
       />
       {/* Subtle directional gradient for readability while preserving the building */}
       <div className="absolute inset-0 bg-[linear-gradient(100deg,rgba(9,26,18,0.92)_0%,rgba(9,26,18,0.6)_35%,rgba(9,26,18,0)_65%)] max-md:bg-[linear-gradient(110deg,rgba(9,26,18,0.95)_0%,rgba(9,26,18,0.85)_50%,rgba(9,26,18,0.4)_100%)] pointer-events-none" />
@@ -64,43 +246,65 @@ function Hero() {
 
       <div className="shell relative w-full flex flex-col justify-center">
         <div className="w-full max-w-[640px] md:pr-10 lg:pr-0">
-          <p className="text-[0.7rem] font-bold tracking-[0.15em] text-white/75 uppercase leading-relaxed">
-            IACS 2027 · India Section
-            <br />
-            International Conference
-          </p>
-          
+          <div className="overflow-hidden pb-1">
+            <p className="gsap-eyebrow text-[0.7rem] font-bold tracking-[0.15em] text-white/75 uppercase leading-relaxed inline-block">
+              IACS 2027 · India Section
+              <br />
+              International Conference
+            </p>
+          </div>
+
           <h1 className="mt-5 flex flex-col gap-2 md:gap-3">
             <span className="font-[family-name:var(--font-display)] text-[2.5rem] leading-[1.1] tracking-tight text-white sm:text-[3rem] lg:text-[3.5rem]">
-              {conference.theme.line1}
+              <span className="overflow-hidden inline-block align-top">
+                <span className="gsap-title-1 inline-block pb-1">{firstWord}</span>
+              </span>{" "}
+              <span className="overflow-hidden inline-block align-top">
+                <span className="gsap-title-1 inline-block pb-1">{restWords}</span>
+              </span>
             </span>
-            <span className="font-[family-name:var(--font-display)] text-[1.5rem] leading-[1.25] tracking-tight text-white/85 sm:text-[1.75rem] lg:text-[2.125rem]">
-              {conference.theme.line2}
+            <span className="overflow-hidden pb-2">
+              <span className="gsap-theme block font-[family-name:var(--font-display)] text-[1.5rem] leading-[1.25] tracking-tight text-white/85 sm:text-[1.75rem] lg:text-[2.125rem]">
+                {conference.theme.line2}
+              </span>
             </span>
           </h1>
 
-          <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-1.5 text-[0.9375rem] text-white/90 lg:text-[1rem]">
-            <span className="font-medium tracking-wide whitespace-nowrap">{conference.dates}</span>
-            <span className="hidden sm:block text-white/40">•</span>
-            <span>GLA University, Mathura, Uttar Pradesh, India</span>
+          <div className="overflow-hidden mt-8">
+            <div className="gsap-meta-wrapper flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-1.5 text-[0.9375rem] text-white/90 lg:text-[1rem]">
+              <span className="gsap-meta-text font-medium tracking-wide whitespace-nowrap">
+                {conference.dates}
+              </span>
+              <span className="gsap-meta-dot hidden sm:block text-white/40">•</span>
+              <span className="gsap-meta-text">GLA University, Mathura, Uttar Pradesh, India</span>
+            </div>
           </div>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link to="/registration" className="btn-solid flex items-center justify-center h-[50px] px-8 text-[0.9375rem]">
-              Register Now
-            </Link>
-            <Link
-              to="/programme"
-              className="inline-flex items-center justify-center h-[50px] border border-white/60 px-8 text-[0.9375rem] font-medium text-white transition-colors hover:bg-white hover:text-primary-deep"
-            >
-              Explore Programme
-            </Link>
+            <div className="overflow-hidden rounded p-[1px] -m-[1px]">
+              <Link
+                to="/registration"
+                className="gsap-btn btn-solid flex items-center justify-center h-[50px] px-8 text-[0.9375rem]"
+              >
+                Register Now
+              </Link>
+            </div>
+            <div className="overflow-hidden rounded p-[1px] -m-[1px]">
+              <Link
+                to="/programme"
+                className="gsap-btn inline-flex items-center justify-center h-[50px] border border-white/60 px-8 text-[0.9375rem] font-medium text-white transition-colors hover:bg-white hover:text-primary-deep"
+              >
+                Explore Programme
+              </Link>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 z-10 hidden text-right lg:block">
-        <p className="text-[0.6rem] font-bold tracking-[0.2em] text-white/50 uppercase">Hosted by</p>
+      <div className="gsap-hosted absolute bottom-6 right-6 md:bottom-10 md:right-10 z-10 hidden text-right lg:block">
+        <p className="text-[0.6rem] font-bold tracking-[0.2em] text-white/50 uppercase">
+          Hosted by
+        </p>
         <p className="mt-1 text-[0.8125rem] leading-snug text-white/80">
           Institute of Pharmaceutical Research
           <br />
@@ -120,13 +324,19 @@ function Introduction() {
         </Reveal>
         <Reveal className="md:col-span-8" delay={80}>
           <p className="text-[1.375rem] leading-[1.55] tracking-[-0.01em] md:text-[1.625rem]">
-            The {conference.name} of the {conference.society}, centered on the theme "{conference.theme.line1} {conference.theme.line2}", will be held from {conference.dates} at {conference.venue}.
+            The {conference.name} of the {conference.society}, centered on the theme "
+            {conference.theme.line1} {conference.theme.line2}", will be held from {conference.dates}{" "}
+            at {conference.venue}.
           </p>
           <p className="mt-7 max-w-2xl leading-relaxed text-muted-foreground">
-            The conference brings together eminent scientists, cardiologists, clinicians, academicians, researchers, healthcare professionals, technologists and industry leaders from across the globe.
+            The conference brings together eminent scientists, cardiologists, clinicians,
+            academicians, researchers, healthcare professionals, technologists and industry leaders
+            from across the globe.
           </p>
           <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">
-            It will provide a platform for exchanging pioneering ideas, showcasing cutting-edge research, exploring emerging technologies and discussing innovative strategies for the prevention, diagnosis, treatment and management of cardiovascular diseases.
+            It will provide a platform for exchanging pioneering ideas, showcasing cutting-edge
+            research, exploring emerging technologies and discussing innovative strategies for the
+            prevention, diagnosis, treatment and management of cardiovascular diseases.
           </p>
           <Link to="/about" className="link-arrow mt-9">
             Explore the Conference <span aria-hidden>→</span>
@@ -204,42 +414,42 @@ function FeaturedSpeakers() {
       <div className="mt-14 grid gap-10 md:grid-cols-12">
         <Reveal className="md:col-span-7">
           <img
-            src={auditorium}
-            alt="Delegates in a university auditorium during a plenary session"
+            src={internationalSpeakers[0].image || auditorium}
+            alt={internationalSpeakers[0].name}
             width={1408}
             height={1008}
             loading="lazy"
-            className="aspect-[4/3] w-full object-cover"
+            className="aspect-[4/3] w-full object-cover object-top"
           />
           <p className="mt-5 font-[family-name:var(--font-display)] text-2xl">
             {internationalSpeakers[0].name}
           </p>
           <p className="mt-1 text-sm text-muted-foreground">
-            {internationalSpeakers[0].role && <span className="block">{internationalSpeakers[0].role}</span>}
+            {internationalSpeakers[0].role && (
+              <span className="block">{internationalSpeakers[0].role}</span>
+            )}
             {internationalSpeakers[0].org}
           </p>
         </Reveal>
 
         <div className="grid gap-10 md:col-span-5">
-          {internationalSpeakers.slice(1, 3).map(
-            (speaker, i) => (
-              <Reveal key={speaker.name} delay={i * 90}>
-                <img
-                  src={lab}
-                  alt={`${speaker.name}`}
-                  width={1408}
-                  height={1008}
-                  loading="lazy"
-                  className="aspect-[4/3] w-full object-cover"
-                />
-                <p className="mt-4 font-[family-name:var(--font-display)] text-lg">{speaker.name}</p>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  {speaker.role && <span className="block">{speaker.role}</span>}
-                  {speaker.org}
-                </p>
-              </Reveal>
-            ),
-          )}
+          {internationalSpeakers.slice(1, 3).map((speaker, i) => (
+            <Reveal key={speaker.name} delay={i * 90}>
+              <img
+                src={speaker.image || lab}
+                alt={`${speaker.name}`}
+                width={1408}
+                height={1008}
+                loading="lazy"
+                className="aspect-[4/3] w-full object-cover object-top"
+              />
+              <p className="mt-4 font-[family-name:var(--font-display)] text-lg">{speaker.name}</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {speaker.role && <span className="block">{speaker.role}</span>}
+                {speaker.org}
+              </p>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
@@ -281,7 +491,8 @@ function RegistrationCall() {
         </Reveal>
         <Reveal className="md:col-span-5" delay={80}>
           <p className="leading-relaxed text-muted-foreground">
-            Join scientists, clinicians, researchers, academicians, healthcare professionals, technologists and industry experts at IACS 2027 in Mathura.
+            Join scientists, clinicians, researchers, academicians, healthcare professionals,
+            technologists and industry experts at IACS 2027 in Mathura.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-8">
             <Link to="/registration" className="btn-solid">
@@ -302,7 +513,7 @@ function CampusSection() {
     <section className="border-t border-rule">
       <div className="grid md:grid-cols-2">
         <img
-          src={campus}
+          src="/GLA Drone Shot.png"
           alt="GLA University campus buildings and lawns, Mathura"
           width={1920}
           height={1200}
@@ -315,9 +526,8 @@ function CampusSection() {
             <h2 className="display-md mt-6">GLA University, Mathura</h2>
             <p className="mt-6 leading-relaxed text-muted-foreground">
               The Institute of Pharmaceutical Research at GLA University is among the leading
-              centres for pharmaceutical education and research in northern India, with
-              laboratories spanning drug discovery, formulation, pharmacology and clinical
-              research.
+              centres for pharmaceutical education and research in northern India, with laboratories
+              spanning drug discovery, formulation, pharmacology and clinical research.
             </p>
             <p className="mt-5 leading-relaxed text-muted-foreground">
               Mathura sits on the Yamuna in Uttar Pradesh, an hour from Agra and within easy reach

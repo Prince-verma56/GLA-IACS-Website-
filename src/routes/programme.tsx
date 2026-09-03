@@ -1,7 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageLayout, SectionHeading } from "@/components/PageLayout";
-import { conference, orations, symposia, youngInvestigatorAwards, researchAreas } from "@/lib/conference";
+import {
+  conference,
+  orations,
+  symposia,
+  youngInvestigatorAwards,
+  researchAreas,
+} from "@/lib/conference";
 
 export const Route = createFileRoute("/programme")({
   head: () => ({
@@ -81,14 +87,17 @@ function Programme() {
       </table>
 
       <div className="mt-8 mb-20 text-sm text-muted-foreground">
-        The detailed session schedule will be published here once confirmed by the scientific committee.
+        The detailed session schedule will be published here once confirmed by the scientific
+        committee.
       </div>
 
       <div className="mb-20">
         <SectionHeading index="01" title="Scientific Components" />
         <div className="mt-8 grid gap-10 md:grid-cols-2">
           <div>
-            <h3 className="font-[family-name:var(--font-display)] text-xl">Orations and Symposia of IACS</h3>
+            <h3 className="font-[family-name:var(--font-display)] text-xl">
+              Orations and Symposia of IACS
+            </h3>
             <ul className="mt-4 list-inside list-disc text-muted-foreground leading-relaxed">
               {[...orations, ...symposia].map((item) => (
                 <li key={item}>{item}</li>
@@ -96,7 +105,9 @@ function Programme() {
             </ul>
           </div>
           <div>
-            <h3 className="font-[family-name:var(--font-display)] text-xl">Awards to Young Investigators</h3>
+            <h3 className="font-[family-name:var(--font-display)] text-xl">
+              Awards to Young Investigators
+            </h3>
             <ul className="mt-4 list-inside list-disc text-muted-foreground leading-relaxed">
               {youngInvestigatorAwards.map((item) => (
                 <li key={item}>{item}</li>
@@ -127,13 +138,16 @@ function Programme() {
           <div>
             <p className="eyebrow text-muted-foreground">Format</p>
             <p className="mt-2 text-sm text-muted-foreground">
-              Aim, Method, Result, Conclusion, 3-5 key words.<br/>
+              Aim, Method, Result, Conclusion, 3-5 key words.
+              <br />
               Max 250 words. Times New Roman, 12 pt, double line spacing.
             </p>
           </div>
           <div>
             <p className="eyebrow text-muted-foreground">Oral / Online</p>
-            <p className="mt-2 text-sm text-muted-foreground">Maximum 8 minutes presentation followed by 2 minutes of discussion.</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Maximum 8 minutes presentation followed by 2 minutes of discussion.
+            </p>
           </div>
           <div>
             <p className="eyebrow text-muted-foreground">Poster Size</p>

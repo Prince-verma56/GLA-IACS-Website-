@@ -25,15 +25,15 @@ Use the uploaded conference brochure as the **single source of truth for confere
 
 The previous design looked like an AI-generated website because everything was placed inside:
 
-* square cards
-* rounded rectangles
-* repetitive grids
-* excessive gradients
-* excessive glassmorphism
-* unnecessary icons
-* too many floating elements
-* too many animations
-* generic SaaS-style components
+- square cards
+- rounded rectangles
+- repetitive grids
+- excessive gradients
+- excessive glassmorphism
+- unnecessary icons
+- too many floating elements
+- too many animations
+- generic SaaS-style components
 
 **DO NOT DO THAT.**
 
@@ -45,26 +45,26 @@ Think:
 
 The website should feel:
 
-* sophisticated
-* academic
-* trustworthy
-* premium
-* calm
-* clean
-* spacious
-* institutional
-* modern
-* human-designed
+- sophisticated
+- academic
+- trustworthy
+- premium
+- calm
+- clean
+- spacious
+- institutional
+- modern
+- human-designed
 
 NOT:
 
-* startup landing page
-* SaaS dashboard
-* AI-generated template
-* Dribbble concept
-* excessive glassmorphism
-* excessive 3D
-* colorful marketing website
+- startup landing page
+- SaaS dashboard
+- AI-generated template
+- Dribbble concept
+- excessive glassmorphism
+- excessive 3D
+- colorful marketing website
 
 ---
 
@@ -76,14 +76,14 @@ https://www.gla.ac.in/
 
 Study its:
 
-* branding
-* green color
-* typography hierarchy
-* institutional feeling
-* photography
-* navigation style
-* spacing
-* overall visual identity
+- branding
+- green color
+- typography hierarchy
+- institutional feeling
+- photography
+- navigation style
+- spacing
+- overall visual identity
 
 Do NOT copy the website.
 
@@ -103,12 +103,12 @@ The campus image should cover the entire hero.
 
 Do NOT use:
 
-* abstract gradient background
-* generic medical stock image
-* 3D heart
-* DNA animation
-* floating particles
-* random blobs
+- abstract gradient background
+- generic medical stock image
+- 3D heart
+- DNA animation
+- floating particles
+- random blobs
 
 The real GLA campus photograph should be the visual anchor.
 
@@ -228,17 +228,17 @@ Do NOT make every statistic a card.
 
 Use:
 
-* typography
-* whitespace
-* dividers
-* photography
-* editorial columns
-* large images
-* horizontal layouts
-* asymmetric layouts
-* clean grids
-* thin borders
-* subtle shadows only when necessary
+- typography
+- whitespace
+- dividers
+- photography
+- editorial columns
+- large images
+- horizontal layouts
+- asymmetric layouts
+- clean grids
+- thin borders
+- subtle shadows only when necessary
 
 Cards should only be used where they genuinely improve usability.
 
@@ -748,11 +748,11 @@ Avoid excessive rounded corners.
 
 Use mostly:
 
-* rectangular editorial layouts
-* sharp or slightly rounded image corners
-* thin lines
-* whitespace
-* subtle borders
+- rectangular editorial layouts
+- sharp or slightly rounded image corners
+- thin lines
+- whitespace
+- subtle borders
 
 Buttons can have small-radius corners.
 
@@ -776,14 +776,14 @@ Homepage:
 
 Other pages:
 
-* GLA campus
-* auditorium
-* laboratories
-* researchers
-* cardiovascular research
-* conference audience
-* Mathura
-* Vrindavan
+- GLA campus
+- auditorium
+- laboratories
+- researchers
+- cardiovascular research
+- conference audience
+- Mathura
+- Vrindavan
 
 Photography should feel authentic.
 
@@ -805,25 +805,25 @@ The user should feel the website is smooth — not notice that animations are be
 
 Use:
 
-* subtle fade-up
-* image reveal
-* text reveal
-* smooth scrolling
-* slight parallax
-* hover transitions
-* page transitions
+- subtle fade-up
+- image reveal
+- text reveal
+- smooth scrolling
+- slight parallax
+- hover transitions
+- page transitions
 
 Use GSAP only where it genuinely improves the experience.
 
 NO:
 
-* spinning DNA
-* floating molecules everywhere
-* excessive particles
-* bouncing objects
-* rotating 3D hearts
-* constant background movement
-* excessive cursor effects
+- spinning DNA
+- floating molecules everywhere
+- excessive particles
+- bouncing objects
+- rotating 3D hearts
+- constant background movement
+- excessive cursor effects
 
 The animation should feel like a **premium editorial website**, not an experiment.
 
@@ -889,15 +889,15 @@ Do not invent information.
 
 Do not change:
 
-* names
-* dates
-* phone numbers
-* email
-* fees
-* bank details
-* committee members
-* speaker information
-* deadlines
+- names
+- dates
+- phone numbers
+- email
+- fees
+- bank details
+- committee members
+- speaker information
+- deadlines
 
 If something is not present in the brochure, leave it as a placeholder rather than inventing it.
 

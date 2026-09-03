@@ -54,10 +54,7 @@ function Speakers() {
         <SectionHeading index="02" title="National & Scientific Speakers" />
         <ul className="mt-8 divide-y divide-rule border-y border-rule">
           {Array.from({ length: 4 }).map((_, i) => (
-            <li
-              key={i}
-              className="grid gap-2 py-6 md:grid-cols-12 md:items-baseline md:gap-6"
-            >
+            <li key={i} className="grid gap-2 py-6 md:grid-cols-12 md:items-baseline md:gap-6">
               <span className="eyebrow text-muted-foreground md:col-span-1">
                 {String(i + 1).padStart(2, "0")}
               </span>
