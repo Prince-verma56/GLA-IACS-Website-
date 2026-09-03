@@ -38,170 +38,184 @@ function Home() {
     () => {
       const mm = gsap.matchMedia();
 
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const tl = gsap.timeline();
+      mm.add(
+        {
+          isMobile: "(max-width: 767px)",
+          isDesktop: "(min-width: 768px)",
+          reduceMotion: "(prefers-reduced-motion: reduce)",
+        },
+        (context) => {
+          const { isMobile, reduceMotion } = context.conditions as {
+            isMobile: boolean;
+            reduceMotion: boolean;
+          };
 
-        // 0.00: Background image begins settling
-        tl.from(
-          ".gsap-hero-bg",
-          {
-            scale: 1.04,
-            duration: 1.2,
-            ease: "power2.out",
-          },
-          0,
-        );
+          if (reduceMotion) {
+            const tl = gsap.timeline();
+            tl.from(".gsap-nav-logo, .gsap-nav-link, .gsap-nav-btn", {
+              opacity: 0,
+              duration: 0.5,
+              stagger: 0.1,
+            });
+            tl.from(
+              ".gsap-eyebrow, .gsap-title-1",
+              { opacity: 0, duration: 0.5, stagger: 0.1 },
+              "-=0.2",
+            );
+            tl.from(
+              ".gsap-theme, .gsap-meta-wrapper, .gsap-meta-text, .gsap-btn, .gsap-hosted",
+              { opacity: 0, duration: 0.5, stagger: 0.1 },
+              "-=0.2",
+            );
+            return;
+          }
 
-        // 0.15: Navbar begins appearing
-        tl.from(
-          ".gsap-nav-logo",
-          {
-            y: 8,
-            opacity: 0,
-            duration: 0.6,
-            ease: "power3.out",
-          },
-          0.15,
-        );
+          const tl = gsap.timeline();
 
-        tl.from(
-          ".gsap-nav-link",
-          {
-            opacity: 0,
-            x: 5,
-            duration: 0.5,
-            stagger: 0.05,
-            ease: "power3.out",
-          },
-          0.2,
-        );
+          // 0.00: Background image begins settling
+          tl.from(
+            ".gsap-hero-bg",
+            {
+              scale: isMobile ? 1.02 : 1.04,
+              duration: 1.2,
+              ease: "power2.out",
+            },
+            0,
+          );
 
-        tl.from(
-          ".gsap-nav-btn",
-          {
-            opacity: 0,
-            scale: 0.95,
-            duration: 0.5,
-            ease: "power3.out",
-          },
-          0.35,
-        );
+          // 0.15: Navbar begins appearing
+          tl.from(
+            ".gsap-nav-logo",
+            {
+              y: 8,
+              opacity: 0,
+              duration: 0.6,
+              ease: "power3.out",
+            },
+            0.15,
+          );
 
-        // 0.45: Eyebrow mask reveal
-        tl.from(
-          ".gsap-eyebrow",
-          {
-            yPercent: 100,
-            opacity: 0.1,
-            duration: 0.65,
-            ease: "power3.out",
-          },
-          0.45,
-        );
+          tl.from(
+            ".gsap-nav-link",
+            {
+              opacity: 0,
+              x: 5,
+              duration: 0.5,
+              stagger: 0.05,
+              ease: "power3.out",
+            },
+            0.2,
+          );
 
-        // 0.65: Main title line 1 begins (staggered)
-        tl.from(
-          ".gsap-title-1",
-          {
-            yPercent: 110,
-            opacity: 0,
-            duration: 0.9,
-            stagger: 0.12,
-            ease: "power4.out",
-          },
-          0.65,
-        );
+          tl.from(
+            ".gsap-nav-btn",
+            {
+              opacity: 0,
+              scale: 0.95,
+              duration: 0.5,
+              ease: "power3.out",
+            },
+            0.35,
+          );
 
-        // 1.00: Theme continuation begins (using slightly different motion)
-        tl.from(
-          ".gsap-theme",
-          {
-            y: 25,
-            x: 8,
-            opacity: 0,
-            duration: 0.9,
-            ease: "power3.out",
-          },
-          1.0,
-        );
+          // 0.45: Eyebrow mask reveal
+          tl.from(
+            ".gsap-eyebrow",
+            {
+              yPercent: 100,
+              opacity: 0.1,
+              duration: 0.65,
+              ease: "power3.out",
+            },
+            0.45,
+          );
 
-        // 1.20: Date/location reveal
-        tl.from(
-          ".gsap-meta-wrapper",
-          {
-            clipPath: "inset(0 100% 0 0)",
-            duration: 0.8,
-            ease: "power3.out",
-          },
-          1.2,
-        );
+          // 0.65: Main title line 1 begins (staggered)
+          tl.from(
+            ".gsap-title-1",
+            {
+              yPercent: 110,
+              opacity: 0,
+              duration: 0.9,
+              stagger: isMobile ? 0.08 : 0.12,
+              ease: "power4.out",
+            },
+            0.65,
+          );
 
-        tl.from(
-          ".gsap-meta-text",
-          {
-            x: -15,
-            opacity: 0,
-            duration: 0.7,
-            stagger: 0.1,
-            ease: "power3.out",
-          },
-          1.3,
-        );
+          // 1.00: Theme continuation begins
+          tl.from(
+            ".gsap-theme",
+            {
+              y: isMobile ? 15 : 25,
+              x: isMobile ? 0 : 8,
+              opacity: 0,
+              duration: 0.9,
+              ease: "power3.out",
+            },
+            1.0,
+          );
 
-        tl.from(
-          ".gsap-meta-dot",
-          {
-            opacity: 0,
-            duration: 0.5,
-          },
-          1.5,
-        );
+          // 1.20: Date/location reveal
+          tl.from(
+            ".gsap-meta-wrapper",
+            {
+              clipPath: "inset(0 100% 0 0)",
+              duration: 0.8,
+              ease: "power3.out",
+            },
+            1.2,
+          );
 
-        // 1.60: CTA buttons begin
-        tl.from(
-          ".gsap-btn",
-          {
-            y: 20,
-            opacity: 0,
-            scale: 0.98,
-            duration: 0.6,
-            stagger: 0.08,
-            ease: "power3.out",
-          },
-          1.6,
-        );
+          tl.from(
+            ".gsap-meta-text",
+            {
+              x: isMobile ? -8 : -15,
+              opacity: 0,
+              duration: 0.7,
+              stagger: 0.1,
+              ease: "power3.out",
+            },
+            1.3,
+          );
 
-        // 1.70: Hosted-by block begins
-        tl.from(
-          ".gsap-hosted",
-          {
-            opacity: 0,
-            x: 15,
-            duration: 0.8,
-            ease: "power3.out",
-          },
-          1.7,
-        );
-      });
+          tl.from(
+            ".gsap-meta-dot",
+            {
+              opacity: 0,
+              duration: 0.5,
+            },
+            1.5,
+          );
 
-      mm.add("(prefers-reduced-motion: reduce)", () => {
-        const tl = gsap.timeline();
-        tl.from(".gsap-nav-logo, .gsap-nav-link, .gsap-nav-btn", {
-          opacity: 0,
-          duration: 0.5,
-          stagger: 0.1,
-        });
-        tl.from(
-          ".gsap-eyebrow, .gsap-title-1",
-          { opacity: 0, duration: 0.5, stagger: 0.1 },
-          "-=0.2",
-        );
-        tl.from(
-          ".gsap-theme, .gsap-meta-wrapper, .gsap-meta-text, .gsap-btn, .gsap-hosted",
-          { opacity: 0, duration: 0.5, stagger: 0.1 },
-          "-=0.2",
-        );
-      });
+          // 1.60: CTA buttons begin
+          tl.from(
+            ".gsap-btn",
+            {
+              y: isMobile ? 10 : 20,
+              opacity: 0,
+              scale: 0.98,
+              duration: 0.6,
+              stagger: 0.08,
+              ease: "power3.out",
+            },
+            1.6,
+          );
+
+          // 1.70: Hosted-by block begins
+          tl.from(
+            ".gsap-hosted",
+            {
+              opacity: 0,
+              x: isMobile ? 0 : 15,
+              y: isMobile ? 10 : 0,
+              duration: 0.8,
+              ease: "power3.out",
+            },
+            1.7,
+          );
+        },
+      );
     },
     { scope: containerRef },
   );
@@ -228,63 +242,80 @@ function Home() {
 function Hero() {
   const words = conference.theme.line1.split(" ");
   const firstWord = words[0];
+  const secondWord = words[1];
+  const thirdWord = words[2];
   const restWords = words.slice(1).join(" ");
 
   return (
-    <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-32 pb-20 lg:pt-36 lg:pb-24">
+    <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-[84px] pb-24 md:pt-32 md:pb-20 lg:pt-36 lg:pb-24">
       <img
         src="/GLA Drone Shot.png"
         alt="GLA University campus, Mathura, drone shot"
         width={1920}
         height={1200}
-        className="gsap-hero-bg absolute inset-0 h-full w-full object-cover"
+        className="gsap-hero-bg absolute inset-0 h-full w-full object-cover object-[center_center]"
       />
-      {/* Subtle directional gradient for readability while preserving the building */}
-      <div className="absolute inset-0 bg-[linear-gradient(100deg,rgba(9,26,18,0.92)_0%,rgba(9,26,18,0.6)_35%,rgba(9,26,18,0)_65%)] max-md:bg-[linear-gradient(110deg,rgba(9,26,18,0.95)_0%,rgba(9,26,18,0.85)_50%,rgba(9,26,18,0.4)_100%)] pointer-events-none" />
+      {/* 
+        MOBILE: subtle overall dark tint with gentle vertical gradient. 
+        DESKTOP: heavy left-side gradient.
+      */}
+      <div className="absolute inset-0 bg-black/20 bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0.5)_100%)] md:bg-transparent md:bg-[linear-gradient(100deg,rgba(9,26,18,0.92)_0%,rgba(9,26,18,0.6)_35%,rgba(9,26,18,0)_65%)] pointer-events-none" />
+      
       {/* Navbar protection gradient */}
       <div className="absolute top-0 inset-x-0 h-32 bg-[linear-gradient(180deg,rgba(9,26,18,0.7)_0%,rgba(9,26,18,0)_100%)] pointer-events-none" />
 
       <div className="shell relative w-full flex flex-col justify-center">
-        <div className="w-full max-w-[640px] md:pr-10 lg:pr-0">
+        <div className="w-full max-w-[640px] md:pr-10 lg:pr-0 mt-4 md:mt-0">
           <div className="overflow-hidden pb-1">
-            <p className="gsap-eyebrow text-[0.7rem] font-bold tracking-[0.15em] text-white/75 uppercase leading-relaxed inline-block">
+            <p className="gsap-eyebrow text-[0.65rem] md:text-[0.7rem] font-bold tracking-[0.15em] text-white/85 uppercase leading-relaxed inline-block">
               IACS 2027 · India Section
-              <br />
+              <br className="md:hidden" />
+              <span className="hidden md:inline"> </span>
               International Conference
             </p>
           </div>
 
-          <h1 className="mt-5 flex flex-col gap-2 md:gap-3">
-            <span className="font-[family-name:var(--font-display)] text-[2.5rem] leading-[1.1] tracking-tight text-white sm:text-[3rem] lg:text-[3.5rem]">
-              <span className="overflow-hidden inline-block align-top">
-                <span className="gsap-title-1 inline-block pb-1">{firstWord}</span>
+          <h1 className="mt-4 md:mt-5 flex flex-col gap-1 md:gap-3">
+            <span className="font-[family-name:var(--font-display)] text-[12.5vw] leading-[1.05] tracking-tight text-white min-[390px]:text-[3rem] sm:text-[3.25rem] md:text-[3.5rem]">
+              <span className="overflow-hidden block md:inline-block md:align-top">
+                <span className="gsap-title-1 block pb-1 md:inline-block">{firstWord}</span>
               </span>{" "}
-              <span className="overflow-hidden inline-block align-top">
+              {/* Desktop rendering (combined) */}
+              <span className="hidden md:inline-block overflow-hidden align-top">
                 <span className="gsap-title-1 inline-block pb-1">{restWords}</span>
               </span>
+              {/* Mobile rendering (split) */}
+              <span className="md:hidden overflow-hidden block">
+                <span className="gsap-title-1 block pb-1">{secondWord}</span>
+              </span>
+              <span className="md:hidden overflow-hidden block">
+                <span className="gsap-title-1 block pb-1">{thirdWord}</span>
+              </span>
             </span>
-            <span className="overflow-hidden pb-2">
-              <span className="gsap-theme block font-[family-name:var(--font-display)] text-[1.5rem] leading-[1.25] tracking-tight text-white/85 sm:text-[1.75rem] lg:text-[2.125rem]">
+            <span className="overflow-hidden pb-2 mt-1 md:mt-0">
+              <span className="gsap-theme block font-[family-name:var(--font-display)] text-[1.25rem] leading-[1.3] tracking-tight text-white/80 sm:text-[1.5rem] md:text-[1.75rem] lg:text-[2.125rem]">
                 {conference.theme.line2}
               </span>
             </span>
           </h1>
 
-          <div className="overflow-hidden mt-8">
-            <div className="gsap-meta-wrapper flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-1.5 text-[0.9375rem] text-white/90 lg:text-[1rem]">
-              <span className="gsap-meta-text font-medium tracking-wide whitespace-nowrap">
+          <div className="overflow-hidden mt-6 md:mt-8">
+            <div className="gsap-meta-wrapper flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-1 md:gap-y-1.5 text-[0.875rem] md:text-[0.9375rem] text-white/90 lg:text-[1rem]">
+              <span className="gsap-meta-text font-medium tracking-wide sm:whitespace-nowrap">
                 {conference.dates}
               </span>
               <span className="gsap-meta-dot hidden sm:block text-white/40">•</span>
-              <span className="gsap-meta-text">GLA University, Mathura, Uttar Pradesh, India</span>
+              <span className="gsap-meta-text leading-snug sm:leading-normal text-white/80 md:text-white/90">
+                GLA University, Mathura,<br className="sm:hidden" /> Uttar Pradesh, India
+              </span>
             </div>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8 md:mt-8 flex flex-wrap gap-3 md:gap-4">
             <div className="overflow-hidden rounded p-[1px] -m-[1px]">
               <Link
                 to="/registration"
-                className="gsap-btn btn-solid flex items-center justify-center h-[50px] px-8 text-[0.9375rem]"
+                className="gsap-btn btn-solid flex items-center justify-center h-[46px] md:h-[50px] px-6 md:px-8 text-[0.875rem] md:text-[0.9375rem]"
               >
                 Register Now
               </Link>
@@ -292,7 +323,7 @@ function Hero() {
             <div className="overflow-hidden rounded p-[1px] -m-[1px]">
               <Link
                 to="/programme"
-                className="gsap-btn inline-flex items-center justify-center h-[50px] border border-white/60 px-8 text-[0.9375rem] font-medium text-white transition-colors hover:bg-white hover:text-primary-deep"
+                className="gsap-btn inline-flex items-center justify-center h-[46px] md:h-[50px] border border-white/60 px-6 md:px-8 text-[0.875rem] md:text-[0.9375rem] font-medium text-white transition-colors hover:bg-white hover:text-primary-deep"
               >
                 Explore Programme
               </Link>
@@ -301,13 +332,14 @@ function Hero() {
         </div>
       </div>
 
-      <div className="gsap-hosted absolute bottom-6 right-6 md:bottom-10 md:right-10 z-10 hidden text-right lg:block">
-        <p className="text-[0.6rem] font-bold tracking-[0.2em] text-white/50 uppercase">
+      <div className="gsap-hosted absolute bottom-5 left-5 right-5 sm:bottom-8 sm:left-8 sm:right-8 md:bottom-10 md:left-auto md:right-10 z-10 text-left md:text-right">
+        <p className="text-[0.6rem] md:text-[0.6rem] font-bold tracking-[0.2em] text-white/50 uppercase">
           Hosted by
         </p>
-        <p className="mt-1 text-[0.8125rem] leading-snug text-white/80">
+        <p className="mt-1 text-[0.75rem] md:text-[0.8125rem] leading-snug text-white/75 md:text-white/80">
           Institute of Pharmaceutical Research
-          <br />
+          <span className="md:hidden">, </span>
+          <br className="hidden md:block" />
           GLA University, Mathura
         </p>
       </div>
@@ -453,14 +485,16 @@ function FeaturedSpeakers() {
         <StaggerReveal className="grid gap-10 md:col-span-5" delay={0.2}>
           {internationalSpeakers.slice(1, 3).map((speaker, i) => (
             <div key={speaker.name}>
-              <img
-                src={speaker.image || lab}
-                alt={`${speaker.name}`}
-                width={1408}
-                height={1008}
-                loading="lazy"
-                className="aspect-[4/3] w-full object-cover object-top"
-              />
+              <ImageReveal>
+                <img
+                  src={speaker.image || lab}
+                  alt={`${speaker.name}`}
+                  width={1408}
+                  height={1008}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full object-cover object-top"
+                />
+              </ImageReveal>
               <p className="mt-4 font-[family-name:var(--font-display)] text-lg">{speaker.name}</p>
               <p className="mt-1 text-sm text-muted-foreground">
                 {speaker.role && <span className="block">{speaker.role}</span>}

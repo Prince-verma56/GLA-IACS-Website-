@@ -36,7 +36,7 @@ function Registration() {
         <div className="md:col-span-8">
           <div id="fees">
             <SectionHeading index="01" title="Registration fee" />
-            <div className="mt-8 overflow-x-auto">
+            <div className="mt-8 overflow-x-auto overflow-y-hidden">
               <table className="w-full min-w-[620px] text-left">
                 <thead>
                   <tr className="border-b border-rule">
@@ -53,7 +53,7 @@ function Registration() {
                     </th>
                   </tr>
                 </thead>
-                <StaggerReveal as="tbody" delay={0.2} yOffset={10}>
+                <StaggerReveal as="tbody" delay={0.2} yOffset={0}>
                   {registrationFees.map((f) => (
                     <tr key={f.category} className="border-b border-rule">
                       <td className="py-5 pr-6 font-[family-name:var(--font-display)] text-lg tracking-tight">
