@@ -1,7 +1,12 @@
 import type { ReactNode } from "react";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
-import { Reveal } from "./Reveal";
+import { 
+  HorizontalReveal, 
+  MaskReveal, 
+  TextReveal, 
+  StaggerReveal 
+} from "./motion/ScrollReveal";
 
 export function PageLayout({
   eyebrow,
@@ -15,27 +20,33 @@ export function PageLayout({
   children: ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <SiteHeader />
       <main>
         <section className="border-b border-rule bg-surface pt-[74px]">
           <div className="shell grid gap-8 py-20 md:grid-cols-12 md:py-28">
             <div className="md:col-span-4">
-              <p className="eyebrow text-primary">{eyebrow}</p>
+              <HorizontalReveal>
+                <p className="eyebrow text-primary">{eyebrow}</p>
+              </HorizontalReveal>
             </div>
             <div className="md:col-span-8">
-              <h1 className="display-lg">{title}</h1>
+              <MaskReveal delay={0.1}>
+                <h1 className="display-lg">{title}</h1>
+              </MaskReveal>
               {intro && (
-                <p className="mt-6 max-w-2xl text-[1.0625rem] leading-relaxed text-muted-foreground">
-                  {intro}
-                </p>
+                <TextReveal delay={0.25}>
+                  <p className="mt-6 max-w-2xl text-[1.0625rem] leading-relaxed text-muted-foreground">
+                    {intro}
+                  </p>
+                </TextReveal>
               )}
             </div>
           </div>
         </section>
-        <Reveal as="section" className="shell py-20 md:py-28">
+        <section className="shell py-20 md:py-28">
           {children}
-        </Reveal>
+        </section>
       </main>
       <SiteFooter />
     </div>
@@ -45,21 +56,25 @@ export function PageLayout({
 export function SectionHeading({ index, title }: { index: string; title: string }) {
   return (
     <div className="rule-top flex items-baseline gap-6 pt-6">
-      <span className="eyebrow text-muted-foreground">{index}</span>
-      <h2 className="display-md">{title}</h2>
+      <HorizontalReveal>
+        <span className="eyebrow text-muted-foreground">{index}</span>
+      </HorizontalReveal>
+      <MaskReveal delay={0.1}>
+        <h2 className="display-md">{title}</h2>
+      </MaskReveal>
     </div>
   );
 }
 
 export function NameList({ items }: { items: string[] }) {
   return (
-    <ul className="mt-8 grid gap-x-10 border-t border-rule sm:grid-cols-2 lg:grid-cols-3">
+    <StaggerReveal as="ul" className="mt-8 grid gap-x-10 border-t border-rule sm:grid-cols-2 lg:grid-cols-3">
       {items.map((n) => (
         <li key={n} className="border-b border-rule py-4 text-sm leading-relaxed">
           {n}
         </li>
       ))}
-    </ul>
+    </StaggerReveal>
   );
 }
 

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageLayout, PlaceholderNote, SectionHeading } from "@/components/PageLayout";
 import { conference, internationalSpeakers } from "@/lib/conference";
+import { StaggerReveal } from "@/components/motion/ScrollReveal";
 
 export const Route = createFileRoute("/speakers")({
   head: () => ({
@@ -29,7 +30,7 @@ function Speakers() {
     >
       <div className="mb-20 last:mb-0">
         <SectionHeading index="01" title="International Speakers" />
-        <ul className="mt-8 divide-y divide-rule border-y border-rule">
+        <StaggerReveal as="ul" className="mt-8 divide-y divide-rule border-y border-rule">
           {internationalSpeakers.map((speaker, i) => (
             <li
               key={speaker.name}
@@ -47,12 +48,12 @@ function Speakers() {
               </span>
             </li>
           ))}
-        </ul>
+        </StaggerReveal>
       </div>
 
       <div className="mb-20 last:mb-0">
         <SectionHeading index="02" title="National & Scientific Speakers" />
-        <ul className="mt-8 divide-y divide-rule border-y border-rule">
+        <StaggerReveal as="ul" className="mt-8 divide-y divide-rule border-y border-rule">
           {Array.from({ length: 4 }).map((_, i) => (
             <li key={i} className="grid gap-2 py-6 md:grid-cols-12 md:items-baseline md:gap-6">
               <span className="eyebrow text-muted-foreground md:col-span-1">
@@ -66,7 +67,7 @@ function Speakers() {
               </span>
             </li>
           ))}
-        </ul>
+        </StaggerReveal>
       </div>
     </PageLayout>
   );

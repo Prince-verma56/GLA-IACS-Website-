@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageLayout, SectionHeading } from "@/components/PageLayout";
 import { contacts, conference } from "@/lib/conference";
+import { TextReveal, StaggerReveal } from "@/components/motion/ScrollReveal";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -24,31 +25,33 @@ function Contact() {
     >
       <div className="max-w-4xl">
         <SectionHeading index="01" title="General Enquiries" />
-        <div className="mt-6 flex flex-col gap-2 text-muted-foreground">
-          <p>
-            <strong className="text-foreground">Email:</strong>{" "}
-            <a href={`mailto:${conference.email}`} className="text-primary hover:underline">
-              {conference.email}
-            </a>
-          </p>
-          <p className="mt-2">
-            <strong className="text-foreground">Primary contact:</strong>{" "}
-            <a
-              href={`tel:${conference.phone.replace(/ /g, "")}`}
-              className="text-primary hover:underline"
-            >
-              {conference.phone}
-            </a>
-            <span className="block mt-1">
-              Prof. (Dr.) Kamal Shah
-              <br />
-              Organizing Secretary
-            </span>
-          </p>
-        </div>
+        <TextReveal>
+          <div className="mt-6 flex flex-col gap-2 text-muted-foreground">
+            <p>
+              <strong className="text-foreground">Email:</strong>{" "}
+              <a href={`mailto:${conference.email}`} className="text-primary hover:underline">
+                {conference.email}
+              </a>
+            </p>
+            <p className="mt-2">
+              <strong className="text-foreground">Primary contact:</strong>{" "}
+              <a
+                href={`tel:${conference.phone.replace(/ /g, "")}`}
+                className="text-primary hover:underline"
+              >
+                {conference.phone}
+              </a>
+              <span className="block mt-1">
+                Prof. (Dr.) Kamal Shah
+                <br />
+                Organizing Secretary
+              </span>
+            </p>
+          </div>
+        </TextReveal>
 
         <SectionHeading index="02" title="Organizing Committee Contacts" />
-        <ul className="mt-6 divide-y divide-rule border-y border-rule">
+        <StaggerReveal as="ul" className="mt-6 divide-y divide-rule border-y border-rule">
           {contacts.map((contact, i) => (
             <li key={contact.name} className="flex flex-col md:flex-row gap-2 md:gap-6 py-5">
               <span className="eyebrow shrink-0 text-primary hidden md:block">
@@ -70,7 +73,7 @@ function Contact() {
               </div>
             </li>
           ))}
-        </ul>
+        </StaggerReveal>
       </div>
     </PageLayout>
   );

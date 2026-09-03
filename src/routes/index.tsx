@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { Reveal } from "@/components/Reveal";
+import { HorizontalReveal, MaskReveal, TextReveal, StaggerReveal, ImageReveal, ParallaxImage } from "@/components/motion/ScrollReveal";
 import { conference, keyDates, internationalSpeakers, PLACEHOLDER } from "@/lib/conference";
 import auditorium from "@/assets/auditorium.jpg";
 import lab from "@/assets/lab.jpg";
@@ -319,29 +319,35 @@ function Introduction() {
   return (
     <section className="shell py-24 md:py-32">
       <div className="grid gap-10 md:grid-cols-12">
-        <Reveal className="md:col-span-4">
+        <HorizontalReveal className="md:col-span-4">
           <p className="eyebrow text-primary">About the Conference</p>
-        </Reveal>
-        <Reveal className="md:col-span-8" delay={80}>
-          <p className="text-[1.375rem] leading-[1.55] tracking-[-0.01em] md:text-[1.625rem]">
-            The {conference.name} of the {conference.society}, centered on the theme "
-            {conference.theme.line1} {conference.theme.line2}", will be held from {conference.dates}{" "}
-            at {conference.venue}.
-          </p>
-          <p className="mt-7 max-w-2xl leading-relaxed text-muted-foreground">
-            The conference brings together eminent scientists, cardiologists, clinicians,
-            academicians, researchers, healthcare professionals, technologists and industry leaders
-            from across the globe.
-          </p>
-          <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">
-            It will provide a platform for exchanging pioneering ideas, showcasing cutting-edge
-            research, exploring emerging technologies and discussing innovative strategies for the
-            prevention, diagnosis, treatment and management of cardiovascular diseases.
-          </p>
-          <Link to="/about" className="link-arrow mt-9">
-            Explore the Conference <span aria-hidden>→</span>
-          </Link>
-        </Reveal>
+        </HorizontalReveal>
+        <div className="md:col-span-8">
+          <MaskReveal delay={0.1}>
+            <p className="text-[1.375rem] leading-[1.55] tracking-[-0.01em] md:text-[1.625rem]">
+              The {conference.name} of the {conference.society}, centered on the theme "
+              {conference.theme.line1} {conference.theme.line2}", will be held from {conference.dates}{" "}
+              at {conference.venue}.
+            </p>
+          </MaskReveal>
+          <TextReveal delay={0.2}>
+            <p className="mt-7 max-w-2xl leading-relaxed text-muted-foreground">
+              The conference brings together eminent scientists, cardiologists, clinicians,
+              academicians, researchers, healthcare professionals, technologists and industry leaders
+              from across the globe.
+            </p>
+            <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">
+              It will provide a platform for exchanging pioneering ideas, showcasing cutting-edge
+              research, exploring emerging technologies and discussing innovative strategies for the
+              prevention, diagnosis, treatment and management of cardiovascular diseases.
+            </p>
+          </TextReveal>
+          <TextReveal delay={0.3}>
+            <Link to="/about" className="link-arrow mt-9 inline-block">
+              Explore the Conference <span aria-hidden>→</span>
+            </Link>
+          </TextReveal>
+        </div>
       </div>
     </section>
   );
@@ -351,8 +357,10 @@ function Theme() {
   return (
     <section className="border-y border-rule bg-surface">
       <div className="shell py-24 md:py-32">
-        <Reveal>
+        <HorizontalReveal>
           <p className="eyebrow text-primary">Conference Theme</p>
+        </HorizontalReveal>
+        <MaskReveal delay={0.1}>
           <h2 className="display-lg mt-8 max-w-4xl">
             Transforming Cardiovascular Care
             <br />
@@ -360,6 +368,8 @@ function Theme() {
             <br />
             <span className="text-primary">and Innovation</span>
           </h2>
+        </MaskReveal>
+        <TextReveal delay={0.2}>
           <svg
             viewBox="0 0 1200 60"
             preserveAspectRatio="none"
@@ -373,7 +383,7 @@ function Theme() {
               strokeWidth="1.25"
             />
           </svg>
-        </Reveal>
+        </TextReveal>
       </div>
     </section>
   );
@@ -387,7 +397,7 @@ function InfoStrip() {
   ];
   return (
     <section className="shell py-16">
-      <dl className="grid divide-y divide-rule border-y border-rule md:grid-cols-3 md:divide-x md:divide-y-0">
+      <StaggerReveal as="dl" className="grid divide-y divide-rule border-y border-rule md:grid-cols-3 md:divide-x md:divide-y-0">
         {items.map((i) => (
           <div key={i.k} className="py-8 md:px-8 md:first:pl-0 md:last:pr-0">
             <dt className="eyebrow text-muted-foreground">{i.k}</dt>
@@ -396,7 +406,7 @@ function InfoStrip() {
             </dd>
           </div>
         ))}
-      </dl>
+      </StaggerReveal>
     </section>
   );
 }
@@ -404,37 +414,45 @@ function InfoStrip() {
 function FeaturedSpeakers() {
   return (
     <section className="shell py-24 md:py-32">
-      <Reveal className="flex flex-wrap items-end justify-between gap-6 border-t border-rule pt-7">
-        <h2 className="display-md max-w-md">Featured Speakers</h2>
-        <Link to="/speakers" className="link-arrow">
-          View All Speakers <span aria-hidden>→</span>
-        </Link>
-      </Reveal>
+      <div className="flex flex-wrap items-end justify-between gap-6 border-t border-rule pt-7">
+        <MaskReveal>
+          <h2 className="display-md max-w-md">Featured Speakers</h2>
+        </MaskReveal>
+        <TextReveal delay={0.1}>
+          <Link to="/speakers" className="link-arrow">
+            View All Speakers <span aria-hidden>→</span>
+          </Link>
+        </TextReveal>
+      </div>
 
       <div className="mt-14 grid gap-10 md:grid-cols-12">
-        <Reveal className="md:col-span-7">
-          <img
-            src={internationalSpeakers[0].image || auditorium}
-            alt={internationalSpeakers[0].name}
-            width={1408}
-            height={1008}
-            loading="lazy"
-            className="aspect-[4/3] w-full object-cover object-top"
-          />
-          <p className="mt-5 font-[family-name:var(--font-display)] text-2xl">
-            {internationalSpeakers[0].name}
-          </p>
-          <p className="mt-1 text-sm text-muted-foreground">
-            {internationalSpeakers[0].role && (
-              <span className="block">{internationalSpeakers[0].role}</span>
-            )}
-            {internationalSpeakers[0].org}
-          </p>
-        </Reveal>
+        <div className="md:col-span-7">
+          <ImageReveal>
+            <img
+              src={internationalSpeakers[0].image || auditorium}
+              alt={internationalSpeakers[0].name}
+              width={1408}
+              height={1008}
+              loading="lazy"
+              className="aspect-[4/3] w-full object-cover object-top"
+            />
+          </ImageReveal>
+          <TextReveal delay={0.2}>
+            <p className="mt-5 font-[family-name:var(--font-display)] text-2xl">
+              {internationalSpeakers[0].name}
+            </p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {internationalSpeakers[0].role && (
+                <span className="block">{internationalSpeakers[0].role}</span>
+              )}
+              {internationalSpeakers[0].org}
+            </p>
+          </TextReveal>
+        </div>
 
-        <div className="grid gap-10 md:col-span-5">
+        <StaggerReveal className="grid gap-10 md:col-span-5" delay={0.2}>
           {internationalSpeakers.slice(1, 3).map((speaker, i) => (
-            <Reveal key={speaker.name} delay={i * 90}>
+            <div key={speaker.name}>
               <img
                 src={speaker.image || lab}
                 alt={`${speaker.name}`}
@@ -448,9 +466,9 @@ function FeaturedSpeakers() {
                 {speaker.role && <span className="block">{speaker.role}</span>}
                 {speaker.org}
               </p>
-            </Reveal>
+            </div>
           ))}
-        </div>
+        </StaggerReveal>
       </div>
     </section>
   );
@@ -460,19 +478,19 @@ function ImportantDates() {
   return (
     <section className="border-y border-rule bg-surface">
       <div className="shell py-24">
-        <Reveal>
+        <MaskReveal>
           <h2 className="display-md">Important Dates</h2>
-          <ol className="mt-12 grid gap-10 md:grid-cols-3">
-            {keyDates.map((d) => (
-              <li key={d.date} className="border-t border-primary/40 pt-6">
-                <p className="font-[family-name:var(--font-display)] text-xl font-medium tracking-tight">
-                  {d.date}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d.label}</p>
-              </li>
-            ))}
-          </ol>
-        </Reveal>
+        </MaskReveal>
+        <StaggerReveal as="ol" className="mt-12 grid gap-10 md:grid-cols-3">
+          {keyDates.map((d) => (
+            <li key={d.date} className="border-t border-primary/40 pt-6">
+              <p className="font-[family-name:var(--font-display)] text-xl font-medium tracking-tight">
+                {d.date}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d.label}</p>
+            </li>
+          ))}
+        </StaggerReveal>
       </div>
     </section>
   );
@@ -482,27 +500,29 @@ function RegistrationCall() {
   return (
     <section className="shell py-24 md:py-32">
       <div className="grid gap-10 md:grid-cols-12 md:items-end">
-        <Reveal className="md:col-span-7">
+        <MaskReveal className="md:col-span-7">
           <h2 className="display-lg">
             Join the International
             <br />
             Cardiovascular Community
           </h2>
-        </Reveal>
-        <Reveal className="md:col-span-5" delay={80}>
-          <p className="leading-relaxed text-muted-foreground">
-            Join scientists, clinicians, researchers, academicians, healthcare professionals,
-            technologists and industry experts at IACS 2027 in Mathura.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-8">
+        </MaskReveal>
+        <div className="md:col-span-5">
+          <TextReveal delay={0.1}>
+            <p className="leading-relaxed text-muted-foreground">
+              Join scientists, clinicians, researchers, academicians, healthcare professionals,
+              technologists and industry experts at IACS 2027 in Mathura.
+            </p>
+          </TextReveal>
+          <StaggerReveal className="mt-8 flex flex-wrap items-center gap-8" delay={0.2} yOffset={10}>
             <Link to="/registration" className="btn-solid">
               Register Now <span aria-hidden>→</span>
             </Link>
-            <Link to="/registration" hash="fees" className="text-sm underline underline-offset-4">
+            <Link to="/registration" hash="fees" className="text-sm underline underline-offset-4 hover:text-primary transition-colors">
               View Registration Fees
             </Link>
-          </div>
-        </Reveal>
+          </StaggerReveal>
+        </div>
       </div>
     </section>
   );
@@ -510,34 +530,39 @@ function RegistrationCall() {
 
 function CampusSection() {
   return (
-    <section className="border-t border-rule">
+    <section className="border-t border-rule overflow-hidden">
       <div className="grid md:grid-cols-2">
-        <img
+        <ParallaxImage
           src="/GLA Drone Shot.png"
           alt="GLA University campus buildings and lawns, Mathura"
-          width={1920}
-          height={1200}
-          loading="lazy"
-          className="h-full min-h-[380px] w-full object-cover"
+          className="h-full min-h-[380px] w-full"
         />
-        <Reveal className="flex items-center bg-surface px-6 py-20 md:px-16">
+        <div className="flex items-center bg-surface px-6 py-20 md:px-16">
           <div className="max-w-xl">
-            <p className="eyebrow text-primary">The Host</p>
-            <h2 className="display-md mt-6">GLA University, Mathura</h2>
-            <p className="mt-6 leading-relaxed text-muted-foreground">
-              The Institute of Pharmaceutical Research at GLA University is among the leading
-              centres for pharmaceutical education and research in northern India, with laboratories
-              spanning drug discovery, formulation, pharmacology and clinical research.
-            </p>
-            <p className="mt-5 leading-relaxed text-muted-foreground">
-              Mathura sits on the Yamuna in Uttar Pradesh, an hour from Agra and within easy reach
-              of Delhi — placing delegates beside Vrindavan, Govardhan, Gokul and the Taj Mahal.
-            </p>
-            <Link to="/venue" className="link-arrow mt-9">
-              Discover Mathura <span aria-hidden>→</span>
-            </Link>
+            <HorizontalReveal>
+              <p className="eyebrow text-primary">The Host</p>
+            </HorizontalReveal>
+            <MaskReveal delay={0.1}>
+              <h2 className="display-md mt-6">GLA University, Mathura</h2>
+            </MaskReveal>
+            <TextReveal delay={0.2}>
+              <p className="mt-6 leading-relaxed text-muted-foreground">
+                The Institute of Pharmaceutical Research at GLA University is among the leading
+                centres for pharmaceutical education and research in northern India, with laboratories
+                spanning drug discovery, formulation, pharmacology and clinical research.
+              </p>
+              <p className="mt-5 leading-relaxed text-muted-foreground">
+                Mathura sits on the Yamuna in Uttar Pradesh, an hour from Agra and within easy reach
+                of Delhi — placing delegates beside Vrindavan, Govardhan, Gokul and the Taj Mahal.
+              </p>
+            </TextReveal>
+            <TextReveal delay={0.3}>
+              <Link to="/venue" className="link-arrow mt-9 inline-block">
+                Discover Mathura <span aria-hidden>→</span>
+              </Link>
+            </TextReveal>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -547,16 +572,20 @@ function FinalCta() {
   return (
     <section className="bg-primary-deep">
       <div className="shell py-28 text-center md:py-36">
-        <Reveal>
+        <MaskReveal>
           <h2 className="display-lg text-white">See you in Mathura.</h2>
+        </MaskReveal>
+        <TextReveal delay={0.1}>
           <p className="mt-6 text-white/70">11–13 February 2027</p>
+        </TextReveal>
+        <TextReveal delay={0.2}>
           <Link
             to="/registration"
             className="mt-10 inline-flex items-center gap-3 border border-white/60 px-8 py-4 text-[0.9375rem] font-medium text-white transition-colors hover:bg-white hover:text-primary-deep"
           >
             Register for IACS 2027 <span aria-hidden>→</span>
           </Link>
-        </Reveal>
+        </TextReveal>
       </div>
     </section>
   );

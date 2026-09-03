@@ -8,6 +8,7 @@ import {
   youngInvestigatorAwards,
   researchAreas,
 } from "@/lib/conference";
+import { StaggerReveal, TextReveal } from "@/components/motion/ScrollReveal";
 
 export const Route = createFileRoute("/programme")({
   head: () => ({
@@ -40,7 +41,7 @@ function Programme() {
       title="Three days of orations, symposia and presentations"
       intro="The detailed session schedule is published from the official brochure and updated as sessions are confirmed."
     >
-      <div className="flex flex-wrap gap-0 border-y border-rule">
+      <StaggerReveal className="flex flex-wrap gap-0 border-y border-rule" yOffset={10}>
         {days.map((d) => (
           <button
             key={d.id}
@@ -62,7 +63,7 @@ function Programme() {
             </span>
           </button>
         ))}
-      </div>
+      </StaggerReveal>
 
       <table className="mt-12 w-full text-left">
         <thead>
@@ -74,7 +75,7 @@ function Programme() {
             ))}
           </tr>
         </thead>
-        <tbody>
+        <StaggerReveal as="tbody" yOffset={10} delay={0.2}>
           <tr className="border-b border-rule align-top">
             <td className="py-6 pr-6 whitespace-nowrap text-sm text-muted-foreground">—</td>
             <td className="py-6 pr-6 font-[family-name:var(--font-display)] text-lg tracking-tight">
@@ -83,7 +84,7 @@ function Programme() {
             <td className="py-6 pr-6 text-sm text-muted-foreground">As per official programme</td>
             <td className="py-6 text-sm text-muted-foreground">GLA University, Mathura</td>
           </tr>
-        </tbody>
+        </StaggerReveal>
       </table>
 
       <div className="mt-8 mb-20 text-sm text-muted-foreground">
@@ -93,7 +94,7 @@ function Programme() {
 
       <div className="mb-20">
         <SectionHeading index="01" title="Scientific Components" />
-        <div className="mt-8 grid gap-10 md:grid-cols-2">
+        <StaggerReveal className="mt-8 grid gap-10 md:grid-cols-2">
           <div>
             <h3 className="font-[family-name:var(--font-display)] text-xl">
               Orations and Symposia of IACS
@@ -114,23 +115,23 @@ function Programme() {
               ))}
             </ul>
           </div>
-        </div>
+        </StaggerReveal>
       </div>
 
       <div className="mb-20">
         <SectionHeading index="02" title="Scientific Topics" />
-        <ul className="mt-8 grid gap-x-6 gap-y-3 sm:grid-cols-2 md:grid-cols-3 text-sm text-muted-foreground leading-relaxed">
+        <StaggerReveal as="ul" className="mt-8 grid gap-x-6 gap-y-3 sm:grid-cols-2 md:grid-cols-3 text-sm text-muted-foreground leading-relaxed">
           {researchAreas.map((area) => (
             <li key={area} className="flex gap-2">
               <span className="text-primary">•</span> {area}
             </li>
           ))}
-        </ul>
+        </StaggerReveal>
       </div>
 
       <div className="mb-20">
         <SectionHeading index="03" title="Abstract Submission Guidelines" />
-        <div className="mt-8 grid gap-10 md:grid-cols-2 lg:grid-cols-4 border-t border-rule pt-6">
+        <StaggerReveal className="mt-8 grid gap-10 md:grid-cols-2 lg:grid-cols-4 border-t border-rule pt-6">
           <div>
             <p className="eyebrow text-muted-foreground">Deadline</p>
             <p className="mt-2 font-[family-name:var(--font-display)] text-lg">25 December 2026</p>
@@ -153,7 +154,7 @@ function Programme() {
             <p className="eyebrow text-muted-foreground">Poster Size</p>
             <p className="mt-2 font-[family-name:var(--font-display)] text-lg">3 × 5 feet</p>
           </div>
-        </div>
+        </StaggerReveal>
       </div>
     </PageLayout>
   );

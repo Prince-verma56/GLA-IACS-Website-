@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageLayout, SectionHeading } from "@/components/PageLayout";
 import { keyDates, conference, registrationFees, bankDetails } from "@/lib/conference";
+import { StaggerReveal, TextReveal, HorizontalReveal } from "@/components/motion/ScrollReveal";
 
 export const Route = createFileRoute("/registration")({
   head: () => ({
@@ -52,7 +53,7 @@ function Registration() {
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <StaggerReveal as="tbody" delay={0.2} yOffset={10}>
                   {registrationFees.map((f) => (
                     <tr key={f.category} className="border-b border-rule">
                       <td className="py-5 pr-6 font-[family-name:var(--font-display)] text-lg tracking-tight">
@@ -64,61 +65,73 @@ function Registration() {
                       <td className="py-5 text-sm text-muted-foreground">{f.fgLate}</td>
                     </tr>
                   ))}
-                </tbody>
+                </StaggerReveal>
               </table>
             </div>
-            <p className="rule-top mt-8 pt-5 text-sm leading-relaxed text-muted-foreground">
-              Registration fee is non-refundable and nontransferable. Only registered delegates will
-              be allowed to attend the Conference.
-            </p>
+            <TextReveal delay={0.3}>
+              <p className="rule-top mt-8 pt-5 text-sm leading-relaxed text-muted-foreground">
+                Registration fee is non-refundable and nontransferable. Only registered delegates will
+                be allowed to attend the Conference.
+              </p>
+            </TextReveal>
           </div>
 
           <SectionHeading index="02" title="Bank details" />
-          <dl className="mt-8 divide-y divide-rule border-y border-rule text-sm">
+          <StaggerReveal as="dl" className="mt-8 divide-y divide-rule border-y border-rule text-sm">
             {bankDetails.map((b) => (
               <div key={b.label} className="grid gap-1 py-5 md:grid-cols-3">
                 <dt className="text-muted-foreground">{b.label}</dt>
                 <dd className="md:col-span-2">{b.value}</dd>
               </div>
             ))}
-          </dl>
+          </StaggerReveal>
 
           <div id="form">
             <SectionHeading index="03" title="Online registration form" />
-            <p className="mt-6 leading-relaxed text-muted-foreground">
-              Complete the official registration form below. Enter your participant details,
-              registration category, mode of participation and payment information as required.
-            </p>
-            <p className="mt-4 leading-relaxed text-muted-foreground">
-              For abstract submission, follow the official abstract guidelines and submit before 25
-              December 2026.
-            </p>
-            <div className="mt-8 border border-rule">
-              <iframe
-                src={`${conference.registrationFormUrl}?embedded=true`}
-                title="IACS 2027 registration form"
-                width="100%"
-                height="650"
-                loading="lazy"
-                className="block w-full"
+            <TextReveal>
+              <p className="mt-6 leading-relaxed text-muted-foreground">
+                Complete the official registration form below. Enter your participant details,
+                registration category, mode of participation and payment information as required.
+              </p>
+            </TextReveal>
+            <TextReveal delay={0.1}>
+              <p className="mt-4 leading-relaxed text-muted-foreground">
+                For abstract submission, follow the official abstract guidelines and submit before 25
+                December 2026.
+              </p>
+            </TextReveal>
+            <TextReveal delay={0.2}>
+              <div className="mt-8 border border-rule">
+                <iframe
+                  src={`${conference.registrationFormUrl}?embedded=true`}
+                  title="IACS 2027 registration form"
+                  width="100%"
+                  height="650"
+                  loading="lazy"
+                  className="block w-full"
+                >
+                  Loading form…
+                </iframe>
+              </div>
+            </TextReveal>
+            <TextReveal delay={0.3}>
+              <a
+                href={conference.registrationFormUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-solid mt-8 inline-flex"
               >
-                Loading form…
-              </iframe>
-            </div>
-            <a
-              href={conference.registrationFormUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-solid mt-8"
-            >
-              Open the form in a new tab
-            </a>
+                Open the form in a new tab
+              </a>
+            </TextReveal>
           </div>
         </div>
 
         <aside className="md:col-span-4">
-          <p className="eyebrow text-primary">Key deadlines</p>
-          <ul className="mt-6 divide-y divide-rule border-y border-rule">
+          <HorizontalReveal>
+            <p className="eyebrow text-primary">Key deadlines</p>
+          </HorizontalReveal>
+          <StaggerReveal as="ul" className="mt-6 divide-y divide-rule border-y border-rule">
             {keyDates.map((d) => (
               <li key={d.date} className="py-5">
                 <p className="font-[family-name:var(--font-display)] text-lg tracking-tight">
@@ -127,13 +140,17 @@ function Registration() {
                 <p className="mt-1 text-sm text-muted-foreground">{d.label}</p>
               </li>
             ))}
-          </ul>
-          <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
-            Early bird rates close: 31 December 2026
-          </p>
-          <Link to="/abstracts" className="link-arrow mt-8">
-            Abstract guidelines <span aria-hidden>→</span>
-          </Link>
+          </StaggerReveal>
+          <TextReveal delay={0.2}>
+            <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
+              Early bird rates close: 31 December 2026
+            </p>
+          </TextReveal>
+          <TextReveal delay={0.3}>
+            <Link to="/abstracts" className="link-arrow mt-8 inline-block">
+              Abstract guidelines <span aria-hidden>→</span>
+            </Link>
+          </TextReveal>
         </aside>
       </div>
     </PageLayout>

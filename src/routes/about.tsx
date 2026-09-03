@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageLayout, PlaceholderNote, SectionHeading } from "@/components/PageLayout";
 import { conference } from "@/lib/conference";
+import { TextReveal, ImageReveal, StaggerReveal } from "@/components/motion/ScrollReveal";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -32,23 +33,29 @@ function About() {
       <div className="grid gap-16 md:grid-cols-12">
         <div className="md:col-span-7">
           <SectionHeading index="01" title="Conference overview" />
-          <p className="mt-6 leading-relaxed text-muted-foreground">
-            The {conference.name} of the {conference.society} will bring together eminent
-            scientists, cardiologists, clinicians, academicians, researchers, healthcare
-            professionals, technologists and industry leaders from across the globe.
-          </p>
-          <p className="mt-5 leading-relaxed text-muted-foreground">
-            The conference will focus on pioneering research, emerging technologies and innovative
-            strategies for the prevention, diagnosis, treatment and management of cardiovascular
-            diseases.
-          </p>
-          <p className="mt-5 leading-relaxed text-muted-foreground">
-            The programme will include keynote lectures, invited lectures, plenary sessions, panel
-            discussions, scientific symposia, and oral and poster presentations.
-          </p>
+          <TextReveal>
+            <p className="mt-6 leading-relaxed text-muted-foreground">
+              The {conference.name} of the {conference.society} will bring together eminent
+              scientists, cardiologists, clinicians, academicians, researchers, healthcare
+              professionals, technologists and industry leaders from across the globe.
+            </p>
+          </TextReveal>
+          <TextReveal delay={0.1}>
+            <p className="mt-5 leading-relaxed text-muted-foreground">
+              The conference will focus on pioneering research, emerging technologies and innovative
+              strategies for the prevention, diagnosis, treatment and management of cardiovascular
+              diseases.
+            </p>
+          </TextReveal>
+          <TextReveal delay={0.2}>
+            <p className="mt-5 leading-relaxed text-muted-foreground">
+              The programme will include keynote lectures, invited lectures, plenary sessions, panel
+              discussions, scientific symposia, and oral and poster presentations.
+            </p>
+          </TextReveal>
 
           <SectionHeading index="02" title="Objectives" />
-          <ol className="mt-6 divide-y divide-rule border-y border-rule">
+          <StaggerReveal as="ol" className="mt-6 divide-y divide-rule border-y border-rule">
             {[
               "Bring together leading scientists, clinicians, academicians, researchers, healthcare professionals and industry experts in cardiovascular sciences.",
               "Provide a platform for exchanging knowledge, presenting innovative research and discussing recent developments in cardiovascular sciences and related areas.",
@@ -62,49 +69,58 @@ function About() {
                 <span className="leading-relaxed">{o}</span>
               </li>
             ))}
-          </ol>
+          </StaggerReveal>
 
           <SectionHeading index="03" title="Theme" />
-          <p className="mt-6 font-[family-name:var(--font-display)] text-2xl leading-snug tracking-tight">
-            {conference.theme.line1} {conference.theme.line2}
-          </p>
+          <TextReveal>
+            <p className="mt-6 font-[family-name:var(--font-display)] text-2xl leading-snug tracking-tight">
+              {conference.theme.line1} {conference.theme.line2}
+            </p>
+          </TextReveal>
         </div>
 
         <aside className="md:col-span-5">
-          <img
-            src="/Institute of Pharmaceutical Research.png"
-            alt="Research laboratory at the Institute of Pharmaceutical Research"
-            width={1408}
-            height={1008}
-            loading="lazy"
-            className="w-full object-cover"
-          />
-          <h2 className="display-md mt-10">Institute of Pharmaceutical Research</h2>
-          <p className="mt-5 leading-relaxed text-muted-foreground">
-            The Institute of Pharmaceutical Research was established in 2006 and became an integral
-            part of GLA University in 2010. It offers D.Pharm., B.Pharm., M.Pharm. and Ph.D.
-            programmes and is committed to preparing skilled, ethical and industry-ready pharmacy
-            professionals.
-          </p>
-          <p className="mt-5 leading-relaxed text-muted-foreground">
-            The Institute is supported by qualified faculty, modern classrooms, well-equipped
-            laboratories and advanced research facilities, with a focus on quality education,
-            interdisciplinary research, scientific innovation and industry collaboration.
-          </p>
+          <ImageReveal>
+            <img
+              src="/Institute of Pharmaceutical Research.png"
+              alt="Research laboratory at the Institute of Pharmaceutical Research"
+              width={1408}
+              height={1008}
+              loading="lazy"
+              className="w-full object-cover"
+            />
+          </ImageReveal>
+          
+          <TextReveal delay={0.2}>
+            <h2 className="display-md mt-10">Institute of Pharmaceutical Research</h2>
+            <p className="mt-5 leading-relaxed text-muted-foreground">
+              The Institute of Pharmaceutical Research was established in 2006 and became an integral
+              part of GLA University in 2010. It offers D.Pharm., B.Pharm., M.Pharm. and Ph.D.
+              programmes and is committed to preparing skilled, ethical and industry-ready pharmacy
+              professionals.
+            </p>
+            <p className="mt-5 leading-relaxed text-muted-foreground">
+              The Institute is supported by qualified faculty, modern classrooms, well-equipped
+              laboratories and advanced research facilities, with a focus on quality education,
+              interdisciplinary research, scientific innovation and industry collaboration.
+            </p>
+          </TextReveal>
 
-          <h3 className="mt-10 font-[family-name:var(--font-display)] text-xl">GLA University</h3>
-          <p className="mt-4 leading-relaxed text-muted-foreground">
-            Established in 1998 by Shri Narayan Das Agrawal, GLA University, Mathura is a leading
-            institution of higher education in Northern India.
-          </p>
-          <p className="mt-4 leading-relaxed text-muted-foreground">
-            It was granted university status under UP Act No. 21 of 2010, recognized under Section
-            12(B) of the UGC Act in 2019 and accredited with an A+ Grade by NAAC in 2023.
-          </p>
-          <p className="mt-4 leading-relaxed text-muted-foreground">
-            The University is spread across 110 acres and serves more than 12,000 students through
-            undergraduate, postgraduate, diploma, doctoral and professional programmes.
-          </p>
+          <TextReveal delay={0.2}>
+            <h3 className="mt-10 font-[family-name:var(--font-display)] text-xl">GLA University</h3>
+            <p className="mt-4 leading-relaxed text-muted-foreground">
+              Established in 1998 by Shri Narayan Das Agrawal, GLA University, Mathura is a leading
+              institution of higher education in Northern India.
+            </p>
+            <p className="mt-4 leading-relaxed text-muted-foreground">
+              It was granted university status under UP Act No. 21 of 2010, recognized under Section
+              12(B) of the UGC Act in 2019 and accredited with an A+ Grade by NAAC in 2023.
+            </p>
+            <p className="mt-4 leading-relaxed text-muted-foreground">
+              The University is spread across 110 acres and serves more than 12,000 students through
+              undergraduate, postgraduate, diploma, doctoral and professional programmes.
+            </p>
+          </TextReveal>
         </aside>
       </div>
     </PageLayout>
