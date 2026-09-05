@@ -18,6 +18,11 @@ export const conference = {
   phone: "+91 9756866042",
   registrationFormUrl:
     "https://docs.google.com/forms/d/11WC95Z6VY8R4Nln3Y9OIjMwFWVJVIdiw6x-3ONuJnXU/viewform",
+  
+  // Image Configuration for the About Page
+  aboutAcademyImage: "/images/Bg images/About/About Sec1.png", // Leave empty to use SVG placeholder
+  aboutInstituteImage: "/images/Bg images/About/About Sec2.png", // Leave empty to use SVG placeholder
+  joinConferenceBackground: "/images/Bg images/About/GLA Drone Shot2.png", // Leave empty for dark green background
 };
 
 export const PLACEHOLDER = "To be announced in the official brochure";
