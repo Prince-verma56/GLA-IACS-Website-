@@ -17,7 +17,7 @@ import { useGSAP } from "@gsap/react";
 
 import { conference } from "@/lib/conference";
 
-const INVITATION_IMAGE: string | null = "/docs/IACS Invitation Form.png";
+const INVITATION_IMAGE: string | null = "/docs/IACS_Invitation_Form.png";
 
 export function InvitationModal() {
   const [visible, setVisible] = useState(true);

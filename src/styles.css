@@ -210,3 +210,35 @@
     transition: none;
   }
 }
+
+/* --- Committee portrait hierarchy --- */
+
+@utility portrait-chief {
+  width: 192px;
+  height: 230px;
+  overflow: hidden;
+  background: oklch(0.94 0.012 150);
+}
+
+@utility portrait-co-chief {
+  width: 152px;
+  height: 184px;
+  overflow: hidden;
+  background: oklch(0.94 0.012 150);
+}
+
+@utility portrait-patron {
+  width: 120px;
+  height: 148px;
+  overflow: hidden;
+  background: oklch(0.94 0.012 150);
+}
+
+@utility display-sm {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.016em;
+  line-height: 1.2;
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+}
+

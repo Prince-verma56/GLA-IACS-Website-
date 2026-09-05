@@ -19,6 +19,7 @@ import { Route as ProgrammeRouteImport } from './routes/programme'
 import { Route as RegistrationRouteImport } from './routes/registration'
 import { Route as ResearchAreasRouteImport } from './routes/research-areas'
 import { Route as SpeakersRouteImport } from './routes/speakers'
+import { Route as SponsorshipRouteImport } from './routes/sponsorship'
 import { Route as VenueRouteImport } from './routes/venue'
 
 const IndexRoute = IndexRouteImport.update({
@@ -71,6 +72,11 @@ const SpeakersRoute = SpeakersRouteImport.update({
   path: '/speakers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SponsorshipRoute = SponsorshipRouteImport.update({
+  id: '/sponsorship',
+  path: '/sponsorship',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VenueRoute = VenueRouteImport.update({
   id: '/venue',
   path: '/venue',
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/registration': typeof RegistrationRoute
   '/research-areas': typeof ResearchAreasRoute
   '/speakers': typeof SpeakersRoute
+  '/sponsorship': typeof SponsorshipRoute
   '/venue': typeof VenueRoute
 }
 export interface FileRoutesByTo {
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/registration': typeof RegistrationRoute
   '/research-areas': typeof ResearchAreasRoute
   '/speakers': typeof SpeakersRoute
+  '/sponsorship': typeof SponsorshipRoute
   '/venue': typeof VenueRoute
 }
 export interface FileRoutesById {
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   '/registration': typeof RegistrationRoute
   '/research-areas': typeof ResearchAreasRoute
   '/speakers': typeof SpeakersRoute
+  '/sponsorship': typeof SponsorshipRoute
   '/venue': typeof VenueRoute
 }
 export interface FileRouteTypes {
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
     | '/registration'
     | '/research-areas'
     | '/speakers'
+    | '/sponsorship'
     | '/venue'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -143,6 +153,7 @@ export interface FileRouteTypes {
     | '/registration'
     | '/research-areas'
     | '/speakers'
+    | '/sponsorship'
     | '/venue'
   id:
     | '__root__'
@@ -156,6 +167,7 @@ export interface FileRouteTypes {
     | '/registration'
     | '/research-areas'
     | '/speakers'
+    | '/sponsorship'
     | '/venue'
   fileRoutesById: FileRoutesById
 }
@@ -170,6 +182,7 @@ export interface RootRouteChildren {
   RegistrationRoute: typeof RegistrationRoute
   ResearchAreasRoute: typeof ResearchAreasRoute
   SpeakersRoute: typeof SpeakersRoute
+  SponsorshipRoute: typeof SponsorshipRoute
   VenueRoute: typeof VenueRoute
 }
 
@@ -245,6 +258,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SpeakersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sponsorship': {
+      id: '/sponsorship'
+      path: '/sponsorship'
+      fullPath: '/sponsorship'
+      preLoaderRoute: typeof SponsorshipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/venue': {
       id: '/venue'
       path: '/venue'
@@ -266,6 +286,7 @@ const rootRouteChildren: RootRouteChildren = {
   RegistrationRoute: RegistrationRoute,
   ResearchAreasRoute: ResearchAreasRoute,
   SpeakersRoute: SpeakersRoute,
+  SponsorshipRoute: SponsorshipRoute,
   VenueRoute: VenueRoute,
 }
 export const routeTree = rootRouteImport

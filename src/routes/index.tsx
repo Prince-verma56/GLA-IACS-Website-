@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { HorizontalReveal, MaskReveal, TextReveal, StaggerReveal, ParallaxImage } from "@/components/motion/ScrollReveal";
-import { conference, keyDates } from "@/lib/conference";
+import { conference, keyDates, internationalSpeakers } from "@/lib/conference";
 import { ConcentricPulse, ScientificGrid, HeartbeatLine, PulseDivider } from "@/components/graphics/ConferenceGraphics";
 import { useRef } from "react";
 import gsap from "gsap";
@@ -228,6 +228,7 @@ function Home() {
         <Theme />
         <InfoStrip />
         <ImportantDates />
+        <SpeakerTeaser />
         <RegistrationCall />
         <CampusSection />
         <FinalCta />
@@ -489,6 +490,86 @@ function RegistrationCall() {
               View Registration Fees
             </Link>
           </StaggerReveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* Small editorial speaker teaser — NOT a full grid */
+function SpeakerTeaser() {
+  const preview = internationalSpeakers.slice(0, 3);
+  return (
+    <section className="bg-primary-deep overflow-hidden">
+      <div className="shell py-20 md:py-28">
+        <div className="grid gap-10 md:grid-cols-12 md:items-center">
+          <div className="md:col-span-5">
+            <HorizontalReveal>
+              <p className="eyebrow text-white/50">International Speakers</p>
+            </HorizontalReveal>
+            <MaskReveal delay={0.1}>
+              <h2 className="display-md mt-5 text-white">
+                {internationalSpeakers.length} Distinguished
+                <br />
+                International Faculty
+              </h2>
+            </MaskReveal>
+            <TextReveal delay={0.2}>
+              <p className="mt-5 text-sm leading-relaxed text-white/55">
+                World-leading cardiovascular scientists, clinicians and researchers from across
+                the globe.
+              </p>
+            </TextReveal>
+            <TextReveal delay={0.3}>
+              <Link
+                to="/speakers"
+                className="mt-8 inline-flex items-center gap-2 border border-white/30 px-6 py-3 text-sm uppercase tracking-widest text-white/75 transition-all hover:border-white/60 hover:text-white"
+              >
+                Meet the Speakers
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
+                  <path d="M2.5 6h7M6 2.5L9.5 6 6 9.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+            </TextReveal>
+          </div>
+
+          <div className="md:col-span-7">
+            <StaggerReveal className="flex gap-4 md:gap-6" stagger={0.1} delay={0.15}>
+              {preview.map((speaker, i) => (
+                <div key={speaker.name} className="flex-1 min-w-0">
+                  <div className="overflow-hidden bg-[#1a3d1e] aspect-[3/4]">
+                    {speaker.image ? (
+                      <img
+                        src={speaker.image}
+                        alt={speaker.name}
+                        loading="lazy"
+                        className="w-full h-full object-cover object-top opacity-80 transition-opacity hover:opacity-100"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <span className="text-2xl font-semibold text-white/20 tracking-widest">
+                          {speaker.name.split(" ").filter((w) => /^[A-Z]/.test(w)).slice(-2).map((w) => w[0]).join("")}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="mt-3">
+                    <p className="text-xs font-semibold leading-snug text-white/80">{speaker.name}</p>
+                    <p className="mt-0.5 text-[10px] leading-snug text-white/40 line-clamp-2">{speaker.org}</p>
+                  </div>
+                </div>
+              ))}
+              {/* Placeholder card hinting at more */}
+              <div className="flex-1 min-w-0 opacity-40">
+                <div className="bg-white/5 aspect-[3/4] flex items-center justify-center">
+                  <span className="text-2xl text-white/30 font-light">+{internationalSpeakers.length - 3}</span>
+                </div>
+                <div className="mt-3">
+                  <p className="text-[10px] text-white/30">more speakers</p>
+                </div>
+              </div>
+            </StaggerReveal>
+          </div>
         </div>
       </div>
     </section>

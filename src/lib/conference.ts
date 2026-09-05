@@ -30,19 +30,22 @@ export const keyDates = [
 
 export const navigation = [
   { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
   { label: "Committee", to: "/committee" },
-  { label: "Abstracts", to: "/abstracts" },
+  { label: "Speakers", to: "/speakers" },
   { label: "Programme", to: "/programme" },
+  { label: "Abstracts", to: "/abstracts" },
   { label: "Registration", to: "/registration" },
+  { label: "Sponsorship", to: "/sponsorship" },
   { label: "Venue", to: "/venue" },
   { label: "Contact", to: "/contact" },
 ] as const;
 
 export const secondaryLinks = [
-  { label: "Committee", to: "/committee" },
-  { label: "Abstract Submission", to: "/abstracts" },
-  { label: "Research Areas", to: "/research-areas" },
-  { label: "Awards & Orations", to: "/awards" },
+  { label: "Speakers", to: "/speakers" },
+  { label: "Sponsorship", to: "/sponsorship" },
+  { label: "Programme", to: "/programme" },
+  { label: "Abstracts", to: "/abstracts" },
 ] as const;
 
 /* ---------------------------------------------------------------- people */
@@ -57,7 +60,7 @@ export const leadership: { group: string; people: Person[] }[] = [
         name: "Shri Narayan Das Agrawal",
         role: "Chancellor",
         org: "GLA University, Mathura",
-        image: "/People Images/Narayan-Das-Agrawal.jpg",
+        image: "/People Images/Chief Patron/Narayan-Das-Agrawal.jpg",
       },
     ],
   },
@@ -68,13 +71,13 @@ export const leadership: { group: string; people: Person[] }[] = [
         name: "Shri Neeraj Agrawal",
         role: "CEO",
         org: "GLA University, Mathura",
-        image: "/People Images/Neeraj Aggrawal.jpg",
+        image: "/People Images/Co-Chief Patrons/Neeraj Aggrawal.png",
       },
       {
         name: "Dr. Vivek Agrawal",
         role: "CFO",
         org: "GLA University, Mathura",
-        image: "/People Images/Vivek-Aggrawal.png",
+        image: "/People Images/Co-Chief Patrons/Vivek-Aggrawal.png",
       },
     ],
   },
@@ -85,8 +88,14 @@ export const leadership: { group: string; people: Person[] }[] = [
         name: "Prof. (Dr.) Anup Kumar Gupta",
         role: "Vice-Chancellor",
         org: "GLA University, Mathura",
+        image: "/People Images/Patrons/Anup Kumar Gupta.png",
       },
-      { name: "Shri Ashok Kumar Singh", role: "Registrar", org: "GLA University, Mathura" },
+      {
+        name: "Shri Ashok Kumar Singh",
+        role: "Registrar",
+        org: "GLA University, Mathura",
+        image: "/People Images/Patrons/Shri Ashok Kumar Singh.png",
+      },
     ],
   },
   {
@@ -96,16 +105,19 @@ export const leadership: { group: string; people: Person[] }[] = [
         name: "Prof. (Dr.) Naranjan S. Dhalla",
         role: "Founder and Honorary Life President, IACS",
         org: "University of Manitoba, Winnipeg, Canada",
+        image: "/People Images/IACS Patrons/Prof. Naranjan S. Dhalla.png",
       },
       {
         name: "Prof. (Dr.) Ramesh Kumar Goyal",
         role: "President, IACS – India Section; Former Vice-Chancellor, DPSRU",
         org: "New Delhi, India",
+        image: "/People Images/IACS Patrons/Prof. (Dr.) Ramesh Kumar Goyal.png",
       },
       {
         name: "Prof. (Dr.) Rajiv Narang",
         role: "Head, Department of Cardiology",
         org: "AIIMS, New Delhi, India",
+        image: "/People Images/IACS Patrons/Prof. (Dr.) Rajiv Narang Head.png",
       },
     ],
   },
@@ -116,6 +128,7 @@ export const leadership: { group: string; people: Person[] }[] = [
         name: "Prof. (Dr.) Harlokesh Narayan Yadav",
         role: "Vice-President, IACS – India Section; Department of Pharmacology",
         org: "AIIMS, New Delhi, India",
+        image: "/People Images/Chairman/Prof. (Dr.) Harlokesh Narayan Yadav .png",
       },
     ],
   },
@@ -126,11 +139,13 @@ export const leadership: { group: string; people: Person[] }[] = [
         name: "Dr. Mukesh Nandave",
         role: "Secretary, IACS – India Section; Associate Dean, DPSRU",
         org: "New Delhi, India",
+        image: "/People Images/Office Bearers/Dr. Mukesh Nandave.png",
       },
       {
         name: "Dr. Ruchi Tandon",
         role: "Finance Secretary, IACS – India Section; Senior Scientist",
         org: "BRIC-THSTI, Faridabad, India",
+        image: "/People Images/Office Bearers/Dr. Ruchi Tandon.png",
       },
     ],
   },
@@ -142,6 +157,7 @@ export const leadership: { group: string; people: Person[] }[] = [
         role: "Director, Institute of Pharmaceutical Research",
         org: "GLA University, Mathura, India",
         phone: "+91 9756866042",
+        image: "/People Images/Organizing Secretary/Prof. (Dr.) Kamal Shah.png",
       },
     ],
   },
@@ -209,30 +225,35 @@ export const eminentPanel: Person[] = [
 ];
 
 export const internationalSpeakers: Person[] = [
-  {
+      {
     name: "Prof. Naranjan S. Dhalla",
     role: "Distinguished Professor, Max Rady College of Medicine",
     org: "University of Manitoba, Canada",
-    image: "/People Images/Prof. Naranjan S. Dhalla.png",
+    image: "/People Images/IACS Patrons/Prof. Naranjan S. Dhalla.png",
   },
   {
     name: "Dr. Suresh Tyagi",
     role: "School of Medicine",
     org: "University of Louisville, USA",
-    image: "/People Images/Dr Suresh Tyagi.png",
+    image: "/People Images/International Speakers/Dr Suresh Tyagi.png",
   },
   {
     name: "Prof. Devendra K. Agrawal",
     role: "Professor and Director",
     org: "Western University of Health Sciences, Pomona, USA",
-    image: "/People Images/Devendra K. Agrawal.png",
+    image: "/People Images/International Speakers/Devendra K. Agrawal.png",
   },
   {
     name: "Dr. Andras Varro",
     role: "Department of Pharmacology and Pharmacotherapy",
     org: "University of Szeged, Hungary",
+    image: "/People Images/International Speakers/Dr. Andras Varro.png",
   },
-  { name: "Dr. Milos Stojiljkovic", org: "University of Banja Luka, Bosnia and Herzegovina" },
+  {
+    name: "Dr. Milos Stojiljkovic",
+    org: "University of Banja Luka, Bosnia and Herzegovina",
+    image: "/People Images/International Speakers/Dr. Milos Stojiljkovic.png",
+  },
   {
     name: "Dr. Vladimir Jakovljevic",
     role: "Department of Physiology, Faculty of Medical Sciences",
