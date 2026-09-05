@@ -10,6 +10,7 @@ import {
   ScrollRestoration,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { InvitationModal } from "@/components/InvitationModal";
 import Loader from "@/components/kokonutui/loader";
 import NotFound from "@/components/NotFound";
 
@@ -118,9 +119,14 @@ function RootComponent() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
+    // 1. Immediately reset scroll position on route change
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+
+    // 2. Allow DOM to render and then refresh ScrollTrigger
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 150);
+    
     return () => clearTimeout(timer);
   }, [pathname]);
 
@@ -132,6 +138,7 @@ function RootComponent() {
         <Outlet />
       </ReactLenis>
       <RouterSpinner />
+      <InvitationModal />
     </QueryClientProvider>
   );
 }

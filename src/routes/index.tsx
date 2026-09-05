@@ -1,10 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { HorizontalReveal, MaskReveal, TextReveal, StaggerReveal, ImageReveal, ParallaxImage } from "@/components/motion/ScrollReveal";
-import { conference, keyDates, internationalSpeakers, PLACEHOLDER } from "@/lib/conference";
-import auditorium from "@/assets/auditorium.jpg";
-import lab from "@/assets/lab.jpg";
+import { HorizontalReveal, MaskReveal, TextReveal, StaggerReveal, ParallaxImage } from "@/components/motion/ScrollReveal";
+import { conference, keyDates } from "@/lib/conference";
+import { ConcentricPulse, ScientificGrid, HeartbeatLine, PulseDivider } from "@/components/graphics/ConferenceGraphics";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -228,7 +227,6 @@ function Home() {
         <Introduction />
         <Theme />
         <InfoStrip />
-        <FeaturedSpeakers />
         <ImportantDates />
         <RegistrationCall />
         <CampusSection />
@@ -313,12 +311,14 @@ function Hero() {
 
           <div className="mt-8 md:mt-8 flex flex-wrap gap-3 md:gap-4">
             <div className="overflow-hidden rounded p-[1px] -m-[1px]">
-              <Link
-                to="/registration"
+              <a
+                href={conference.registrationFormUrl}
+                target="_blank"
+                rel="noreferrer"
                 className="gsap-btn btn-solid flex items-center justify-center h-[46px] md:h-[50px] px-6 md:px-8 text-[0.875rem] md:text-[0.9375rem]"
               >
                 Register Now
-              </Link>
+              </a>
             </div>
             <div className="overflow-hidden rounded p-[1px] -m-[1px]">
               <Link
@@ -387,34 +387,26 @@ function Introduction() {
 
 function Theme() {
   return (
-    <section className="border-y border-rule bg-surface">
-      <div className="shell py-24 md:py-32">
+    <section className="relative overflow-hidden bg-primary-deep">
+      {/* Graphic texture */}
+      <ScientificGrid className="absolute inset-0 h-full w-full text-white opacity-[0.06]" />
+      <ConcentricPulse className="absolute -left-24 -bottom-24 h-[420px] w-[420px] text-white opacity-25" />
+
+      <div className="shell relative z-10 py-20 md:py-28">
         <HorizontalReveal>
-          <p className="eyebrow text-primary">Conference Theme</p>
+          <p className="eyebrow text-white/50">Conference Theme</p>
         </HorizontalReveal>
         <MaskReveal delay={0.1}>
-          <h2 className="display-lg mt-8 max-w-4xl">
+          <h2 className="display-lg mt-8 max-w-4xl text-white">
             Transforming Cardiovascular Care
             <br />
             Through Science, Technology
             <br />
-            <span className="text-primary">and Innovation</span>
+            <span className="text-white/55">and Innovation</span>
           </h2>
         </MaskReveal>
         <TextReveal delay={0.2}>
-          <svg
-            viewBox="0 0 1200 60"
-            preserveAspectRatio="none"
-            aria-hidden
-            className="mt-14 h-12 w-full text-primary/45"
-          >
-            <path
-              d="M0 30 H420 l14 -22 l16 44 l14 -30 l12 8 H700 l18 -16 l14 30 l12 -14 H1200"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.25"
-            />
-          </svg>
+          <HeartbeatLine className="mt-14 h-10" color="white" opacity={0.3} />
         </TextReveal>
       </div>
     </section>
@@ -443,70 +435,6 @@ function InfoStrip() {
   );
 }
 
-function FeaturedSpeakers() {
-  return (
-    <section className="shell py-24 md:py-32">
-      <div className="flex flex-wrap items-end justify-between gap-6 border-t border-rule pt-7">
-        <MaskReveal>
-          <h2 className="display-md max-w-md">Featured Speakers</h2>
-        </MaskReveal>
-        <TextReveal delay={0.1}>
-          <Link to="/speakers" className="link-arrow">
-            View All Speakers <span aria-hidden>→</span>
-          </Link>
-        </TextReveal>
-      </div>
-
-      <div className="mt-14 grid gap-10 md:grid-cols-12">
-        <div className="md:col-span-7">
-          <ImageReveal>
-            <img
-              src={internationalSpeakers[0].image || auditorium}
-              alt={internationalSpeakers[0].name}
-              width={1408}
-              height={1008}
-              loading="lazy"
-              className="aspect-[4/3] w-full object-cover object-top"
-            />
-          </ImageReveal>
-          <TextReveal delay={0.2}>
-            <p className="mt-5 font-[family-name:var(--font-display)] text-2xl">
-              {internationalSpeakers[0].name}
-            </p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              {internationalSpeakers[0].role && (
-                <span className="block">{internationalSpeakers[0].role}</span>
-              )}
-              {internationalSpeakers[0].org}
-            </p>
-          </TextReveal>
-        </div>
-
-        <StaggerReveal className="grid gap-10 md:col-span-5" delay={0.2}>
-          {internationalSpeakers.slice(1, 3).map((speaker, i) => (
-            <div key={speaker.name}>
-              <ImageReveal>
-                <img
-                  src={speaker.image || lab}
-                  alt={`${speaker.name}`}
-                  width={1408}
-                  height={1008}
-                  loading="lazy"
-                  className="aspect-[4/3] w-full object-cover object-top"
-                />
-              </ImageReveal>
-              <p className="mt-4 font-[family-name:var(--font-display)] text-lg">{speaker.name}</p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                {speaker.role && <span className="block">{speaker.role}</span>}
-                {speaker.org}
-              </p>
-            </div>
-          ))}
-        </StaggerReveal>
-      </div>
-    </section>
-  );
-}
 
 function ImportantDates() {
   return (
@@ -549,9 +477,14 @@ function RegistrationCall() {
             </p>
           </TextReveal>
           <StaggerReveal className="mt-8 flex flex-wrap items-center gap-8" delay={0.2} yOffset={10}>
-            <Link to="/registration" className="btn-solid">
+            <a
+              href={conference.registrationFormUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-solid"
+            >
               Register Now <span aria-hidden>→</span>
-            </Link>
+            </a>
             <Link to="/registration" hash="fees" className="text-sm underline underline-offset-4 hover:text-primary transition-colors">
               View Registration Fees
             </Link>
@@ -613,12 +546,14 @@ function FinalCta() {
           <p className="mt-6 text-white/70">11–13 February 2027</p>
         </TextReveal>
         <TextReveal delay={0.2}>
-          <Link
-            to="/registration"
+          <a
+            href={conference.registrationFormUrl}
+            target="_blank"
+            rel="noreferrer"
             className="mt-10 inline-flex items-center gap-3 border border-white/60 px-8 py-4 text-[0.9375rem] font-medium text-white transition-colors hover:bg-white hover:text-primary-deep"
           >
             Register for IACS 2027 <span aria-hidden>→</span>
-          </Link>
+          </a>
         </TextReveal>
       </div>
     </section>

@@ -23,15 +23,15 @@ export const conference = {
 export const PLACEHOLDER = "To be announced in the official brochure";
 
 export const keyDates = [
-  { date: "25 August 2026", label: "Registration & Abstract Submission Opens" },
-  { date: "25 December 2026", label: "Abstract Submission Deadline" },
-  { date: "20 January 2027", label: "Registration Deadline" },
+  { date: "25 August 2026", label: "Registration & Abstract submission open" },
+  { date: "25 December 2026", label: "Abstract submission deadline" },
+  { date: "05 January 2027", label: "Registration deadline" },
 ];
 
 export const navigation = [
   { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
-  { label: "Speakers", to: "/speakers" },
+  { label: "Committee", to: "/committee" },
+  { label: "Abstracts", to: "/abstracts" },
   { label: "Programme", to: "/programme" },
   { label: "Registration", to: "/registration" },
   { label: "Venue", to: "/venue" },
@@ -43,7 +43,6 @@ export const secondaryLinks = [
   { label: "Abstract Submission", to: "/abstracts" },
   { label: "Research Areas", to: "/research-areas" },
   { label: "Awards & Orations", to: "/awards" },
-  { label: "Sponsorship", to: "/sponsorship" },
 ] as const;
 
 /* ---------------------------------------------------------------- people */
@@ -518,29 +517,33 @@ export const organizingCommittees: { title: string; members: string[] }[] = [
 export const registrationFees = [
   {
     category: "Students (UG / PG / Ph.D.)",
-    inEarly: "₹3,000",
-    inLate: "₹3,500",
+    inEarly: "₹3,000/-",
+    inLate: "₹3,500/-",
+    inSpot: "₹4,000/-",
     fgEarly: "US $50",
     fgLate: "US $75",
   },
   {
     category: "Faculty Members",
-    inEarly: "₹3,500",
-    inLate: "₹4,000",
+    inEarly: "₹3,500/-",
+    inLate: "₹4,000/-",
+    inSpot: "₹4,500/-",
     fgEarly: "US $100",
     fgLate: "US $150",
   },
   {
     category: "Industry Persons",
-    inEarly: "₹4,000",
-    inLate: "₹4,500",
+    inEarly: "₹4,000/-",
+    inLate: "₹4,500/-",
+    inSpot: "₹5,000/-",
     fgEarly: "US $125",
     fgLate: "US $175",
   },
   {
     category: "Online Participants",
-    inEarly: "₹1,500",
-    inLate: "₹2,000",
+    inEarly: "₹1,500/-",
+    inLate: "₹2,000/-",
+    inSpot: "₹2,500/-",
     fgEarly: "US $25",
     fgLate: "US $50",
   },

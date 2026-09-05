@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { navigation } from "@/lib/conference";
+import { navigation, conference } from "@/lib/conference";
 
 export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
@@ -63,8 +63,10 @@ export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
               </Link>
             );
           })}
-          <Link
-            to="/registration"
+          <a
+            href={conference.registrationFormUrl}
+            target="_blank"
+            rel="noreferrer"
             className={`gsap-nav-btn px-5 py-2 text-[0.8125rem] font-medium transition-colors ${
               solid
                 ? "bg-primary text-primary-foreground hover:bg-primary-deep"
@@ -72,7 +74,7 @@ export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
             }`}
           >
             Register
-          </Link>
+          </a>
         </nav>
 
         <button
@@ -103,9 +105,14 @@ export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
                 {item.label}
               </Link>
             ))}
-            <Link to="/registration" className="btn-solid mt-5 mb-6">
+            <a
+              href={conference.registrationFormUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-solid mt-5 mb-6"
+            >
               Register
-            </Link>
+            </a>
           </nav>
         </div>
       )}
