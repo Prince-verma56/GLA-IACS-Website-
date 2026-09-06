@@ -29,7 +29,7 @@ export function InvitationModal() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent 
-        className="p-0 gap-0 flex flex-col overflow-hidden max-w-[860px] w-[calc(100vw-24px)] max-h-[92vh] md:max-h-[88vh] bg-[#fdfdfc] border-0 shadow-2xl rounded-2xl sm:rounded-3xl"
+        className="p-0 gap-0 flex flex-col overflow-hidden max-w-[860px] w-[calc(100vw-24px)] max-h-[92vh] md:max-h-[88vh] bg-[#fdfdfc] border-0 shadow-2xl rounded-none sm:rounded-none"
       >
         <DialogTitle className="sr-only">IACS 2027 Conference Invitation</DialogTitle>
         
@@ -49,16 +49,16 @@ export function InvitationModal() {
         <ScrollArea className="flex-1 min-h-0 bg-[#f8f7f4]">
           <div className="w-full min-h-full flex flex-col items-center justify-start p-4 sm:p-8 md:p-12">
             {INVITATION_IMAGE ? (
-              <div className="w-full relative shadow-sm border border-black/5 bg-white p-3 sm:p-4 rounded-xl">
+              <div className="w-full relative shadow-sm border border-black/5 bg-white p-3 sm:p-4 rounded-none">
                 <img
                   src={INVITATION_IMAGE}
                   alt="IACS 2027 Official Invitation"
-                  className="w-full h-auto object-contain rounded-md"
+                  className="w-full h-auto object-contain rounded-none"
                   loading="eager"
                 />
               </div>
             ) : (
-              <div className="flex items-center justify-center w-full min-h-[500px] border-2 border-dashed border-primary/20 rounded-xl bg-white/50">
+              <div className="flex items-center justify-center w-full min-h-[500px] border-2 border-dashed border-primary/20 rounded-none bg-white/50">
                 <p className="text-primary/50 text-sm tracking-widest uppercase font-medium">
                   Invitation Placeholder
                 </p>

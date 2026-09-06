@@ -263,18 +263,25 @@ export const internationalSpeakers: Person[] = [
     name: "Dr. Vladimir Jakovljevic",
     role: "Department of Physiology, Faculty of Medical Sciences",
     org: "University of Kragujevac, Serbia",
+    image: "/People Images/International Speakers/Dr. Vladimir Jakovljevic.png",
   },
   {
     name: "Prof. Dragan M. Djuric",
     role: "Medical Physiology Chair / Founder, PhD Program in Physiological Sciences",
     org: "Institute of Medical Physiology “Richard Burian”, University of Belgrade, Serbia",
+    image: "/People Images/International Speakers/Prof. Dragan M. Djuric.png",
   },
   {
     name: "Dr. Melchior Luiz Lima",
     role: "Cardiovascular Surgeon",
     org: "Centrocor-Heart Clinic Ltd., Vitória, ES, Brazil",
+    image: "/People Images/International Speakers/Dr. Melchior Luiz Lima.png",
   },
-  { name: "Dr. Antoinette Oliveira Blackman", org: "Brazil" },
+  { 
+    name: "Dr. Antoinette Oliveira Blackman", 
+    org: "Brazil",
+    image: "/People Images/International Speakers/Dr. Antoinette Oliveira Blackman.png",
+  },
   {
     name: "Dr. Marija Stojanovic",
     role: "Institute of Medical Physiology “Richard Burian”",
