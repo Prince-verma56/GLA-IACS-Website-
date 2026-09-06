@@ -169,9 +169,21 @@ export const leadership: { group: string; people: Person[] }[] = [
   {
     group: "Co-Organizing Secretaries",
     people: [
-      { name: "Prof. (Dr.) Prabhat K. Upadhyay", phone: "+91 9690088979" },
-      { name: "Dr. Yogesh Murti", phone: "+91 8006240340" },
-      { name: "Dr. Jitendra Gupta", phone: "+91 8979136611" },
+      { 
+        name: "Prof. (Dr.) Prabhat K. Upadhyay", 
+        phone: "+91 9690088979",
+        image: "/People Images/Co-Organizing & Joint Secretaries/Prof. (Dr.) Prabhat K. Upadhyay.png"
+      },
+      { 
+        name: "Dr. Yogesh Murti", 
+        phone: "+91 8006240340",
+        image: "/People Images/Co-Organizing & Joint Secretaries/Dr. Yogesh Murti.png"
+      },
+      { 
+        name: "Dr. Jitendra Gupta", 
+        phone: "+91 8979136611",
+        image: "/People Images/Co-Organizing & Joint Secretaries/Dr. Jitendra Gupta.png"
+      },
     ],
   },
   {
@@ -703,15 +715,15 @@ export const sponsorTiers = [
 ];
 
 export const sightseeing = [
-  { place: "Taj Mahal", city: "Agra" },
-  { place: "Fatehpur Sikri", city: "Agra" },
-  { place: "Bankey Bihari", city: "Vrindavan" },
-  { place: "Shri Krishna Janmabhoomi", city: "Mathura" },
-  { place: "Prem Mandir", city: "Vrindavan" },
-  { place: "Radha Rani", city: "Barsana" },
-  { place: "Dhanghati", city: "Goverdhan" },
-  { place: "Nand Mahal", city: "Gokul" },
-  { place: "Nandgaun Temple", city: "Nandgaun" },
+  { place: "Taj Mahal", city: "Agra", image: "/images/Bg images/Locations/Taj Mahal.png", mapQuery: "Taj+Mahal,Agra", mapUrl: "https://www.google.com/maps/search/?api=1&query=Taj+Mahal%2C+Agra%2C+Uttar+Pradesh%2C+India" },
+  { place: "Fatehpur Sikri", city: "Agra", image: "/images/Bg images/Locations/Fatehpur Sikri.png", mapQuery: "Fatehpur+Sikri,Agra", mapUrl: "https://www.google.com/maps/search/?api=1&query=Fatehpur+Sikri%2C+Agra%2C+Uttar+Pradesh%2C+India" },
+  { place: "Bankey Bihari", city: "Vrindavan", image: "/images/Bg images/Locations/Bankey Bihari.png", mapQuery: "Shri+Bankey+Bihari+Temple,Vrindavan", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bankey+Bihari+Temple%2C+Vrindavan%2C+Uttar+Pradesh%2C+India" },
+  { place: "Shri Krishna Janmabhoomi", city: "Mathura", image: "/images/Bg images/Locations/Shri Krishna Janmabhoomi.png", mapQuery: "Shri+Krishna+Janmasthan+Temple,Mathura", mapUrl: "https://www.google.com/maps/search/?api=1&query=Shri+Krishna+Janmabhoomi+Temple%2C+Mathura%2C+Uttar+Pradesh%2C+India" },
+  { place: "Prem Mandir", city: "Vrindavan", image: "/images/Bg images/Locations/Prem Mandir.png", mapQuery: "Prem+Mandir,Vrindavan", mapUrl: "https://www.google.com/maps/search/?api=1&query=Prem+Mandir%2C+Vrindavan%2C+Uttar+Pradesh%2C+India" },
+  { place: "Radha Rani", city: "Barsana", image: "/images/Bg images/Locations/Radha Rani Barsana.png", mapQuery: "Shri+Radha+Rani+Temple,Barsana", mapUrl: "https://www.google.com/maps/search/?api=1&query=Radha+Rani+Temple%2C+Barsana%2C+Uttar+Pradesh%2C+India" },
+  { place: "Dhanghati", city: "Goverdhan", image: "/images/Bg images/Locations/Dhanghati Goverdhan.png", mapQuery: "Daan+Ghati+Mandir,Govardhan", mapUrl: "https://www.google.com/maps/search/?api=1&query=Daan+Ghati+Mandir%2C+Govardhan%2C+Uttar+Pradesh%2C+India" },
+  { place: "Nand Mahal", city: "Gokul", image: "/images/Bg images/Locations/Nand Mahal.png", mapQuery: "Nand+Bhawan,Gokul", mapUrl: "https://www.google.com/maps/search/?api=1&query=Nand+Bhawan%2C+Gokul%2C+Uttar+Pradesh%2C+India" },
+  { place: "Nandgaon Temple", city: "Nandgaon", image: "/images/Bg images/Locations/Nandgaon Temple Nandgaon.png", mapQuery: "Nandagram+Temple,Nandgaon", mapUrl: "https://www.google.com/maps/search/?api=1&query=Nandagram+Temple%2C+Nandgaon%2C+Uttar+Pradesh%2C+India" },
 ];
 
 export const contacts: Person[] = [

@@ -15,6 +15,9 @@ import {
   PulseDivider,
 } from "@/components/graphics/ConferenceGraphics";
 import { conference, keyDates, researchAreas } from "@/lib/conference";
+import { InternalPageHero } from "@/components/InternalPageHero";
+import { pageHeroes } from "@/lib/pageHeroes";
+import { MedicalFloatingVisuals } from "@/components/Elements/MedicalFloatingVisuals";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -42,42 +45,28 @@ function AboutPage() {
       <SiteHeader />
       <main>
         {/* ── HERO ─────────────────────────────────────────── */}
-        <section className="relative overflow-hidden bg-primary-deep pt-[74px]">
-          <ScientificGrid className="absolute inset-0 h-full w-full text-white opacity-[0.07]" />
-          <ConcentricPulse className="absolute -right-24 -top-24 h-[400px] w-[400px] text-white opacity-25" />
-          <div className="shell relative z-10 grid gap-8 py-16 md:grid-cols-12 md:py-24">
-            <div className="md:col-span-4">
-              <HorizontalReveal>
-                <p className="eyebrow text-white/55">About the Conference</p>
-              </HorizontalReveal>
+        <InternalPageHero hero={pageHeroes.about}>
+          <TextReveal delay={0.35}>
+            <div className="border-l-2 border-primary/20 pl-5">
+              <p className="text-sm uppercase tracking-[0.18em] text-foreground/50">Conference Theme</p>
+              <p className="mt-2 text-xl font-semibold leading-snug text-foreground">
+                {conference.theme.line1}
+                <br />
+                {conference.theme.line2}
+              </p>
             </div>
-            <div className="md:col-span-8">
-              <MaskReveal delay={0.1}>
-                <h1 className="display-lg text-white">IACS 2027</h1>
-              </MaskReveal>
-              <TextReveal delay={0.25}>
-                <p className="mt-6 max-w-2xl text-[1.0625rem] leading-relaxed text-white/65">
-                  International Academy of Cardiovascular Sciences — India Section
-                  International Conference 2027.
-                </p>
-              </TextReveal>
-              <TextReveal delay={0.35}>
-                <div className="mt-8 border-l-2 border-white/20 pl-5">
-                  <p className="text-sm uppercase tracking-[0.18em] text-white/40">Conference Theme</p>
-                  <p className="mt-2 text-xl font-semibold leading-snug text-white">
-                    {conference.theme.line1}
-                    <br />
-                    {conference.theme.line2}
-                  </p>
-                </div>
-              </TextReveal>
-            </div>
-          </div>
-        </section>
+          </TextReveal>
+        </InternalPageHero>
 
         {/* ── ABOUT IACS ────────────────────────────────────── */}
-        <section className="shell py-24 md:py-32">
-          <div className="grid gap-12 md:grid-cols-12 md:items-center">
+        <section className="shell relative py-24 md:py-32">
+          <MedicalFloatingVisuals 
+            visuals={[
+              { src: "/images/Elements/Heart.png", side: "right", className: "top-10 -right-[5%] w-64 md:w-96", opacity: 0.15 },
+              { src: "/images/Elements/Stethoscop.png", side: "left", className: "bottom-10 -left-[10%] w-48 md:w-72", opacity: 0.20, delay: 0.15 }
+            ]}
+          />
+          <div className="relative z-10 grid gap-12 md:grid-cols-12 md:items-center">
             {/* Editorial Image */}
             <div className="md:col-span-5 relative order-last md:order-first mt-12 md:mt-0">
               <ImageReveal>
@@ -230,8 +219,13 @@ function AboutPage() {
         </section>
 
         {/* ── SCIENTIFIC SCOPE ──────────────────────────────── */}
-        <section className="shell py-20 md:py-28">
-          <div className="grid gap-16 md:grid-cols-12 mb-14">
+        <section className="shell relative py-20 md:py-28">
+          <MedicalFloatingVisuals 
+            visuals={[
+              { src: "/images/Elements/Body Visual.png", side: "right", className: "-bottom-20 -right-[15%] w-96 md:w-[600px]", opacity: 0.12 }
+            ]}
+          />
+          <div className="relative z-10 grid gap-16 md:grid-cols-12 mb-14">
             <div className="md:col-span-4">
               <HorizontalReveal>
                 <p className="eyebrow text-primary">Scientific Scope</p>

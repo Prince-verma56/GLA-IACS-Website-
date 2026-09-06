@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageLayout, PlaceholderNote } from "@/components/PageLayout";
+import { pageHeroes } from "@/lib/pageHeroes";
 
 export const Route = createFileRoute("/awards")({
   head: () => ({
@@ -37,11 +38,7 @@ const sections = [
 
 function Awards() {
   return (
-    <PageLayout
-      eyebrow="Awards & Orations"
-      title="Recognising distinction in cardiovascular science"
-      intro="Oration names, symposium titles and award eligibility criteria are reproduced from the official brochure."
-    >
+    <PageLayout heroConfig={pageHeroes.awards}>
       <div className="border-t border-rule">
         {sections.map((s, i) => (
           <div key={s.title} className="grid gap-4 border-b border-rule py-12 md:grid-cols-12">

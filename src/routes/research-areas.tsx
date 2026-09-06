@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageLayout, PlaceholderNote } from "@/components/PageLayout";
+import { pageHeroes } from "@/lib/pageHeroes";
 
 export const Route = createFileRoute("/research-areas")({
   head: () => ({
@@ -33,11 +34,7 @@ const areas = [
 
 function ResearchAreas() {
   return (
-    <PageLayout
-      eyebrow="Research Areas"
-      title="Scientific subjects invited for presentation"
-      intro="The final list of research subjects is taken from the conference brochure; the tracks below are indicative until it is supplied."
-    >
+    <PageLayout heroConfig={pageHeroes.researchAreas}>
       <ol className="border-t border-rule">
         {areas.map((a, i) => (
           <li

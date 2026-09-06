@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageLayout, SectionHeading } from "@/components/PageLayout";
 import { keyDates, conference, registrationFees, bankDetails } from "@/lib/conference";
 import { StaggerReveal, TextReveal, HorizontalReveal } from "@/components/motion/ScrollReveal";
+import { pageHeroes } from "@/lib/pageHeroes";
+import { MedicalFloatingVisuals } from "@/components/Elements/MedicalFloatingVisuals";
 
 export const Route = createFileRoute("/registration")({
   head: () => ({
@@ -30,12 +32,13 @@ const REGISTRATION_QR_IMAGE = "/QR Codes/QR for Registration.png";
 
 function Registration() {
   return (
-    <PageLayout
-      eyebrow="Registration"
-      title="Register for IACS 2027"
-      intro="Registration opens 25 August 2026 and closes 05 January 2027. The abstract submission deadline is 25 December 2026. Early bird registration rates apply until 31 December 2026."
-    >
-      <div className="grid gap-16 md:grid-cols-12">
+    <PageLayout heroConfig={pageHeroes.registration}>
+      <MedicalFloatingVisuals 
+        visuals={[
+          { src: "/images/Elements/Body Visual.png", side: "left", className: "top-40 -left-[15%] w-96 md:w-[600px]", opacity: 0.10 }
+        ]}
+      />
+      <div className="relative z-10 grid gap-16 md:grid-cols-12">
         <div className="md:col-span-8">
           <div id="fees">
             <SectionHeading index="01" title="Registration fee" />

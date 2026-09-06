@@ -7,13 +7,10 @@ import {
   TextReveal,
   StaggerReveal,
 } from "@/components/motion/ScrollReveal";
-import {
-  ConcentricPulse,
-  ScientificGrid,
-  HeartbeatLine,
-  PulseDivider,
-} from "@/components/graphics/ConferenceGraphics";
 import { sponsorTiers, conference } from "@/lib/conference";
+import { InternalPageHero } from "@/components/InternalPageHero";
+import { pageHeroes } from "@/lib/pageHeroes";
+import { PulseDivider } from "@/components/graphics/ConferenceGraphics";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -86,35 +83,14 @@ function SponsorshipPage() {
       <SiteHeader />
       <main>
         {/* ── HERO ─────────────────────────────────────────── */}
-        <section className="relative overflow-hidden bg-primary-deep pt-[74px]">
-          <ScientificGrid className="absolute inset-0 h-full w-full text-white opacity-[0.07]" />
-          <ConcentricPulse className="absolute -right-20 -top-20 h-[360px] w-[360px] text-white opacity-25" />
-          <HeartbeatLine className="absolute bottom-0 left-0 right-0 text-white opacity-[0.07] w-full" />
-          <div className="shell relative z-10 grid gap-8 py-16 md:grid-cols-12 md:py-24">
-            <div className="md:col-span-4">
-              <HorizontalReveal>
-                <p className="eyebrow text-white/55">Partnership Opportunities</p>
-              </HorizontalReveal>
-            </div>
-            <div className="md:col-span-8">
-              <MaskReveal delay={0.1}>
-                <h1 className="display-lg text-white">Partner with IACS 2027</h1>
-              </MaskReveal>
-              <TextReveal delay={0.25}>
-                <p className="mt-6 max-w-2xl text-[1.0625rem] leading-relaxed text-white/65">
-                  Support an international academic gathering connecting cardiovascular scientists,
-                  clinicians, researchers and healthcare professionals from across the globe.
-                </p>
-              </TextReveal>
-              <TextReveal delay={0.35}>
-                <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/45">
-                  Four sponsorship tiers are available. Each offers distinct visibility across the
-                  conference programme, materials and venue.
-                </p>
-              </TextReveal>
-            </div>
-          </div>
-        </section>
+        <InternalPageHero hero={pageHeroes.sponsorship}>
+          <TextReveal delay={0.35}>
+            <p className="mt-2 text-sm leading-relaxed text-foreground/50 max-w-lg">
+              Four sponsorship tiers are available. Each offers distinct visibility across the
+              conference programme, materials and venue.
+            </p>
+          </TextReveal>
+        </InternalPageHero>
 
         {/* ── MAIN EVENT SPONSOR ─────────────────────────────── */}
         <section className="shell py-20 md:py-28">

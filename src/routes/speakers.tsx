@@ -8,12 +8,9 @@ import {
   StaggerReveal,
   ImageReveal,
 } from "@/components/motion/ScrollReveal";
-import {
-  ConcentricPulse,
-  ScientificGrid,
-  HeartbeatLine,
-} from "@/components/graphics/ConferenceGraphics";
 import { internationalSpeakers } from "@/lib/conference";
+import { InternalPageHero } from "@/components/InternalPageHero";
+import { pageHeroes } from "@/lib/pageHeroes";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -101,29 +98,7 @@ function SpeakersPage() {
       <SiteHeader />
       <main>
         {/* ── PAGE HERO ─────────────────────────────────────── */}
-        <section className="relative overflow-hidden bg-primary-deep pt-[74px]">
-          <ScientificGrid className="absolute inset-0 h-full w-full text-white opacity-[0.07]" />
-          <ConcentricPulse className="absolute -right-20 -top-20 h-[360px] w-[360px] text-white opacity-25" />
-          <HeartbeatLine className="absolute bottom-0 left-0 right-0 text-white opacity-[0.08] w-full" />
-          <div className="shell relative z-10 grid gap-8 py-16 md:grid-cols-12 md:py-24">
-            <div className="md:col-span-4">
-              <HorizontalReveal>
-                <p className="eyebrow text-white/55">IACS 2027</p>
-              </HorizontalReveal>
-            </div>
-            <div className="md:col-span-8">
-              <MaskReveal delay={0.1}>
-                <h1 className="display-lg text-white">International Speakers</h1>
-              </MaskReveal>
-              <TextReveal delay={0.25}>
-                <p className="mt-6 max-w-2xl text-[1.0625rem] leading-relaxed text-white/65">
-                  {internationalSpeakers.length} distinguished cardiovascular scientists, clinicians
-                  and researchers from across the globe.
-                </p>
-              </TextReveal>
-            </div>
-          </div>
-        </section>
+        <InternalPageHero hero={pageHeroes.speakers} />
 
         {/* ── COUNT STRIP ───────────────────────────────────── */}
         <section className="border-b border-rule">

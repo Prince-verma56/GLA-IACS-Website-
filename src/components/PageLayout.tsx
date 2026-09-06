@@ -7,52 +7,43 @@ import {
   TextReveal,
   StaggerReveal,
 } from "./motion/ScrollReveal";
-import { ConcentricPulse, ScientificGrid } from "./graphics/ConferenceGraphics";
+import { InternalPageHero } from "./InternalPageHero";
+import { PageHeroConfig } from "@/lib/pageHeroes";
 
 export function PageLayout({
   eyebrow,
   title,
   intro,
+  heroConfig,
   children,
 }: {
-  eyebrow: string;
-  title: string;
+  eyebrow?: string;
+  title?: string;
   intro?: string;
+  heroConfig?: PageHeroConfig;
   children: ReactNode;
 }) {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <SiteHeader />
       <main>
-        {/* ── Dark editorial page hero ──────────────────────── */}
-        <section className="relative overflow-hidden bg-primary-deep pt-[74px]">
-          {/* Subtle graphic texture */}
-          <ScientificGrid className="absolute inset-0 h-full w-full text-white opacity-[0.07]" />
-          <ConcentricPulse className="absolute -right-20 -top-20 h-[340px] w-[340px] text-white opacity-30" />
-
-          <div className="shell relative z-10 grid gap-8 py-16 md:grid-cols-12 md:py-24">
-            <div className="md:col-span-4">
-              <HorizontalReveal>
-                <p className="eyebrow text-white/55">{eyebrow}</p>
-              </HorizontalReveal>
-            </div>
-            <div className="md:col-span-8">
-              <MaskReveal delay={0.1}>
-                <h1 className="display-lg text-white">{title}</h1>
-              </MaskReveal>
-              {intro && (
-                <TextReveal delay={0.25}>
-                  <p className="mt-6 max-w-2xl text-[1.0625rem] leading-relaxed text-white/65">
-                    {intro}
-                  </p>
-                </TextReveal>
-              )}
-            </div>
-          </div>
-        </section>
+        {/* ── Editorial page hero ──────────────────────── */}
+        {heroConfig ? (
+          <InternalPageHero hero={heroConfig} />
+        ) : (
+          <InternalPageHero 
+            hero={{
+              eyebrow: eyebrow || "",
+              title: title || "",
+              description: intro || "",
+              image: "",
+              imageAlt: title || "Page Image"
+            }} 
+          />
+        )}
 
         {/* ── Page content ─────────────────────────────────── */}
-        <section className="shell py-20 md:py-28">{children}</section>
+        <section className="shell relative py-20 md:py-28">{children}</section>
       </main>
       <SiteFooter />
     </div>

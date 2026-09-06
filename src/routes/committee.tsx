@@ -23,6 +23,9 @@ import {
   advisoryNational,
   advisoryUniversity,
 } from "@/lib/conference";
+import { InternalPageHero } from "@/components/InternalPageHero";
+import { pageHeroes } from "@/lib/pageHeroes";
+import { MedicalFloatingVisuals } from "@/components/Elements/MedicalFloatingVisuals";
 
 export const Route = createFileRoute("/committee")({
   head: () => ({
@@ -61,36 +64,16 @@ function CommitteePage() {
         {/* ══════════════════════════════════════════════════
             HERO
         ══════════════════════════════════════════════════ */}
-        <section className="relative overflow-hidden bg-primary-deep pt-[74px]">
-          <ScientificGrid className="absolute inset-0 h-full w-full text-white opacity-[0.07]" />
-          <ConcentricPulse className="absolute -right-20 -top-20 h-[320px] w-[320px] text-white opacity-20" />
-          <div className="shell relative z-10 grid gap-6 py-12 md:grid-cols-12 md:py-18">
-            <div className="md:col-span-4">
-              <HorizontalReveal>
-                <p className="eyebrow text-white/50">Conference Committee</p>
-              </HorizontalReveal>
-            </div>
-            <div className="md:col-span-8">
-              <MaskReveal delay={0.1}>
-                <h1 className="display-lg text-white">Leadership &amp; Committee</h1>
-              </MaskReveal>
-              <TextReveal delay={0.22}>
-                <p className="mt-4 max-w-xl text-[1rem] leading-relaxed text-white/58">
-                  The patrons, office bearers and organising committee driving the scientific
-                  direction and delivery of IACS 2027.
-                </p>
-              </TextReveal>
-              <TextReveal delay={0.32}>
-                <Link
-                  to="/speakers"
-                  className="mt-6 inline-flex items-center gap-2 text-sm text-white/40 transition-colors hover:text-white/70"
-                >
-                  View International Speakers →
-                </Link>
-              </TextReveal>
-            </div>
-          </div>
-        </section>
+        <InternalPageHero hero={pageHeroes.committee}>
+          <TextReveal delay={0.32}>
+            <Link
+              to="/speakers"
+              className="mt-2 inline-flex items-center gap-2 text-sm text-primary/70 transition-colors hover:text-primary"
+            >
+              View International Speakers →
+            </Link>
+          </TextReveal>
+        </InternalPageHero>
 
         {/* ══════════════════════════════════════════════════
             INSTITUTIONAL LEADERSHIP
@@ -556,8 +539,14 @@ function CommitteePage() {
         {/* ══════════════════════════════════════════════════
             ADVISORY COMMITTEES
         ══════════════════════════════════════════════════ */}
-        <section className="bg-[#f5f3ee] py-16 md:py-24">
-          <div className="shell">
+        <section className="bg-[#f5f3ee] py-16 md:py-24 relative overflow-hidden">
+          <MedicalFloatingVisuals 
+            visuals={[
+              { src: "/images/Elements/Heart.png", side: "left", className: "top-20 -left-[10%] w-64 md:w-96", opacity: 0.12 },
+              { src: "/images/Elements/Stethoscop.png", side: "right", className: "bottom-40 -right-[5%] w-48 md:w-72", opacity: 0.18, delay: 0.15 }
+            ]}
+          />
+          <div className="shell relative z-10">
             <div className="border-b border-rule pb-5 mb-12">
               <HorizontalReveal>
                 <p className="eyebrow text-primary">Advisory</p>

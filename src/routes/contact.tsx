@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageLayout, SectionHeading } from "@/components/PageLayout";
 import { contacts, conference } from "@/lib/conference";
 import { TextReveal, StaggerReveal } from "@/components/motion/ScrollReveal";
+import { pageHeroes } from "@/lib/pageHeroes";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -18,11 +19,7 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   return (
-    <PageLayout
-      eyebrow="Contact"
-      title="Get in touch"
-      intro="For enquiries regarding registration, abstract submission, accommodation, or the scientific programme, please contact the organizing committee."
-    >
+    <PageLayout heroConfig={pageHeroes.contact}>
       <div className="max-w-4xl">
         <SectionHeading index="01" title="General Enquiries" />
         <TextReveal>
