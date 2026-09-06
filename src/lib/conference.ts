@@ -286,51 +286,61 @@ export const internationalSpeakers: Person[] = [
     name: "Dr. Marija Stojanovic",
     role: "Institute of Medical Physiology “Richard Burian”",
     org: "University of Belgrade, Serbia",
+    image: "/People Images/International Speakers/Dr. Marija Stojanovic.png",
   },
   {
     name: "Dr. Jagat Narula",
     role: "Executive Vice President & Chief Academic Officer, Heart & Vascular Institute",
     org: "McGovern Medical School, UTHealth Houston, TX, USA",
+    image: "/People Images/International Speakers/Dr. Jagat Narula.png",
   },
   {
     name: "Dr. Danina Muntean",
     role: "Professor of Pathophysiology",
     org: "Victor Babeș University of Medicine and Pharmacy, Timișoara, Romania",
+    image: "/People Images/International Speakers/Dr. Danina Muntean.png",
   },
   {
     name: "Prof. Raj Kishore",
     role: "Chair and Professor, Aging and Cardiovascular Discovery Center",
     org: "Lewis Katz School of Medicine, Temple University, Philadelphia, PA, USA",
+    image: "/People Images/International Speakers/Prof. Raj Kishore.png",
   },
   {
     name: "Prof. Srinivas Tipparaju",
     role: "Professor and Chair, William Saunders Endowed Chair in Geriatric Pharmacotherapy",
     org: "USF Health Taneja College of Pharmacy, Tampa, FL, USA",
+    image: "/People Images/International Speakers/Prof. Srinivas Tipparaju.png",
   },
   {
     name: "Prof. Yi-Gang Wang",
     role: "Director, Regenerative Medicine Division",
     org: "University of Cincinnati College of Medicine, Cincinnati, OH, USA",
+    image: "/People Images/International Speakers/Prof. Yi-Gang Wang.png",
   },
   {
     name: "Prof. Petr Ostadal",
     role: "President, Czech Society of Cardiology; Professor of Cardiology",
     org: "Second Faculty of Medicine, Charles University, Prague, Czech Republic",
+    image: "/People Images/International Speakers/Prof. Petr Ostadal.png",
   },
   {
     name: "Prof. Roberto Bolli",
     role: "Professor of Medicine and Physiology; Director, Institute of Molecular Cardiology",
     org: "Louisville, KY, USA",
+    image: "/People Images/International Speakers/Prof. Roberto Bolli.png",
   },
   {
     name: "Prof. Goran Krstacic",
     role: "Professor of Cardiology; Director, Institute for Cardiovascular Prevention and Rehabilitation",
     org: "University of Osijek, Zagreb, Croatia",
+    image: "/People Images/International Speakers/Prof. Goran Krstacic.png",
   },
   {
     name: "Prof. Henrique Furtado",
     role: "Professor of Medicine; Vice President, Latin America Section",
     org: "Federal University of Tocantins, Palmas, Brazil",
+    image: "/People Images/International Speakers/Prof. Henrique Furtado.png",
   },
 ];
 
