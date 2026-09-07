@@ -325,7 +325,7 @@ function CommitteePage() {
             {/* ── OFFICE BEARERS ── */}
             <GroupBlock label="Office Bearers" number="06">
               <StaggerReveal
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8"
                 stagger={0.05}
               >
                 {officeBearers?.people.map((person) => (
@@ -338,6 +338,15 @@ function CommitteePage() {
                     variant="standard"
                   />
                 ))}
+              </StaggerReveal>
+            </GroupBlock>
+
+            {/* ── ORGANIZING SECRETARY ── */}
+            <GroupBlock label="Organizing Secretary" number="07">
+              <StaggerReveal
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+                stagger={0.05}
+              >
                 {orgSecretary?.people.map((person) => (
                   <PersonCardDark
                     key={person.name}
@@ -353,7 +362,7 @@ function CommitteePage() {
             </GroupBlock>
 
             {/* ── CO-ORGANIZING & JOINT SECRETARIES ── */}
-            <GroupBlock label="Co-Organizing & Joint Secretaries" number="07">
+            <GroupBlock label="Co-Organizing & Joint Secretaries" number="08">
               <div className="grid gap-12 sm:grid-cols-2">
                 <div>
                   <h4 className="eyebrow text-white/30 mb-5">Co-Organizing Secretaries</h4>
@@ -593,8 +602,8 @@ function GroupBlock({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border-t border-white/10 py-8">
-      <div className="flex items-baseline gap-3 mb-6">
+    <div className="border-t border-white/10 py-10 md:py-14">
+      <div className="flex items-baseline gap-3 mb-8 md:mb-10">
         <span className="eyebrow text-white/20">{number}</span>
         <p className="eyebrow text-white/38">{label}</p>
       </div>

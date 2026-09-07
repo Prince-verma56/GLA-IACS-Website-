@@ -38,7 +38,7 @@ export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
   const solid = !overHero || scrolled || open;
 
   const linkClass = (active: boolean) =>
-    `gsap-nav-link text-[0.8125rem] tracking-wide transition-colors ${
+    `gsap-nav-link whitespace-nowrap text-[0.8125rem] tracking-wide transition-colors ${
       solid
         ? active
           ? "text-primary"
@@ -54,26 +54,23 @@ export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
           : "bg-transparent"
       }`}
     >
-      <div className="shell flex h-18.5 items-center justify-between gap-6">
-        <Link to="/" className="gsap-nav-logo flex shrink-0 items-baseline gap-3">
-          <span
-            className={`font-display text-[1.0625rem] font-semibold tracking-tight ${
-              solid ? "text-primary-deep" : "text-white"
-            }`}
-          >
-            GLA University
-          </span>
-          <span
-            className={`hidden border-l pl-3 text-[0.6875rem] uppercase tracking-[0.18em] sm:block ${
-              solid ? "border-rule text-muted-foreground" : "border-white/40 text-white/80"
-            }`}
-          >
-            IACS 2027
-          </span>
+      <div className="shell flex py-3 md:py-5 items-center justify-between gap-6">
+        <Link to="/" className="gsap-nav-logo flex shrink-0 items-center gap-3 lg:gap-5">
+          <img 
+            src="/images/logos/IACS logo.png" 
+            alt="IACS Logo" 
+            className="h-12 md:h-16 w-auto object-contain" 
+          />
+          <div className={`h-10 md:h-12 w-px shrink-0 ${solid ? 'bg-border' : 'bg-white/40'}`}></div>
+          <img 
+            src="/images/logos/GLA logo.png" 
+            alt="GLA University Logo" 
+            className="h-12 md:h-16 w-auto object-contain" 
+          />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-5 xl:flex">
+        <nav className="hidden items-center gap-5 xl:gap-8 xl:flex shrink-0">
           {PRIMARY_NAV.map((item) => (
             <Link
               key={item.to}
