@@ -7,7 +7,6 @@ import {
   useRouterState,
   HeadContent,
   Scripts,
-  ScrollRestoration,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import { InvitationModal } from "@/components/InvitationModal";
@@ -108,18 +107,21 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
-import { ReactLenis } from 'lenis/react';
+import { ReactLenis, useLenis } from 'lenis/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
+function LenisScrollRestoration() {
+  const lenis = useLenis();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
-    // 1. Immediately reset scroll position on route change
+    // 1. Immediately reset scroll position on route change for both window and lenis
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    }
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 
     // 2. Allow DOM to render and then refresh ScrollTrigger
@@ -128,12 +130,18 @@ function RootComponent() {
     }, 150);
     
     return () => clearTimeout(timer);
-  }, [pathname]);
+  }, [pathname, lenis]);
+
+  return null;
+}
+
+function RootComponent() {
+  const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
       <ReactLenis root>
-        <ScrollRestoration />
+        <LenisScrollRestoration />
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
       </ReactLenis>
