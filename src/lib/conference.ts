@@ -226,23 +226,26 @@ export const eminentPanel: Person[] = [
     name: "Dr. Kewal Kishan Talwar",
     role: "Padma Bhushan Awardee & Chairman",
     org: "PSRI Hospital, New Delhi, India",
+    image: "/People Images/Eminent Scientific Advisory Panel/Dr. Kewal Kishan Talwar.png",
   },
   {
     name: "Prof. N.K. Ganguly",
     role: "Padma Bhushan Awardee & Honorary Senior Research Professor",
     org: "Institute of Liver & Biliary Sciences, New Delhi",
+    image: "/People Images/Eminent Scientific Advisory Panel/Prof. N.K. Ganguly.png",
   },
-  { name: "Dr. Padam Singh", role: "Ex-Additional DG, ICMR", org: "India" },
-  { name: "Dr. Y.K. Gupta", role: "President, AIIMS Kalyani", org: "India" },
-  { name: "Dr. Prakash V. Diwan", role: "Founder Director, NIPER", org: "Hyderabad, India" },
-  { name: "Dr. CC Kartha", role: "Past President, IACS – India Section" },
-  { name: "Dr. Neeraj Parakh", role: "Department of Cardiology", org: "AIIMS, New Delhi, India" },
+  { name: "Dr. Padam Singh", role: "Ex-Additional DG, ICMR", org: "India", image: "/People Images/Eminent Scientific Advisory Panel/Dr. Padam Singh.png" },
+  { name: "Dr. Y.K. Gupta", role: "President, AIIMS Kalyani", org: "India", image: "/People Images/Eminent Scientific Advisory Panel/Dr. Y.K. Gupta.png" },
+  { name: "Dr. Prakash V. Diwan", role: "Founder Director, NIPER", org: "Hyderabad, India", image: "/People Images/Eminent Scientific Advisory Panel/Dr. Prakash V. Diwan.png" },
+  { name: "Dr. CC Kartha", role: "Past President, IACS – India Section", image: "/People Images/Eminent Scientific Advisory Panel/Dr. CC Kartha.png" },
+  { name: "Dr. Neeraj Parakh", role: "Department of Cardiology", org: "AIIMS, New Delhi, India", image: "/People Images/Eminent Scientific Advisory Panel/Dr. Neeraj Parakh.png" },
   {
     name: "Dr. Samir Malhotra",
     role: "Department of Pharmacology",
     org: "PGIMER, Chandigarh, India",
+    image: "/People Images/Eminent Scientific Advisory Panel/Dr. Samir Malhotra.png",
   },
-  { name: "Dr. Nirmal Singh", org: "Punjabi University Patiala, Punjab, India" },
+  { name: "Dr. Nirmal Singh", org: "Punjabi University Patiala, Punjab, India", image: "/People Images/Eminent Scientific Advisory Panel/Dr. Nirmal Singh.png" },
 ];
 
 export const internationalSpeakers: Person[] = [

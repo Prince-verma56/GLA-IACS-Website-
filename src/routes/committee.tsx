@@ -366,7 +366,7 @@ function CommitteePage() {
                         org={person.org}
                         phone={person.phone}
                         image={person.image ?? null}
-                        variant="compact"
+                        variant="standard"
                       />
                     ))}
                   </StaggerReveal>
@@ -382,7 +382,7 @@ function CommitteePage() {
                         org={person.org}
                         phone={person.phone}
                         image={person.image ?? null}
-                        variant="compact"
+                        variant="standard"
                       />
                     ))}
                   </StaggerReveal>
