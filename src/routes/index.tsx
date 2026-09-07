@@ -275,7 +275,7 @@ function Hero() {
           </div>
 
           <h1 className="mt-4 md:mt-5 flex flex-col gap-1 md:gap-3">
-            <span className="font-[family-name:var(--font-display)] text-[12.5vw] leading-[1.05] tracking-tight text-white min-[390px]:text-[3rem] sm:text-[3.25rem] md:text-[3.5rem]">
+            <span className="font-[family-name:var(--font-display)] text-[10vw] leading-[1.05] tracking-tight text-white min-[390px]:text-[2.25rem] sm:text-[3rem] md:text-[3.5rem]">
               <span className="overflow-hidden block md:inline-block md:align-top">
                 <span className="gsap-title-1 block pb-1 md:inline-block">{firstWord}</span>
               </span>{" "}
@@ -398,7 +398,7 @@ function Theme() {
           <p className="eyebrow text-white/50">Conference Theme</p>
         </HorizontalReveal>
         <MaskReveal delay={0.1}>
-          <h2 className="display-lg mt-8 max-w-4xl text-white">
+          <h2 className="display-lg mt-8 max-w-4xl text-white break-words">
             Transforming Cardiovascular Care
             <br />
             Through Science, Technology
@@ -505,13 +505,13 @@ function SpeakerTeaser() {
         <div className="grid gap-10 md:grid-cols-12 md:items-center">
           <div className="md:col-span-5">
             <HorizontalReveal>
-              <p className="eyebrow text-white/50">International Speakers</p>
+              <p className="eyebrow text-white/50">IACS 2027</p>
             </HorizontalReveal>
             <MaskReveal delay={0.1}>
               <h2 className="display-md mt-5 text-white">
-                {internationalSpeakers.length} Distinguished
+                Distinguished International
                 <br />
-                International Faculty
+                Scientists
               </h2>
             </MaskReveal>
             <TextReveal delay={0.2}>
@@ -559,15 +559,18 @@ function SpeakerTeaser() {
                   </div>
                 </div>
               ))}
-              {/* Placeholder card hinting at more */}
-              <div className="flex-1 min-w-0 opacity-40">
-                <div className="bg-white/5 aspect-[3/4] flex items-center justify-center">
-                  <span className="text-2xl text-white/30 font-light">+{internationalSpeakers.length - 3}</span>
+              <Link
+                to="/speakers"
+                className="group flex-1 min-w-0 text-center"
+                aria-label="View all distinguished international scientists"
+              >
+                <div className="flex aspect-[3/4] items-center justify-center border border-white/15 bg-white/5 transition-colors group-hover:bg-white/10">
+                  <span className="text-sm uppercase tracking-[0.18em] text-white/55 group-hover:text-white/80">
+                    View all <span aria-hidden>→</span>
+                  </span>
                 </div>
-                <div className="mt-3">
-                  <p className="text-[10px] text-white/30">more speakers</p>
-                </div>
-              </div>
+                <p className="mt-3 text-[10px] text-white/30">distinguished scientists</p>
+              </Link>
             </StaggerReveal>
           </div>
         </div>

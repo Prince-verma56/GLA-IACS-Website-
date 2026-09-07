@@ -420,18 +420,20 @@ function CommitteePage() {
             </div>
 
             <StaggerReveal
-              as="ol"
-              className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3"
+              className="grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
               stagger={0.05}
             >
-              {scientificAdvisors.map((p, idx) => (
-                <DirectoryRow
-                  key={p.name}
-                  index={idx + 1}
-                  name={p.name}
-                  {...(p.role ? { role: p.role } : {})}
-                  {...(p.org ? { org: p.org } : {})}
-                />
+              {scientificAdvisors.map((p) => (
+                <div key={p.name} className="flex justify-center">
+                  <PersonCard
+                    name={p.name}
+                    role={p.role}
+                    org={p.org}
+                    image={p.image ?? null}
+                    variant="featured"
+                    align="center"
+                  />
+                </div>
               ))}
             </StaggerReveal>
 
@@ -446,18 +448,20 @@ function CommitteePage() {
                 </h3>
               </MaskReveal>
               <StaggerReveal
-                as="ol"
-                className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3"
+                className="grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
                 stagger={0.05}
               >
-                {eminentPanel.map((p, idx) => (
-                  <DirectoryRow
-                    key={p.name}
-                    index={idx + 1}
-                    name={p.name}
-                    {...(p.role ? { role: p.role } : {})}
-                    {...(p.org ? { org: p.org } : {})}
-                  />
+                {eminentPanel.map((p) => (
+                  <div key={p.name} className="flex justify-center">
+                    <PersonCard
+                      name={p.name}
+                      role={p.role}
+                      org={p.org}
+                      image={p.image ?? null}
+                      variant="featured"
+                      align="center"
+                    />
+                  </div>
                 ))}
               </StaggerReveal>
             </div>
@@ -562,7 +566,7 @@ function CommitteePage() {
             </div>
             <div className="border-t border-rule mt-12 pt-12">
               <AdvisoryBlock
-                label="University Members — Organizing Committee"
+                label="University Advisory Committee"
                 names={advisoryUniversity}
               />
             </div>

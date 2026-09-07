@@ -2,8 +2,8 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { navigation, conference } from "@/lib/conference";
 
-const PRIMARY_NAV = navigation.slice(0, 7);
-const MORE_NAV = navigation.slice(7);
+const PRIMARY_NAV = navigation.slice(0, 8);
+const MORE_NAV = navigation.slice(8);
 
 export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
@@ -54,10 +54,10 @@ export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
           : "bg-transparent"
       }`}
     >
-      <div className="shell flex h-[74px] items-center justify-between gap-6">
+      <div className="shell flex h-18.5 items-center justify-between gap-6">
         <Link to="/" className="gsap-nav-logo flex shrink-0 items-baseline gap-3">
           <span
-            className={`font-[family-name:var(--font-display)] text-[1.0625rem] font-semibold tracking-tight ${
+            className={`font-display text-[1.0625rem] font-semibold tracking-tight ${
               solid ? "text-primary-deep" : "text-white"
             }`}
           >
@@ -109,7 +109,7 @@ export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
             </button>
             <div
               role="menu"
-              className={`absolute right-0 top-full mt-2.5 min-w-[172px] overflow-hidden rounded-sm border border-border bg-background shadow-xl shadow-black/10 transition-all duration-200 origin-top ${
+              className={`absolute right-0 top-full mt-2.5 min-w-43 overflow-hidden rounded-sm border border-border bg-background shadow-xl shadow-black/10 transition-all duration-200 origin-top ${
                 moreOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-1.5 pointer-events-none"
               }`}
               style={{ zIndex: 60 }}
@@ -182,10 +182,10 @@ export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
           className="lg:hidden"
         >
           <span className="sr-only">Menu</span>
-          <div className="flex w-6 flex-col gap-[5px]">
-            <span className={`h-px w-full transition-all duration-300 ${solid ? "bg-foreground" : "bg-white"} ${open ? "translate-y-[7px] rotate-45" : ""}`} />
+          <div className="flex w-6 flex-col gap-1.25">
+            <span className={`h-px w-full transition-all duration-300 ${solid ? "bg-foreground" : "bg-white"} ${open ? "translate-y-1.75 rotate-45" : ""}`} />
             <span className={`h-px w-full transition-all duration-300 ${solid ? "bg-foreground" : "bg-white"} ${open ? "opacity-0" : ""}`} />
-            <span className={`h-px w-4 transition-all duration-300 ${solid ? "bg-foreground" : "bg-white"} ${open ? "w-full -translate-y-[9px] -rotate-45" : ""}`} />
+            <span className={`h-px w-4 transition-all duration-300 ${solid ? "bg-foreground" : "bg-white"} ${open ? "w-full -translate-y-2.25 -rotate-45" : ""}`} />
           </div>
         </button>
       </div>

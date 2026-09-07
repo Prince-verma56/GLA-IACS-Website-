@@ -1,18 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { conference } from "@/lib/conference";
-
-const footerNav = [
-  { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
-  { label: "Committee", to: "/committee" },
-  { label: "Speakers", to: "/speakers" },
-  { label: "Programme", to: "/programme" },
-  { label: "Abstracts", to: "/abstracts" },
-  { label: "Registration", to: "/registration" },
-  { label: "Sponsorship", to: "/sponsorship" },
-  { label: "Venue", to: "/venue" },
-  { label: "Contact", to: "/contact" },
-];
+import { conference, navigation } from "@/lib/conference";
 
 export function SiteFooter() {
   return (
@@ -35,7 +22,7 @@ export function SiteFooter() {
         <div className="md:col-span-7 lg:col-span-5">
           <p className="eyebrow text-white/50">Navigation</p>
           <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
-            {footerNav.map((l) => (
+            {navigation.map((l) => (
               <li key={l.to}>
                 <Link to={l.to} className="transition-colors hover:text-white">
                   {l.label}

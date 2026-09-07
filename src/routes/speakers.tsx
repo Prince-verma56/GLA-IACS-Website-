@@ -21,13 +21,13 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 export const Route = createFileRoute("/speakers")({
   head: () => ({
     meta: [
-      { title: "International Speakers — IACS 2027, GLA University Mathura" },
+      { title: "Distinguished International Scientists — IACS 2027, GLA University Mathura" },
       {
         name: "description",
         content:
-          "Distinguished international faculty and speakers at the IACS 2027 International Conference on Cardiovascular Sciences, GLA University, Mathura.",
+          "Distinguished international scientists at the IACS 2027 International Conference on Cardiovascular Sciences, GLA University, Mathura.",
       },
-      { property: "og:title", content: "International Speakers — IACS 2027" },
+      { property: "og:title", content: "Distinguished International Scientists — IACS 2027" },
       {
         property: "og:description",
         content: "World-leading cardiovascular scientists and clinicians presenting at IACS 2027.",
@@ -100,24 +100,21 @@ function SpeakersPage() {
         {/* ── PAGE HERO ─────────────────────────────────────── */}
         <InternalPageHero hero={pageHeroes.speakers} />
 
-        {/* ── COUNT STRIP ───────────────────────────────────── */}
+        {/* ── CONTEXT STRIP ─────────────────────────────────── */}
         <section className="border-b border-rule">
-          <div className="shell py-6 flex items-center gap-10">
+          <div className="shell flex flex-wrap items-center gap-x-8 gap-y-3 py-6 md:gap-x-10">
             <div>
-              <span className="text-3xl font-bold text-primary tabular-nums">
-                {internationalSpeakers.length}
+              <span className="text-sm font-medium uppercase tracking-widest text-foreground/70">
+                Distinguished International Scientists
               </span>
-              <span className="ml-2 text-sm text-foreground/50">International Speakers</span>
             </div>
-            <div className="h-5 w-px bg-rule" />
+            <div className="hidden h-5 w-px bg-rule sm:block" />
             <div>
-              <span className="text-3xl font-bold text-primary tabular-nums">15+</span>
-              <span className="ml-2 text-sm text-foreground/50">Countries Represented</span>
+              <span className="text-sm text-foreground/50">Global scientific perspectives</span>
             </div>
-            <div className="h-5 w-px bg-rule" />
+            <div className="hidden h-5 w-px bg-rule sm:block" />
             <div>
-              <span className="text-3xl font-bold text-primary tabular-nums">3</span>
-              <span className="ml-2 text-sm text-foreground/50">Conference Days</span>
+              <span className="text-sm text-foreground/50">11–13 February 2027</span>
             </div>
           </div>
         </section>

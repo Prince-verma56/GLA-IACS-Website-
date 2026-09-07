@@ -10,11 +10,9 @@ import {
 } from "@/components/motion/ScrollReveal";
 import { InternalPageHero } from "@/components/InternalPageHero";
 import { pageHeroes } from "@/lib/pageHeroes";
+import { SectionTransition } from "@/components/editorial/SectionTransition";
 import {
   conference,
-  orations,
-  symposia,
-  youngInvestigatorAwards,
   researchAreas,
 } from "@/lib/conference";
 import { cn } from "@/lib/utils";
@@ -38,14 +36,13 @@ export const Route = createFileRoute("/programme")({
 /* ── CONSTANTS & ASSETS ────────────────────────────────────────────── */
 
 const days = [
-  { id: "11", label: "11 February", sub: "Wednesday" },
-  { id: "12", label: "12 February", sub: "Thursday" },
-  { id: "13", label: "13 February", sub: "Friday" },
+  { id: "11", label: "11 February", sub: "Thursday" },
+  { id: "12", label: "12 February", sub: "Friday" },
+  { id: "13", label: "13 February", sub: "Saturday" },
 ];
 
 const programmeVisuals = {
   conference: "/images/programme/scientific-conference.jpg",
-  components: "/images/programme/scientific-symposium.jpg",
   topics: "/images/programme/cardiovascular-research.jpg"
 };
 
@@ -73,33 +70,6 @@ function ScientificEditorialMotif({ className }: { className?: string }) {
         <circle cx="800" cy="300" r="4" fill="currentColor" />
         <circle cx="860" cy="200" r="3" fill="currentColor" />
         <circle cx="900" cy="300" r="5" fill="currentColor" />
-      </svg>
-    </div>
-  );
-}
-
-function BrushSeparatorWhiteToIvory() {
-  return (
-    <div className="w-full h-16 md:h-24 relative z-10 overflow-hidden pointer-events-none">
-      <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute top-0 w-full h-full" aria-hidden="true">
-        <path fill="#ffffff" d="M0,0 L1440,0 L1440,40 C1100,60 900,10 600,30 C300,50 150,20 0,40 Z" />
-        <path fill="#f3f4f1" d="M-20,35 C200,55 350,15 650,40 C950,65 1150,20 1460,45 L1460,120 L-20,120 Z" opacity="0.6" />
-        <path fill="#faf8f5" d="M-20,50 C250,70 450,30 750,55 C1050,80 1250,35 1460,60 L1460,120 L-20,120 Z" opacity="0.9" />
-        <path fill="#fcfbf9" d="M-20,65 C300,85 500,45 800,70 C1100,95 1300,50 1460,75 L1460,120 L-20,120 Z" />
-        <path fill="none" stroke="#2c4c3b" strokeWidth="1.5" d="M-10,75 C150,75 200,105 220,65 L230,25 L245,115 L255,75 C400,75 600,95 800,80 C950,70 1000,100 1020,60 L1030,20 L1045,110 L1055,70 C1200,70 1300,85 1450,80" opacity="0.12" vectorEffect="non-scaling-stroke" />
-      </svg>
-    </div>
-  );
-}
-
-function BrushSeparatorIvoryToWhite() {
-  return (
-    <div className="w-full h-16 md:h-24 relative z-10 overflow-hidden pointer-events-none">
-      <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute top-0 w-full h-full" aria-hidden="true">
-        <path fill="#fcfbf9" d="M0,0 L1440,0 L1440,30 C1200,50 900,15 500,45 C200,65 100,25 0,35 Z" />
-        <path fill="#faf8f5" d="M-20,30 C200,40 300,10 600,35 C900,60 1100,20 1460,50 L1460,120 L-20,120 Z" opacity="0.7" />
-        <path fill="#ffffff" d="M-20,45 C250,60 400,25 700,50 C1000,75 1250,35 1460,65 L1460,120 L-20,120 Z" />
-        <path fill="none" stroke="#2c4c3b" strokeWidth="1" d="M-10,60 C200,70 250,30 300,55 C400,100 500,40 600,65 C750,100 800,50 900,70 C1100,100 1200,40 1450,65" opacity="0.1" vectorEffect="non-scaling-stroke" />
       </svg>
     </div>
   );
@@ -213,66 +183,11 @@ function Programme() {
           </div>
         </section>
 
-        <BrushSeparatorWhiteToIvory />
+        <SectionTransition variant="brush" />
 
-        {/* ── SCIENTIFIC COMPONENTS ─────────────────────── */}
-        <section className="bg-[#fcfbf9] py-20 md:py-28 relative">
-          <div className="shell">
-            <div className="grid gap-16 lg:grid-cols-12 items-start">
-              
-              <div className="lg:col-span-7">
-                <HorizontalReveal>
-                  <p className="eyebrow text-primary mb-3">01</p>
-                </HorizontalReveal>
-                <MaskReveal delay={0.1}>
-                  <h2 className="display-sm mb-12">Scientific Components</h2>
-                </MaskReveal>
-                
-                <div className="grid md:grid-cols-2 gap-12 border-t border-rule pt-8">
-                  <StaggerReveal delay={0.2}>
-                    <h3 className="font-mono text-xs tracking-widest uppercase text-muted-foreground mb-6">Orations + Symposia</h3>
-                    <ul className="space-y-4">
-                      {[...orations, ...symposia].map((item) => (
-                        <li key={item} className="text-[0.9375rem] font-medium leading-snug flex gap-3">
-                          <span className="text-primary/40">•</span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </StaggerReveal>
-                  
-                  <StaggerReveal delay={0.3}>
-                    <h3 className="font-mono text-xs tracking-widest uppercase text-muted-foreground mb-6">Young Investigators</h3>
-                    <ul className="space-y-4">
-                      {youngInvestigatorAwards.map((item) => (
-                        <li key={item} className="text-[0.9375rem] font-medium leading-snug flex gap-3">
-                          <span className="text-primary/40">•</span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </StaggerReveal>
-                </div>
-              </div>
-
-              <div className="lg:col-span-5 lg:pl-10">
-                <TextReveal delay={0.4}>
-                  <EditorialImage 
-                    src={programmeVisuals.components} 
-                    alt="Cardiovascular researcher presenting" 
-                    className="aspect-[4/5] w-full"
-                  />
-                </TextReveal>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        <BrushSeparatorIvoryToWhite />
 
         {/* ── SCIENTIFIC TOPICS INDEX ────────────────────── */}
-        <section className="bg-white py-20 md:py-28 relative overflow-hidden">
+        <section className="bg-surface py-20 md:py-28 relative overflow-hidden">
           <ScientificEditorialMotif />
           <div className="shell relative z-10">
             <div className="flex flex-col lg:flex-row items-end gap-12 lg:gap-[8%] mb-16">
@@ -320,55 +235,9 @@ function Programme() {
           </div>
         </section>
 
-        <BrushSeparatorWhiteToIvory />
 
-        {/* ── ABSTRACT SUBMISSION GUIDELINES ─────────────── */}
-        <section className="bg-[#fcfbf9] py-20 md:py-28 relative">
-          <div className="shell relative z-10">
-            <div className="mb-12">
-              <HorizontalReveal>
-                <p className="eyebrow text-primary mb-3">03</p>
-              </HorizontalReveal>
-              <MaskReveal delay={0.1}>
-                <h2 className="display-sm">Abstract Submission Guidelines</h2>
-              </MaskReveal>
-            </div>
 
-            <StaggerReveal className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 border-t border-rule pt-12" stagger={0.05}>
-              <div className="bg-white p-6 border border-black/5 rounded-sm shadow-sm">
-                <dt className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-4">Deadline</dt>
-                <dd className="font-[family-name:var(--font-display)] text-2xl tracking-tight">25 December 2026</dd>
-              </div>
-              
-              <div className="bg-white p-6 border border-black/5 rounded-sm shadow-sm">
-                <dt className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-4">Format</dt>
-                <dd className="text-sm leading-relaxed text-muted-foreground">
-                  Aim, Method, Result, Conclusion, 3-5 key words.<br/>
-                  Max 250 words. Times New Roman, 12 pt, double line spacing.
-                </dd>
-              </div>
-              
-              <div className="bg-white p-6 border border-black/5 rounded-sm shadow-sm">
-                <dt className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-4">Oral / Online</dt>
-                <dd className="text-sm leading-relaxed text-muted-foreground">
-                  Maximum 8 minutes presentation followed by 2 minutes of discussion.
-                </dd>
-              </div>
-              
-              <div className="bg-white p-6 border border-black/5 rounded-sm shadow-sm">
-                <dt className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-4">Poster Size</dt>
-                <dd className="font-[family-name:var(--font-display)] text-2xl tracking-tight">3 × 5 feet</dd>
-              </div>
-            </StaggerReveal>
-          </div>
-        </section>
-
-        {/* ── MAP -> CTA TRANSITION ─────────────────────────── */}
-        <div className="w-full h-12 md:h-20 bg-primary-deep relative z-10 overflow-hidden pointer-events-none">
-          <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute top-0 w-full h-full text-[#fcfbf9]" aria-hidden="true">
-            <path fill="currentColor" d="M0,0 L1440,120 L1440,0 Z"></path>
-          </svg>
-        </div>
+        <SectionTransition variant="green-entry" />
 
         {/* ── FINAL CTA ─────────────────────────────────────── */}
         <section className="bg-primary-deep pb-20 md:pb-32 relative overflow-hidden">

@@ -26,7 +26,7 @@ export function InternalPageHero({ hero, children }: { hero: PageHeroConfig, chi
       
       {/* Content Container */}
       <div className="shell relative z-10 w-full">
-        <div className="max-w-3xl space-y-5 md:space-y-6">
+        <div className="max-w-3xl w-full space-y-5 md:space-y-6 overflow-hidden">
           <HorizontalReveal>
             <p className="eyebrow text-white/80 font-semibold tracking-widest uppercase text-xs md:text-sm">
               {hero.eyebrow}
@@ -34,7 +34,7 @@ export function InternalPageHero({ hero, children }: { hero: PageHeroConfig, chi
           </HorizontalReveal>
           
           <MaskReveal delay={0.1}>
-            <h1 className="display-lg text-white font-bold leading-tight">
+            <h1 className="display-lg text-white font-bold leading-tight break-words">
               {hero.title}
             </h1>
           </MaskReveal>

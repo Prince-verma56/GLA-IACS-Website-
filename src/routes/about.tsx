@@ -18,6 +18,7 @@ import { conference, keyDates, researchAreas } from "@/lib/conference";
 import { InternalPageHero } from "@/components/InternalPageHero";
 import { pageHeroes } from "@/lib/pageHeroes";
 import { MedicalFloatingVisuals } from "@/components/Elements/MedicalFloatingVisuals";
+import { SectionTransition } from "@/components/editorial/SectionTransition";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -47,9 +48,9 @@ function AboutPage() {
         {/* ── HERO ─────────────────────────────────────────── */}
         <InternalPageHero hero={pageHeroes.about}>
           <TextReveal delay={0.35}>
-            <div className="border-l-2 border-primary/20 pl-5">
-              <p className="text-sm uppercase tracking-[0.18em] text-foreground/50">Conference Theme</p>
-              <p className="mt-2 text-xl font-semibold leading-snug text-foreground">
+            <div className="border-l-2 border-white/20 pl-5">
+              <p className="text-sm uppercase tracking-[0.18em] text-white/70">Conference Theme</p>
+              <p className="mt-2 text-xl font-semibold leading-snug text-white">
                 {conference.theme.line1}
                 <br />
                 {conference.theme.line2}
@@ -116,12 +117,7 @@ function AboutPage() {
           </div>
         </section>
 
-        {/* Soft Wave Transition */}
-        <div className="w-full overflow-hidden leading-none bg-background">
-          <svg className="w-full block text-[#f7f5f0] h-8 md:h-16" viewBox="0 0 1440 120" preserveAspectRatio="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,0 C480,120 960,120 1440,0 L1440,120 L0,120 Z" />
-          </svg>
-        </div>
+        <SectionTransition variant="brush" />
 
         {/* ── HOST INSTITUTION ──────────────────────────────── */}
         <section className="bg-[#f7f5f0] py-24 md:py-32">
@@ -186,6 +182,8 @@ function AboutPage() {
           </div>
         </section>
 
+        <SectionTransition variant="green-entry" />
+
         {/* ── KEY DATES ─────────────────────────────────────── */}
         <section className="bg-primary-deep py-20 md:py-28 relative overflow-hidden">
           <HeartbeatLine className="absolute bottom-0 left-0 right-0 text-white opacity-[0.06] w-full" />
@@ -217,6 +215,8 @@ function AboutPage() {
             </div>
           </div>
         </section>
+
+        <SectionTransition variant="green-exit" />
 
         {/* ── SCIENTIFIC SCOPE ──────────────────────────────── */}
         <section className="shell relative py-20 md:py-28">
@@ -256,14 +256,10 @@ function AboutPage() {
           </div>
         </section>
 
+        <SectionTransition variant="green-entry" />
+
         {/* ── CTA ───────────────────────────────────────────── */}
         <section className="relative overflow-hidden bg-primary-deep py-24 md:py-32">
-          {/* Top Curve Overlay for seamless background image transition */}
-          <div className="absolute top-0 left-0 right-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
-            <svg className="w-full block text-background h-8 md:h-16" viewBox="0 0 1440 120" preserveAspectRatio="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0,120 C480,0 960,0 1440,120 L1440,0 L0,0 Z" />
-            </svg>
-          </div>
           {conference.joinConferenceBackground ? (
             <div 
               className="absolute inset-0 w-full h-full bg-cover bg-center"

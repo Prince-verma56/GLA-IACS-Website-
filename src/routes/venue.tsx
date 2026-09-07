@@ -12,6 +12,7 @@ import {
 import { InternalPageHero } from "@/components/InternalPageHero";
 import { pageHeroes } from "@/lib/pageHeroes";
 import { cn } from "@/lib/utils";
+import { SectionTransition } from "@/components/editorial/SectionTransition";
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -21,12 +22,12 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 export const Route = createFileRoute("/venue")({
   head: () => ({
     meta: [
-      { title: "Venue & Destination — IACS 2027, GLA University Mathura" },
+      { title: "Sightseeing & Conference Venue — IACS 2027, GLA University Mathura" },
       {
         name: "description",
         content: `Conference venue, campus information and sightseeing destinations for the ${conference.name} at GLA University, Mathura.`,
       },
-      { property: "og:title", content: "Venue & Destination — IACS 2027" },
+      { property: "og:title", content: "Sightseeing & Conference Venue — IACS 2027" },
       {
         property: "og:description",
         content:
@@ -126,12 +127,7 @@ function Venue() {
           </div>
         </section>
 
-        {/* ── VENUE -> DESTINATIONS TRANSITION ──────────────── */}
-        <div className="w-full h-12 md:h-20 bg-[#f0f2f5] relative z-10 overflow-hidden">
-          <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute top-0 w-full h-full text-white" aria-hidden="true">
-            <path fill="currentColor" d="M0,0 C400,20 800,120 1440,30 L1440,0 L0,0 Z"></path>
-          </svg>
-        </div>
+        <SectionTransition variant="brush" />
 
         {/* ── DESTINATIONS GRID ─────────────────────────────── */}
         <section className="bg-[#f0f2f5] relative pt-8 pb-20 md:pt-12 md:pb-28 overflow-hidden">
@@ -207,12 +203,7 @@ function Venue() {
           </div>
         </section>
 
-        {/* ── DESTINATIONS -> MAP TRANSITION ────────────────── */}
-        <div className="w-full h-12 md:h-24 bg-white relative z-10 overflow-hidden">
-          <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute top-0 w-full h-full text-[#f0f2f5]" aria-hidden="true">
-            <path fill="currentColor" d="M0,120 C350,10 700,120 1440,40 L1440,0 L0,0 Z"></path>
-          </svg>
-        </div>
+        <SectionTransition variant="contour" />
 
         {/* ── INTERACTIVE MAP SECTION ───────────────────────── */}
         <section id="map-section" className="py-16 md:py-24 bg-white">
@@ -299,12 +290,7 @@ function Venue() {
           </div>
         </section>
 
-        {/* ── MAP -> CTA TRANSITION ─────────────────────────── */}
-        <div className="w-full h-12 md:h-20 bg-primary-deep relative z-10 overflow-hidden">
-          <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute top-0 w-full h-full text-white" aria-hidden="true">
-            <path fill="currentColor" d="M0,0 L1440,120 L1440,0 Z"></path>
-          </svg>
-        </div>
+        <SectionTransition variant="green-entry" />
 
         {/* ── SPONSORSHIP CTA STRIP ─────────────────────────── */}
         <section className="bg-primary-deep pb-12 md:pb-16">

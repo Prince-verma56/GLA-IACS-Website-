@@ -12,6 +12,7 @@ import { InternalPageHero } from "@/components/InternalPageHero";
 import { pageHeroes } from "@/lib/pageHeroes";
 import { conference, researchAreas } from "@/lib/conference";
 import { cn } from "@/lib/utils";
+import { SectionTransition } from "@/components/editorial/SectionTransition";
 
 export const Route = createFileRoute("/abstracts")({
   head: () => ({
@@ -162,29 +163,7 @@ function Abstracts() {
           </div>
         </section>
 
-        {/* ── VENUE -> STRUCTURE TRANSITION (BRUSH STROKES) ──────────────── */}
-        <div className="w-full h-16 md:h-[100px] relative z-10 overflow-hidden pointer-events-none">
-          <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute top-0 w-full h-full" aria-hidden="true">
-            {/* Base top layer (white) */}
-            <path fill="#ffffff" d="M0,0 L1440,0 L1440,40 C1100,60 900,10 600,30 C300,50 150,20 0,40 Z" />
-            {/* Brush Stroke 1: Pale sage */}
-            <path fill="#f3f4f1" d="M-20,35 C200,55 350,15 650,40 C950,65 1150,20 1460,45 L1460,120 L-20,120 Z" opacity="0.6" />
-            {/* Brush Stroke 2: Subtle warm ivory */}
-            <path fill="#faf8f5" d="M-20,50 C250,70 450,30 750,55 C1050,80 1250,35 1460,60 L1460,120 L-20,120 Z" opacity="0.9" />
-            {/* Base bottom layer (warm ivory background matching next section) */}
-            <path fill="#fcfbf9" d="M-20,65 C300,85 500,45 800,70 C1100,95 1300,50 1460,75 L1460,120 L-20,120 Z" />
-            
-            {/* Editorial Scientific Line */}
-            <path 
-              fill="none" 
-              stroke="#2c4c3b" 
-              strokeWidth="1.5" 
-              d="M-10,75 C150,75 200,105 220,65 L230,25 L245,115 L255,75 C400,75 600,95 800,80 C950,70 1000,100 1020,60 L1030,20 L1045,110 L1055,70 C1200,70 1300,85 1450,80" 
-              opacity="0.12" 
-              vectorEffect="non-scaling-stroke" 
-            />
-          </svg>
-        </div>
+        <SectionTransition variant="brush" />
 
         {/* ── ABSTRACT STRUCTURE & FORMAT ──────────────────── */}
         <section className="bg-[#fcfbf9] relative pt-12 pb-20 md:pt-16 md:pb-28 overflow-hidden">
@@ -258,12 +237,7 @@ function Abstracts() {
           </div>
         </section>
 
-        {/* ── STRUCTURE -> PRESENTATION TRANSITION ──────────── */}
-        <div className="w-full h-12 md:h-20 bg-white relative z-10 overflow-hidden pointer-events-none">
-          <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute top-0 w-full h-full text-[#fcfbf9]" aria-hidden="true">
-            <path fill="currentColor" d="M0,120 C350,10 700,120 1440,40 L1440,0 L0,0 Z"></path>
-          </svg>
-        </div>
+        <SectionTransition variant="contour" />
 
         {/* ── PRESENTATION GUIDELINES ───────────────────────── */}
         <section className="bg-white py-16 md:py-20">
@@ -403,12 +377,7 @@ function Abstracts() {
           </div>
         </section>
 
-        {/* ── MAP -> CTA TRANSITION ─────────────────────────── */}
-        <div className="w-full h-12 md:h-20 bg-primary-deep relative z-10 overflow-hidden pointer-events-none">
-          <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute top-0 w-full h-full text-surface" aria-hidden="true">
-            <path fill="currentColor" d="M0,0 L1440,120 L1440,0 Z"></path>
-          </svg>
-        </div>
+        <SectionTransition variant="green-entry" />
 
         {/* ── FINAL CTA ─────────────────────────────────────── */}
         <section className="bg-primary-deep pb-20 md:pb-32 relative overflow-hidden">

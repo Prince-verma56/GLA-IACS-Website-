@@ -40,9 +40,10 @@ export const navigation = [
   { label: "Speakers", to: "/speakers" },
   { label: "Programme", to: "/programme" },
   { label: "Abstracts", to: "/abstracts" },
+  { label: "Awards & Orations", to: "/awards" },
   { label: "Registration", to: "/registration" },
   { label: "Sponsorship", to: "/sponsorship" },
-  { label: "Venue", to: "/venue" },
+  { label: "Sightseeing", to: "/venue" },
   { label: "Contact", to: "/contact" },
 ] as const;
 
@@ -189,9 +190,9 @@ export const leadership: { group: string; people: Person[] }[] = [
   {
     group: "Joint Secretaries",
     people: [
-      { name: "Dr. Ahsas Goyal", phone: "+91 9012204640" },
-      { name: "Dr. Niraj Kumar Singh", phone: "+91 8475985031" },
-      { name: "Dr. Vibhav Varshney", phone: "+91 7417540181" },
+      { name: "Dr. Ahsas Goyal", phone: "+91 9012204640", image: "/People Images/Co-Organizing & Joint Secretaries/Dr. Ahsas Goyal.png" },
+      { name: "Dr. Niraj Kumar Singh", phone: "+91 8475985031", image: "/People Images/Co-Organizing & Joint Secretaries/Dr. Niraj Kumar Singh.png" },
+      { name: "Dr. Vibhav Varshney", phone: "+91 7417540181", image: "/People Images/Co-Organizing & Joint Secretaries/Dr. Vibhav Varshney.png" },
     ],
   },
 ];
@@ -201,19 +202,22 @@ export const scientificAdvisors: Person[] = [
     name: "Dr. Dinesh Kumar",
     role: "Head of Pediatric Cardiology",
     org: "Dr. Ram Manohar Lohia Hospital, New Delhi, India",
+    image: "/People Images/Distinguished Scientific Advisors/Dr. Dinesh Kumar.png",
   },
-  { name: "Dr. Akhil Sharma", role: "Department of Cardiology", org: "KGMU, Lucknow, India" },
-  { name: "Dr. Satyavir Yadav", role: "Department of Cardiology", org: "AIIMS, New Delhi, India" },
-  { name: "Dr. Raj Kumar", role: "Department of Physiology", org: "AIIMS, New Delhi, India" },
+  { name: "Dr. Akhil Sharma", role: "Department of Cardiology", org: "KGMU, Lucknow, India", image: "/People Images/Distinguished Scientific Advisors/Dr. Akhil Sharma.png" },
+  { name: "Dr. Satyavir Yadav", role: "Department of Cardiology", org: "AIIMS, New Delhi, India", image: "/People Images/Distinguished Scientific Advisors/Dr. Satyavir Yadav.png" },
+  { name: "Dr. Raj Kumar", role: "Department of Physiology", org: "AIIMS, New Delhi, India", image: "/People Images/Distinguished Scientific Advisors/Dr. Raj Kumar.png" },
   {
     name: "Dr. Mayank Yadav",
     role: "Cardio-Thoracic Sciences Centre (CTVS)",
     org: "AIIMS, New Delhi, India",
+    image: "/People Images/Distinguished Scientific Advisors/Dr. Mayank Yadav.png",
   },
   {
     name: "Dr. Rajeev Taliyan",
     role: "Head, Department of Pharmacy",
     org: "BITS Pilani, Rajasthan, India",
+    image: "/People Images/Distinguished Scientific Advisors/Dr. Rajeev Taliyan.png",
   },
 ];
 
@@ -651,7 +655,7 @@ export const orations = [
 
 export const symposia = [
   "Riya and Paul Ganguly Symposium",
-  "N. Radhkrishnan Symposium",
+  "N. Radhakrishnan Symposium",
   "C. R. Soman Symposium",
 ];
 

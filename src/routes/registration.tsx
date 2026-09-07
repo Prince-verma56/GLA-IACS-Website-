@@ -12,6 +12,7 @@ import { pageHeroes } from "@/lib/pageHeroes";
 import { keyDates, conference, registrationFees, bankDetails } from "@/lib/conference";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import { SectionTransition } from "@/components/editorial/SectionTransition";
 
 export const Route = createFileRoute("/registration")({
   head: () => ({
@@ -55,47 +56,6 @@ function ScientificEditorialMotif({ className }: { className?: string }) {
         <circle cx="800" cy="300" r="4" fill="currentColor" />
         <circle cx="860" cy="200" r="3" fill="currentColor" />
         <circle cx="900" cy="300" r="5" fill="currentColor" />
-      </svg>
-    </div>
-  );
-}
-
-function BrushSeparatorWhiteToIvory() {
-  return (
-    <div className="w-full h-16 md:h-[90px] relative z-10 overflow-hidden pointer-events-none" aria-hidden="true">
-      <svg viewBox="0 0 1440 110" preserveAspectRatio="none" className="absolute top-0 w-full h-full">
-        <path fill="#ffffff" d="M0,0 L1440,0 L1440,35 C1100,55 900,8 600,28 C300,48 150,18 0,38 Z" />
-        <path fill="#f3f4f1" d="M-20,30 C200,50 350,12 650,36 C950,60 1150,18 1460,42 L1460,110 L-20,110 Z" opacity="0.55" />
-        <path fill="#faf8f5" d="M-20,44 C250,64 450,26 750,50 C1050,74 1250,30 1460,55 L1460,110 L-20,110 Z" opacity="0.9" />
-        <path fill="#fcfbf9" d="M-20,60 C300,78 500,42 800,65 C1100,88 1300,48 1460,70 L1460,110 L-20,110 Z" />
-        <path fill="none" stroke="#2c4c3b" strokeWidth="1.5" d="M-10,68 C150,68 200,98 220,58 L230,18 L245,108 L255,68 C400,68 600,88 800,73 C950,63 1000,93 1020,53 L1030,13 L1045,103 L1055,63 C1200,63 1300,78 1450,73" opacity="0.12" vectorEffect="non-scaling-stroke" />
-      </svg>
-    </div>
-  );
-}
-
-function BrushSeparatorIvoryToWhite() {
-  return (
-    <div className="w-full h-16 md:h-[90px] relative z-10 overflow-hidden pointer-events-none" aria-hidden="true">
-      <svg viewBox="0 0 1440 110" preserveAspectRatio="none" className="absolute top-0 w-full h-full">
-        <path fill="#fcfbf9" d="M0,0 L1440,0 L1440,35 C1100,55 900,8 600,28 C300,48 150,18 0,38 Z" />
-        <path fill="#f3f4f1" d="M-20,30 C200,50 350,12 650,36 C950,60 1150,18 1460,42 L1460,110 L-20,110 Z" opacity="0.5" />
-        <path fill="#faf8f5" d="M-20,44 C250,64 450,26 750,50 C1050,74 1250,30 1460,55 L1460,110 L-20,110 Z" opacity="0.9" />
-        <path fill="#ffffff" d="M-20,60 C300,78 500,42 800,65 C1100,88 1300,48 1460,70 L1460,110 L-20,110 Z" />
-        <path fill="none" stroke="#2c4c3b" strokeWidth="1.5" d="M-10,68 C150,68 200,98 220,58 L230,18 L245,108 L255,68 C400,68 600,88 800,73 C950,63 1000,93 1020,53 L1030,13 L1045,103 L1055,63 C1200,63 1300,78 1450,73" opacity="0.10" vectorEffect="non-scaling-stroke" />
-      </svg>
-    </div>
-  );
-}
-
-function BrushSeparatorToGreen() {
-  return (
-    <div className="w-full h-16 md:h-[90px] relative z-10 overflow-hidden pointer-events-none" aria-hidden="true">
-      <svg viewBox="0 0 1440 110" preserveAspectRatio="none" className="absolute top-0 w-full h-full">
-        <path fill="#ffffff" d="M0,0 L1440,0 L1440,35 C1100,55 900,8 600,28 C300,48 150,18 0,38 Z" />
-        <path fill="#f3f4f1" d="M-20,30 C200,50 350,12 650,36 C950,60 1150,18 1460,42 L1460,110 L-20,110 Z" opacity="0.55" />
-        <path fill="#2c4c3b" d="M-20,55 C250,75 500,35 800,60 C1100,85 1300,45 1460,70 L1460,110 L-20,110 Z" opacity="0.4" />
-        <path fill="#1e3329" d="M-20,70 C300,88 500,52 800,75 C1100,98 1300,62 1460,82 L1460,110 L-20,110 Z" />
       </svg>
     </div>
   );
@@ -249,7 +209,7 @@ function Registration() {
           </div>
         </section>
 
-        <BrushSeparatorWhiteToIvory />
+        <SectionTransition variant="brush" />
 
         {/* Bank Details */}
         <section id="bank-details" className="bg-[#fcfbf9] py-20 md:py-28 relative z-10 scroll-mt-[74px] overflow-hidden">
@@ -313,7 +273,7 @@ function Registration() {
           </div>
         </section>
 
-        <BrushSeparatorIvoryToWhite />
+        <SectionTransition variant="contour" />
 
         {/* QR Code Registration Journey */}
         <section id="qr-codes" className="bg-white py-20 md:py-28 relative z-10 scroll-mt-[74px]">
@@ -405,7 +365,7 @@ function Registration() {
           </div>
         </section>
 
-        <BrushSeparatorToGreen />
+        <SectionTransition variant="footer-entry" />
 
       </main>
       <SiteFooter />
