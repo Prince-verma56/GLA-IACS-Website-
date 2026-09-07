@@ -1,4 +1,4 @@
-﻿import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { InternalPageHero } from "@/components/InternalPageHero";
@@ -41,7 +41,7 @@ const registrationVisuals = {
   paymentDetails: "/images/registration/payment-details.jpg",
 };
 
-const PAYMENT_QR_IMAGE = "/QR Codes/QR for Payment.png";
+const PAYMENT_QR_IMAGE = "/QR Codes/QR for Payment.jpeg";
 const REGISTRATION_QR_IMAGE = "/QR Codes/QR for Registration.png";
 
 function ScientificEditorialMotif({ className }: { className?: string }) {

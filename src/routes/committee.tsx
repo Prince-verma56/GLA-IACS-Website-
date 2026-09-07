@@ -322,8 +322,8 @@ function CommitteePage() {
               </div>
             </GroupBlock>
 
-            {/* ── SECRETARIES ── */}
-            <GroupBlock label="Secretaries" number="06">
+            {/* ── OFFICE BEARERS ── */}
+            <GroupBlock label="Office Bearers" number="06">
               <StaggerReveal
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
                 stagger={0.05}
@@ -412,7 +412,7 @@ function CommitteePage() {
           <div className="shell relative z-10">
             <div className="border-b border-rule pb-5 mb-12">
               <HorizontalReveal>
-                <p className="eyebrow text-primary">Scientific Direction</p>
+                <p className="eyebrow text-primary">Scientific Advisory</p>
               </HorizontalReveal>
               <MaskReveal delay={0.08}>
                 <h2 className="display-md mt-3">Distinguished Scientific Advisors</h2>
@@ -492,7 +492,7 @@ function CommitteePage() {
                 <p className="eyebrow text-white/40">Organising</p>
               </HorizontalReveal>
               <MaskReveal delay={0.08}>
-                <h2 className="display-md mt-3 text-white">Organizing Committees</h2>
+                <h2 className="display-md mt-3 text-white">Organising Committees</h2>
               </MaskReveal>
             </div>
 
