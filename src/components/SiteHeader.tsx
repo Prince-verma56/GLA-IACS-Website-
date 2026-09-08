@@ -106,25 +106,62 @@ export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
             </button>
             <div
               role="menu"
-              className={`absolute right-0 top-full mt-2.5 min-w-43 overflow-hidden rounded-sm border border-border bg-background shadow-xl shadow-black/10 transition-all duration-200 origin-top ${
+              className={`absolute right-0 top-full mt-2.5 w-[260px] sm:w-[280px] overflow-hidden rounded-md border border-border bg-background shadow-md shadow-black/5 transition-all duration-200 origin-top ${
                 moreOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-1.5 pointer-events-none"
               }`}
               style={{ zIndex: 60 }}
               onMouseEnter={openMore}
               onMouseLeave={closeMore}
             >
+              <div
+                role="menuitem"
+                className="flex flex-col px-5 py-4 border-b border-border/60 bg-accent/5 transition-colors hover:bg-accent/10"
+              >
+                <a
+                  href="/docs/IACS%20Conference_2027_Leaf.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 group"
+                  aria-label="Open IACS 2027 Conference Brochure PDF"
+                >
+                  <svg
+                    className="mt-0.5 shrink-0 text-primary opacity-80 transition-transform duration-200 group-hover:-translate-y-0.5"
+                    width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
+                  >
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                  </svg>
+                  <div className="flex-1">
+                    <div className="font-medium text-primary text-[0.9375rem] whitespace-nowrap">Conference Brochure</div>
+                    <div className="text-[0.8125rem] text-foreground/50 mt-0.5 whitespace-nowrap">Official IACS 2027 PDF</div>
+                  </div>
+                </a>
+                <div className="flex items-center gap-3 pl-8 mt-3.5 text-[0.8125rem] font-medium whitespace-nowrap">
+                  <a href="/docs/IACS%20Conference_2027_Leaf.pdf" target="_blank" rel="noopener noreferrer" className="text-primary flex items-center gap-1.5 hover:underline">
+                    View PDF <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </a>
+                  <span className="text-foreground/30">|</span>
+                  <a href="/docs/IACS%20Conference_2027_Leaf.pdf" download="IACS-Conference-2027-Brochure.pdf" className="text-primary flex items-center gap-1.5 hover:underline" aria-label="Download IACS 2027 Conference Brochure PDF">
+                    Download <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                  </a>
+                </div>
+              </div>
+
               {MORE_NAV.map((item) => (
                 <Link
                   key={item.to}
                   to={item.to}
                   role="menuitem"
-                  className={`flex items-center gap-2 px-4 py-3 text-[0.8125rem] transition-colors border-b border-rule last:border-b-0 ${
+                  className={`flex items-center justify-between px-5 py-3.5 text-[0.875rem] transition-colors border-b border-border/40 last:border-b-0 group ${
                     pathname === item.to
-                      ? "text-primary bg-accent/30"
-                      : "text-foreground/70 hover:text-primary hover:bg-accent/20"
+                      ? "text-primary bg-accent/10"
+                      : "text-foreground/80 hover:text-primary hover:bg-accent/5"
                   }`}
                 >
-                  {item.label}
+                  <span>{item.label}</span>
+                  <span className="opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 text-primary/70">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  </span>
                 </Link>
               ))}
             </div>
@@ -191,7 +228,50 @@ export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
       {open && (
         <div className="border-t border-border bg-background lg:hidden">
           <nav className="shell flex flex-col py-2">
-            {navigation.map((item) => (
+            {PRIMARY_NAV.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={`border-b border-border/70 py-3.5 text-sm transition-colors ${
+                  pathname === item.to ? "text-primary font-medium" : "text-foreground/80"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+
+            <div className="py-4 border-b border-border/70">
+              <a
+                href="/docs/IACS%20Conference_2027_Leaf.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 group"
+                aria-label="Open IACS 2027 Conference Brochure PDF"
+              >
+                <svg
+                  className="shrink-0 text-primary opacity-90 transition-transform duration-200 group-hover:-translate-y-0.5"
+                  width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
+                >
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+                <div className="flex-1">
+                  <div className="text-sm font-medium text-primary">Conference Brochure</div>
+                  <div className="text-xs text-foreground/60 mt-0.5">Official IACS 2027 PDF</div>
+                </div>
+              </a>
+              <div className="flex items-center gap-4 pl-[2rem] mt-3 text-[0.8rem] font-medium">
+                  <a href="/docs/IACS%20Conference_2027_Leaf.pdf" target="_blank" rel="noopener noreferrer" className="text-primary flex items-center gap-1 hover:underline">
+                    View PDF <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </a>
+                  <span className="text-foreground/40">|</span>
+                  <a href="/docs/IACS%20Conference_2027_Leaf.pdf" download="IACS-Conference-2027-Brochure.pdf" className="text-primary flex items-center gap-1 hover:underline" aria-label="Download IACS 2027 Conference Brochure PDF">
+                    Download <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                  </a>
+              </div>
+            </div>
+
+            {MORE_NAV.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
