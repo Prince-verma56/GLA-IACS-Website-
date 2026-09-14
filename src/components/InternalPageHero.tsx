@@ -11,7 +11,7 @@ export function InternalPageHero({ hero, children }: { hero: PageHeroConfig, chi
   const bgImage = hero.image || "/images/Bg images/About/About Sec1.png";
 
   return (
-    <section className="relative w-full overflow-hidden bg-primary-deep pt-[100px] pb-16 md:pt-[120px] md:pb-24 flex items-center min-h-[40vh] md:min-h-[50vh]">
+    <section className="relative w-full overflow-hidden bg-primary-deep pt-[100px] pb-16 md:pt-30 md:pb-24 flex items-center min-h-[40vh] md:min-h-[50vh]">
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -21,7 +21,7 @@ export function InternalPageHero({ hero, children }: { hero: PageHeroConfig, chi
         />
         {/* Subtle Overlay to ensure text readability - Deep institutional green mixed with black for contrast */}
         <div className="absolute inset-0 bg-primary-deep/60 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/20 to-transparent" />
       </div>
       
       {/* Content Container */}
@@ -34,7 +34,7 @@ export function InternalPageHero({ hero, children }: { hero: PageHeroConfig, chi
           </HorizontalReveal>
           
           <MaskReveal delay={0.1}>
-            <h1 className="display-lg text-white font-bold leading-tight break-words">
+            <h1 className="display-lg text-white font-bold leading-tight wrap-break-word">
               {hero.title}
             </h1>
           </MaskReveal>
@@ -55,3 +55,9 @@ export function InternalPageHero({ hero, children }: { hero: PageHeroConfig, chi
     </section>
   );
 }
+
+
+
+
+
+

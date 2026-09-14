@@ -42,8 +42,10 @@ const days = [
 ];
 
 const programmeVisuals = {
-  conference: "/images/programme/scientific-conference.jpg",
-  topics: "/images/programme/cardiovascular-research.jpg"
+  conference: "/images/Conference/Landscape img 1.jpeg",
+  topics: "/images/Conference/Landscape img 2.jpeg",
+  gallery1: "/images/Conference/Landscape img 3.jpeg",
+  gallery2: "/images/Conference/Landscape img 4.jpeg",
 };
 
 /* ── COMPONENTS ────────────────────────────────────────────────────── */
@@ -234,8 +236,45 @@ function Programme() {
             </StaggerReveal>
           </div>
         </section>
+        
+        <SectionTransition variant="brush" />
+        
+        {/* ── CONFERENCE HIGHLIGHTS ────────────────────── */}
+        <section className="bg-white py-20 md:py-28 relative overflow-hidden">
+          <ScientificEditorialMotif className="text-primary/10" />
+          <div className="shell relative z-10">
+            <div className="text-center mb-16">
+              <HorizontalReveal>
+                <p className="eyebrow text-primary mb-3">03</p>
+              </HorizontalReveal>
+              <MaskReveal delay={0.1}>
+                <h2 className="display-md">Conference Highlights</h2>
+              </MaskReveal>
+              <TextReveal delay={0.2}>
+                <p className="mt-5 text-[1.0625rem] leading-relaxed text-muted-foreground max-w-2xl mx-auto">
+                  Experience the state-of-the-art facilities and vibrant atmosphere at GLA University, Mathura.
+                </p>
+              </TextReveal>
+            </div>
 
-
+            <div className="grid md:grid-cols-2 gap-8">
+              <TextReveal delay={0.3}>
+                <EditorialImage 
+                  src={programmeVisuals.gallery1} 
+                  alt="Conference highlight 1" 
+                  className="aspect-[4/3] w-full"
+                />
+              </TextReveal>
+              <TextReveal delay={0.4}>
+                <EditorialImage 
+                  src={programmeVisuals.gallery2} 
+                  alt="Conference highlight 2" 
+                  className="aspect-[4/3] w-full"
+                />
+              </TextReveal>
+            </div>
+          </div>
+        </section>
 
         <SectionTransition variant="green-entry" />
 
@@ -279,3 +318,4 @@ function Programme() {
     </div>
   );
 }
+

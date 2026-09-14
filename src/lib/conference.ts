@@ -178,7 +178,7 @@ export const leadership: { group: string; people: Person[] }[] = [
       { 
         name: "Dr. Yogesh Murti", 
         phone: "+91 8006240340",
-        image: "/People Images/Co-Organizing & Joint Secretaries/Dr. Yogesh Murti.png"
+        image: "/People Images/Co-Organizing & Joint Secretaries/Dr. Yogesh Murti.jpeg"
       },
       { 
         name: "Dr. Jitendra Gupta", 
